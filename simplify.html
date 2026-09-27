@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdvancedMD Simplify — Ivie Borovatz</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta property="og:title" content="AdvancedMD Simplify — Ivie Borovatz">
+  <meta property="og:description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta property="og:image" content="https://www.ivieborovatz.com/simplify-hero-purple.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #00c4b4;
+    --accent-dim: rgba(0,196,180,0.12);
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --text-dim: #555;
+    --nav-width: 220px;
+    --red: #e05252;
+    --yellow: #d4a847;
+  }
+  body.light-mode {
+    --accent: #00a89a;
+    --accent-dim: rgba(0,168,154,0.1);
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --text-dim: #999;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--surface);
+    padding: 80px 60px 80px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-text { display: flex; flex-direction: column; }
+  .hero-visual {
+    background: var(--surface2);
+    border-radius: 30px;
+    overflow: hidden;
+    height: 360px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .hero-visual-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(0,196,180,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(30px, 4vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── LAYOUT ───────────────────────────────────────────── */
+  .page {
+    display: grid;
+    grid-template-columns: var(--nav-width) 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 160px;
+    gap: 80px;
+  }
+
+  /* ── SIDE NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    height: fit-content;
+  }
+  nav a {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 0;
+    border-left: 2px solid transparent;
+    padding-left: 14px;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  nav a:hover, nav a.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+  }
+  nav .nav-section {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 20px 0 8px 14px;
+    font-weight: 600;
+  }
+  nav .nav-section:first-child { padding-top: 0; }
+
+  /* ── CONTENT ──────────────────────────────────────────── */
+  .content { min-width: 0; }
+
+  section[id] { scroll-margin-top: 40px; }
+
+  section + section {
+    margin-top: 120px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  p { color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); }
+
+  /* ── CALLOUT ──────────────────────────────────────────── */
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 2px 20px;
+    margin: 40px 0;
+  }
+  .callout p { color: var(--text); margin: 0; font-size: 17px; line-height: 1.65; }
+
+  /* ── PROBLEM GRID ─────────────────────────────────────── */
+  .problem-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+  .problem-item {
+    background: none;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+  .problem-item .problem-icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .problem-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0;
+  }
+  .problem-item p { font-size: 15px; margin: 0; }
+
+  /* ── ROLE CARD ────────────────────────────────────────── */
+  .role-card {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .role-card:first-of-type { border-top: none; padding-top: 8px; }
+  .role-card h4 {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .role-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .role-item {
+    display: block;
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 0;
+  }
+  .role-dot { display: none; }
+
+  /* ── WORK STREAMS ─────────────────────────────────────── */
+  .streams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .stream {
+    background: none;
+    padding: 0;
+  }
+  .stream-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .stream-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .stream h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .stream p { font-size: 15px; }
+
+  /* ── SCREENSHOTS ──────────────────────────────────────── */
+  .screenshot-block {
+    margin: 32px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .screenshot-block img {
+    width: 100%;
+    display: block;
+  }
+  .screenshot-caption {
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .screenshot-row .screenshot-block { margin: 0; }
+
+  /* ── QUOTE ────────────────────────────────────────────── */
+  .quote {
+    border-left: 2px solid var(--accent);
+    padding: 4px 20px;
+    margin: 40px 0;
+  }
+  .quote p {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .quote cite {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── OUTCOMES ─────────────────────────────────────────── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .outcome {
+    background: none;
+    padding: 0;
+  }
+  .outcome-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .outcome h4 {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .outcome p { font-size: 14px; }
+
+  /* ── SYSTEM / DESIGN DETAIL ───────────────────────────── */
+  .token-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 24px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .token-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface2);
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+  .token-label { color: var(--text-muted); }
+  .token-value { color: var(--text); font-weight: 500; font-family: 'SF Mono', monospace; font-size: 12px; }
+
+  /* ── UP NEXT ──────────────────────────────────────────── */
+  .up-next {
+    margin-top: 80px;
+    padding: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .up-next:hover { border-color: var(--text-dim); }
+  .up-next-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .up-next h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .up-next-arrow { font-size: 28px; color: var(--text-dim); }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .section-label.reveal { transition-delay: 0s; }
+  h2.reveal { transition-delay: 0.08s; }
+  .callout.reveal, .role-card.reveal, .stream.reveal, .outcome.reveal {
+    transition-delay: 0.12s;
+  }
+
+  /* ── BACK NAV ─────────────────────────────────────────── */
+  .back-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: rgba(248,247,244,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 100;
+  }
+  .back-nav a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s;
+  }
+  .back-nav a:hover { color: var(--text); }
+  .back-nav .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .back-nav .breadcrumb span { color: var(--text-dim); }
+  .back-nav .breadcrumb .current { color: var(--text); }
+  .back-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .back-nav-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim) !important;
+    text-decoration: none;
+    transition: color 0.15s;
+    display: inline !important;
+  }
+  .back-nav-link:hover { color: var(--text) !important; }
+
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92); }
+
+  /* ── MODE TOGGLE ──────────────────────────────────────── */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--border);
+    border-radius: 100px;
+    padding: 3px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .mode-toggle .m-opt {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .mode-toggle .m-opt.active {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 24px 60px; grid-template-columns: 1fr; }
+    .hero-visual { height: 240px; }
+    .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 0; }
+    nav { display: none; }
+    .problem-grid,
+    .outcomes-grid,
+    .streams,
+    .screenshot-row { grid-template-columns: 1fr; }
+  }
+
+  /* teal italic emphasis in headlines */
+  .hero h1 em, h2 em { color: var(--accent); font-style: italic; }
+
+  /* ── floating images (global) — no frame, no box, caption floats ── */
+  .screenshot-block { background: none !important; border: none !important; border-radius: 0 !important; overflow: visible !important; }
+  .screenshot-block img { background: none !important; border-radius: 12px; }
+  .screenshot-caption { border: none !important; background: none !important; padding: 12px 0 0 !important; }
+
+  /* ── up-next (global, boxless) ── */
+  .up-next { background: none !important; border: none !important; border-radius: 0 !important; padding: 32px 0 !important; }
+  .up-next-arrow { transition: transform 0.2s, color 0.2s; }
+  .up-next:hover .up-next-arrow { transform: translateX(6px); color: var(--accent); }
+
+  .mode-labels { display: grid; grid-template-columns: 45.75% 1fr; margin-bottom: 10px; }
+  .mode-labels span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+
+  /* caption contrast (WCAG AA 4.5:1 in both modes) */
+  .screenshot-caption { color: var(--text-muted) !important; font-size: 14px !important; }
+
+  /* two-column role cards */
+  .role-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 56px; margin-top: 32px; }
+  .role-pair .role-card { border-top: none; padding: 0; }
+  @media (max-width: 768px) { .role-pair { grid-template-columns: 1fr; } }
+
+  /* ── embedded service map (SMB workflow overview) ── */
+  .svc-map { --amber-c: #f0b429; --orange-c: #f59e42; }
+  body.light-mode .svc-map { --amber-c: #8a5a00; --orange-c: #b45309; }
+  .svc-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; color: var(--text); margin-bottom: 18px; }
+  .svc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .svc-tile { padding: 14px 14px 16px; border-radius: 14px; min-height: 104px; font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); border: 1px solid; }
+  .svc-num { display: block; font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1; margin-bottom: 10px; }
+  .svc-tile.critical { background: rgba(240,140,41,0.12); border-color: rgba(240,140,41,0.4); }
+  .svc-tile.critical .svc-num { color: var(--orange-c); }
+  .svc-tile.moderate { background: var(--accent-dim); border-color: rgba(0,196,180,0.35); }
+  .svc-tile.moderate .svc-num { color: var(--accent); }
+  .svc-legend { display: flex; gap: 24px; margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+  .svc-legend span { display: flex; align-items: center; gap: 8px; }
+  .svc-legend .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid; }
+  .svc-legend .sw.crit { background: rgba(240,140,41,0.12); border-color: var(--orange-c); }
+  .svc-legend .sw.mod { background: var(--accent-dim); border-color: var(--accent); }
+  @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ── header + breadcrumb (global) ── */
+  .back-nav { background: rgba(10,10,10,0.92) !important; }
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92) !important; }
+  .back-nav .breadcrumb { gap: 10px; font-size: 13px; }
+  .back-nav .breadcrumb a { color: var(--text-muted) !important; transition: color 0.15s; }
+  .back-nav .breadcrumb a:hover { color: var(--accent) !important; }
+  .back-nav .bc-home { gap: 10px; }
+  .back-nav .bc-logo { width: 28px; height: 28px; display: block; transition: transform 0.2s; }
+  .back-nav .bc-home:hover .bc-logo { transform: rotate(-8deg) scale(1.06); }
+  .back-nav .bc-name { font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .back-nav .bc-home:hover .bc-name { color: var(--accent); }
+  .back-nav .bc-sep { color: var(--text-dim) !important; }
+  .back-nav .breadcrumb .current { color: var(--text) !important; }
+
+  /* ── page scale (global): fill large screens like browser zoom does ── */
+  @media (min-width: 1400px) { html { zoom: 1.15; } }
+  @media (min-width: 1600px) { html { zoom: 1.28; } }
+  @media (min-width: 1800px) { html { zoom: 1.4; } }
+  @media (min-width: 2100px) { html { zoom: 1.6; } }
+  @media (min-width: 2500px) { html { zoom: 1.85; } }
+
+  /* ── hero video background (matches homepage) ── */
+  .hero { position: relative; overflow: hidden; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; transform: scaleX(-1); pointer-events: none; z-index: 0; }
+  .hero > *:not(.hero-video) { position: relative; z-index: 1; }
+
+  /* ── tighter section rhythm (global) ── */
+  section + section { margin-top: 56px !important; padding-top: 48px !important; }
+  .section-label { margin-bottom: 14px !important; }
+  h2 { margin-bottom: 22px !important; }
+  .screenshot-block { margin-top: 28px !important; margin-bottom: 0 !important; }
+  .screenshot-block + .screenshot-block { margin-top: 40px !important; }
+  .up-next { margin-top: 56px !important; }
+
+  /* screenshot-row fix: grid items align to the top */
+  .screenshot-row { align-items: start; margin-top: 28px !important; }
+  .screenshot-row .screenshot-block, .screenshot-row .screenshot-block + .screenshot-block { margin: 0 !important; }
+
+  /* ── stat callout ── */
+  .stat-callout { display: flex; align-items: center; gap: 28px; margin: 40px 0; padding: 6px 0 6px 20px; border-left: 2px solid var(--accent); }
+  .stat-num { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(56px, 7vw, 84px); line-height: 0.9; color: var(--accent); flex-shrink: 0; }
+  .stat-callout p { margin: 0 !important; font-size: 18px; line-height: 1.5; color: var(--text); max-width: 460px; }
+  @media (max-width: 600px) { .stat-callout { flex-direction: column; align-items: flex-start; gap: 10px; } }
+
+  /* ── WCAG AA contrast pass (4.5:1 minimum for small text, both modes) ── */
+  :root { --text-muted: #a8a8a8 !important; --text-dim: #8a8a8a !important; --label: #8a8a8a !important; --text-light: #a8a8a8 !important; }
+  body.light-mode {
+    --accent: #00796e !important; --text-muted: #4a4a4a !important; --text-dim: #666666 !important;
+    --label: #666666 !important; --text-light: #4a4a4a !important;
+  }
+  .chip { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt.active { color: var(--text) !important; }
+</style>
+</head>
+<body>
+
+<!-- back nav -->
+<header class="back-nav">
+  <div class="breadcrumb">
+    <a href="index.html" class="bc-home" title="Home"><img src="logo.svg" alt="" class="bc-logo"><span class="bc-name">Ivie Borovatz</span></a>
+    <span class="bc-sep">/</span>
+    <a href="index.html#work" class="bc-link">Case Studies</a>
+    <span class="bc-sep">/</span>
+    <span class="current">AdvancedMD Simplify</span>
+  </div>
+  <div class="back-nav-right">
+    <a href="index.html#work" class="back-nav-link">Work</a>
+    <a href="index.html#about" class="back-nav-link">About</a>
+    <a href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener" class="back-nav-link">Résumé</a>
+    <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener" class="back-nav-link">LinkedIn</a>
+    <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+      <span class="m-opt" id="optLight">Light</span>
+      <span class="m-opt active" id="optMagic">✦ Magic</span>
+    </button>
+  </div>
+</header>
+
+<!-- hero -->
+<div style="height:52px"></div>
+<section class="hero">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
+  <div class="hero-text">
+    <p class="hero-meta">AdvancedMD · Platform Strategy</p>
+    <h1>It wasn't enough to be<br>under one umbrella.<br>It had to feel <em>like one thing.</em></h1>
+    <p class="hero-sub">Leading the MVP redesign of AdvancedMD Simplify — a unified practice management + EHR platform built for small practices that the original platform had outgrown. Pre-beta.</p>
+    <div class="hero-chips">
+      <span class="chip">UX Architecture</span>
+      <span class="chip">Platform Design</span>
+      <span class="chip">AI / RAG</span>
+      <span class="chip">Service Mapping</span>
+      <span class="chip">Design System</span>
+      <span class="chip">Angular Material M3</span>
+      <span class="chip">AI Prototyping</span>
+      <span class="chip">Figma</span>
+      <span class="chip">AdvancedMD · 2025–2026</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-bg" style="background-image: url('simplify-hero-purple.jpg');"></div>
+  </div>
+</section>
+
+<!-- body -->
+<div class="page">
+  <!-- nav -->
+  <nav id="case-nav">
+    <div class="nav-section">Overview</div>
+    <a href="#problem">The Problem</a>
+    <a href="#research">Research</a>
+    <div class="nav-section">Work</div>
+    <a href="#architecture">Architecture</a>
+    <a href="#platform">Platform</a>
+    <a href="#foundation">Foundation</a>
+    <div class="nav-section">Results</div>
+    <a href="#status">Status</a>
+  </nav>
+
+  <!-- content -->
+  <main class="content">
+
+    <!-- 01 PROBLEM -->
+    <section id="problem">
+      <p class="section-label">01 — The Problem</p>
+      <h2>The platform outgrew<br><em>the practices we built it for.</em></h2>
+
+      <p>AdvancedMD had spent years getting more capable. For small practices, it had also gotten more complicated.</p>
+
+      <div class="stat-callout">
+        <div class="stat-num">1 in 3</div>
+        <p>small-to-midsize clients were leaving — many before they were even fully set up and taking payments.</p>
+      </div>
+
+      <p>Practice management and clinical work lived in different parts of the platform. Users had to understand where information lived, which side owned a task, and when they needed to move somewhere else to continue the workflow.</p>
+
+      <p>An earlier simplification approach focused largely on limiting features. Simplify gave us an opportunity to ask a different question:</p>
+
+      <div class="callout">
+        <p><strong>What if we organized the experience around how a practice works instead of how the existing product was organized?</strong></p>
+      </div>
+    </section>
+
+    <!-- 02 RESEARCH -->
+    <section id="research">
+      <p class="section-label">02 — Research</p>
+      <h2>The barrier between the applications<br><em>was creating work.</em></h2>
+
+      <p>I started by mapping how different roles actually moved through their day, then tested those workflows against client discovery, behavioral data, customer requests, and the structure of the existing product.</p>
+
+      <p><strong>The navigation wasn't the starting point. The workflow was.</strong></p>
+
+      <div class="role-pair">
+      <div class="role-card">
+        <h4>01 · Map the day</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>We mapped the work of providers, front desk, billing, and administrative roles — including where information was needed, where decisions happened, and where the product interrupted the workflow.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>For front-desk users, the scheduler functioned as a command center. Eligibility, patient balances, and other information were useful in the context of the appointment rather than as separate destinations.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>For billers, behavioral data showed a recurring sequence across transactions, patient and insurance information, coding, claims, ERA, payment entry, and end-of-day work. The architecture needed to support that sequence rather than impose a different one.</div></div>
+        </div>
+      </div>
+
+      <div class="role-card">
+        <h4>02 · Validate the patterns</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>I compared workflow findings with a broader body of customer feedback and product data to distinguish isolated requests from structural problems.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>Checkout existed in both PM and EHR, but information didn't reliably flow between them. Appointment confirmations could require leaving the EHR scheduler for a PM workflow. PM and EHR even supported different numbers of simultaneously open patient records.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div><strong>The boundary between the products was creating work.</strong></div></div>
+        </div>
+      </div>
+      </div>
+
+      <div class="role-card" style="margin-top:16px;">
+        <h4>03 · Translate workflow into architecture</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>The research became a set of architectural decisions about what belonged in navigation, what should remain attached to the patient, and what information should surface inside the workflow instead of requiring another destination.</div></div>
+        </div>
+      </div>
+
+      <div class="screenshot-block" style="margin-top:32px;">
+        <div class="svc-map" role="img" aria-label="SMB workflow service map: ten workflow steps, seven critical gaps (orange) and three moderate gaps (green)">
+          <div class="svc-title">SMB Workflow Overview</div>
+          <div class="svc-grid">
+          <div class="svc-tile critical"><span class="svc-num">1</span>Start of Day &amp; Dashboard</div>
+          <div class="svc-tile critical"><span class="svc-num">2</span>Clinical Documentation</div>
+          <div class="svc-tile critical"><span class="svc-num">3</span>Outcome Measures &amp; Forms</div>
+          <div class="svc-tile moderate"><span class="svc-num">4</span>Medication Management</div>
+          <div class="svc-tile critical"><span class="svc-num">5</span>Charge Entry &amp; Billing</div>
+          <div class="svc-tile critical"><span class="svc-num">6</span>Credentialing &amp; Payer Setup</div>
+          <div class="svc-tile moderate"><span class="svc-num">7</span>Reporting &amp; Analytics</div>
+          <div class="svc-tile critical"><span class="svc-num">8</span>ERA Auto-Posting &amp; Payment Flow</div>
+          <div class="svc-tile critical"><span class="svc-num">9</span>Online Self-Service Scheduling</div>
+          <div class="svc-tile moderate"><span class="svc-num">10</span>New Practice Onboarding &amp; Training</div>
+          </div>
+          <div class="svc-legend">
+            <span><i class="sw crit"></i>Critical gap</span>
+            <span><i class="sw mod"></i>Moderate gap</span>
+          </div>
+        </div>
+        <div class="screenshot-caption">Mapping the practice workflow connected what users were doing, where they got stuck, and what the product could do differently.</div>
+      </div>
+
+      <div class="screenshot-block">
+        <a href="simplify-biller-workflows.png" target="_blank" title="Open full size"><img src="simplify-biller-workflows.png" alt="Biller workflows by segment from Pendo data, alongside the biller's morning, midday, and end-of-day workflow map" style="width:100%;display:block;" /></a>
+        <div class="screenshot-caption">Role-level workflows helped distinguish what belonged in global navigation from what should appear in the context of the work.</div>
+      </div>
+    </section>
+
+    <!-- 03 ARCHITECTURE -->
+    <section id="architecture">
+      <p class="section-label">03 — Architecture</p>
+      <h2>One app. Keep the <em>context.</em></h2>
+
+      <p>The goal wasn't to put PM and EHR screens next to each other.</p>
+
+      <p><strong>It was to stop making users care which product owned the task.</strong></p>
+
+      <p>The dashboard brings forward work based on the user's role. Once a patient is opened, that patient context stays available as the user moves between clinical, scheduling, messaging, and financial work.</p>
+
+      <p>That led to a few structural rules:</p>
+
+      <div class="streams" style="margin-top:28px;">
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">1</div><h3>Navigation follows work</h3></div>
+          <p>Primary destinations reflect the workflows different roles actually move through.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">2</div><h3>Patient information stays with the patient</h3></div>
+          <p>Users shouldn't have to repeatedly search for the same person as they move between related tasks.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">3</div><h3>Information appears where it's useful</h3></div>
+          <p>Eligibility belongs with appointment workflows. Balances can surface where staff are interacting with patients. Not every capability needs another navigation destination.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">4</div><h3>Different roles can start differently</h3></div>
+          <p>A provider, front-desk user, and biller don't begin their day with the same priorities, so the experience shouldn't assume they do.</p>
+        </div>
+      </div>
+
+      <div class="screenshot-block" style="margin-top:40px !important;">
+          <img src="amd-dashboard-panel.jpg" alt="Patient side panel" style="width:100%;display:block;" />
+          <div class="screenshot-caption">Patient side panel — patient information stays available while the user works.</div>
+        </div>
+        <div class="screenshot-block">
+          <img src="amd-claims.jpg" alt="Claims" style="width:100%;display:block;" />
+          <div class="screenshot-caption">Claims — billing work without leaving the experience.</div>
+        </div>
+    </section>
+
+    <!-- 04 PLATFORM -->
+    <section id="platform">
+      <p class="section-label">04 — Platform</p>
+      <h2>A new experience. <em>Not another silo.</em></h2>
+
+      <p>We'd tried starting from scratch before. Building an all-new backend and new APIs for the insurance billing process proved insurmountable.</p>
+
+      <div class="callout">
+        <p><strong>Instead of rebuilding from the inside out, what if we worked from the outside in?</strong> Start with the experience users touch, and keep the proven backend underneath it.</p>
+      </div>
+
+      <p>Simplify wasn't designed as a separate product or a ground-up rewrite.</p>
+
+      <p>It runs on the same codebase as the existing platform, allowing the experience to modernize incrementally while continuing to use existing capabilities underneath it. Client-level feature controls and routing allow Simplified Mode to be enabled and tested without creating a separate branch or disrupting the existing legacy experience.</p>
+
+      <p>That means capabilities built elsewhere in AdvancedMD can surface inside Simplify rather than being rebuilt specifically for it.</p>
+
+      <p>The tradeoff is honest: some screens will still look dated while they wait for their UI refresh. But because Simplify and the main product share a design language, every screen we modernize benefits both.</p>
+
+      <div class="callout">
+        <p><strong>A new experience on the same platform — not another silo.</strong> The base shell and new top navigation have already shipped as pieces of the Simplify infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- 05 FOUNDATION -->
+    <section id="foundation">
+      <p class="section-label">05 — Foundation</p>
+      <h2>Modernize without creating<br><em>another thing to maintain.</em></h2>
+
+      <p>The experience wasn't the only thing that needed modernization.</p>
+
+      <p>AdvancedMD's Angular Material library had been customized so heavily that it had become technical debt and blocked upgrades beyond Angular 18. Leadership had several options: invest heavily in upgrading the customized system, replace it with another proprietary library, or move back toward standard Angular Material 3.</p>
+
+      <p>We chose the third direction.</p>
+
+      <div class="callout">
+        <p><strong>Use the standard when it solves the problem. Customize when the product actually requires it.</strong></p>
+      </div>
+
+      <p>I helped define how and why components should be used, supported the shared Figma library, and created design resources that give Design and Engineering the same definitions and intent — including enough structured guidance to support AI-assisted development.</p>
+
+      <p>Simplify became the first major place to put that direction into practice.</p>
+
+      <p><strong>Moving back to the standard also meant getting its built-in capabilities for free.</strong></p>
+
+      <div class="streams" style="margin-top:32px;">
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">1</div><h3>WCAG 2 accessibility, built in</h3></div>
+          <p>Material 3 components ship with accessible contrast, focus states, and keyboard and screen-reader support, so accessibility isn't something we have to rebuild component by component.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">2</div><h3>Dark mode, built in</h3></div>
+          <p>Theming comes from design tokens, so the same screens support light and dark modes without designing and maintaining a second UI.</p>
+        </div>
+      </div>
+
+      <div class="screenshot-block" style="margin-top:40px;">
+        <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
+        <img src="simplify-m3-modes-nolabel.png" alt="Simplify Profile Settings in dark mode and light mode" style="width:100%;display:block;" />
+        <div class="screenshot-caption">The same Profile Settings screen in dark and light mode, both from one set of Material 3 components.</div>
+      </div>
+    </section>
+
+    <!-- 06 STATUS -->
+    <section id="status">
+      <p class="section-label">06 — Status</p>
+      <h2>Build the foundation <em>for a better workflow.</em></h2>
+
+      <p>Simplify is ready for beta. Early validation with a few existing clients has been promising, and beta will show whether it holds up across more practices.</p>
+
+      <p>What exists today is the foundation: workflow-based architecture, the simplified shell, shared navigation patterns, patient context, and a UI system designed to evolve with the platform instead of becoming another layer of technical debt. The shell infrastructure allows Simplified Mode to be enabled per client while preserving the existing legacy experience.</p>
+
+      <div class="outcomes-grid" style="margin-top:32px;">
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>Unified workflow surface</h4>
+          <p>Users can move between clinical, scheduling, and billing tasks without switching between PM and EHR or repeatedly finding the same patient.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>Built around the workflow</h4>
+          <p>Navigation and scope came from how practices actually work, not from recreating existing PM and EHR menus.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>A UI we can keep upgrading</h4>
+          <p>Simplify starts with standard Material 3 instead of adding another deeply customized layer to maintain.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>One platform, not another silo</h4>
+          <p>Existing AdvancedMD capabilities can work inside Simplify instead of being rebuilt specifically for it.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:40px;">
+        <p>The real test comes next: whether it actually makes running a small practice easier.</p>
+      </div>
+    </section>
+
+    <!-- UP NEXT -->
+    <a class="up-next" href="transaction-history-card.html">
+      <div>
+        <div class="up-next-label">Up next</div>
+        <h3>Patient Transaction History</h3>
+      </div>
+      <div class="up-next-arrow">→</div>
+    </a>
+
+  </main>
+</div>
+
+<script>
+  // Mode toggle — default dark, Light is opt-in (matches index.html)
+  function setMode(light) {
+    document.body.classList.toggle('light-mode', light);
+    document.getElementById('optLight').classList.toggle('active', light);
+    document.getElementById('optMagic').classList.toggle('active', !light);
+    localStorage.setItem('colorMode', light ? 'light' : 'magic');
+  }
+  function toggleMode() {
+    setMode(!document.body.classList.contains('light-mode'));
+  }
+  // Restore saved mode
+  if (localStorage.getItem('colorMode') === 'light') setMode(true);
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Scroll entrance animations
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.section-label, h2, .callout, .role-card, .stream, .outcome').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+</script>
+<script>
+  (function(){
+    function syncHeroVideo(){
+      var v=document.getElementById('heroVideo'); if(!v) return;
+      var want=document.body.classList.contains('light-mode')?'hero-bg-light.mp4':'hero-bg.mp4';
+      if(v.getAttribute('data-src')!==want){ v.setAttribute('data-src',want); v.src=want; v.play().catch(function(){}); }
+    }
+    if (typeof setMode==='function'){ var _sm=setMode; window.setMode=setMode=function(l){ _sm(l); syncHeroVideo(); }; }
+    syncHeroVideo();
+  })();
+</script>
+</body>
+</html>

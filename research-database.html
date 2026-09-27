@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Knowledge Library — Ivie Borovatz</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="description" content="Turning years of scattered research into a library teams can actually query.">
+  <meta property="og:title" content="Research Knowledge Library — Ivie Borovatz">
+  <meta property="og:description" content="Turning years of scattered research into a library teams can actually query.">
+  <meta property="og:image" content="https://www.ivieborovatz.com/research-library-thumb.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #00c4b4;
+    --accent-dim: rgba(0,196,180,0.12);
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --text-dim: #555;
+    --nav-width: 220px;
+    --red: #e05252;
+    --yellow: #d4a847;
+  }
+  body.light-mode {
+    --accent: #00a89a;
+    --accent-dim: rgba(0,168,154,0.1);
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --text-dim: #999;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--surface);
+    padding: 80px 60px 80px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-text { display: flex; flex-direction: column; }
+  .hero-visual {
+    background: var(--surface2);
+    border-radius: 30px;
+    overflow: hidden;
+    height: 360px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .hero-visual-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(0,196,180,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(30px, 4vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── LAYOUT ───────────────────────────────────────────── */
+  .page {
+    display: grid;
+    grid-template-columns: var(--nav-width) 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 160px;
+    gap: 80px;
+  }
+
+  /* ── SIDE NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    height: fit-content;
+  }
+  nav a {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 0;
+    border-left: 2px solid transparent;
+    padding-left: 14px;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  nav a:hover, nav a.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+  }
+  nav .nav-section {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 20px 0 8px 14px;
+    font-weight: 600;
+  }
+  nav .nav-section:first-child { padding-top: 0; }
+
+  /* ── CONTENT ──────────────────────────────────────────── */
+  .content { min-width: 0; }
+
+  section[id] { scroll-margin-top: 40px; }
+
+  section + section {
+    margin-top: 120px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  p { color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); }
+
+  /* ── CALLOUT ──────────────────────────────────────────── */
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 2px 20px;
+    margin: 40px 0;
+  }
+  .callout p { color: var(--text); margin: 0; font-size: 17px; line-height: 1.65; }
+
+  /* ── PROBLEM GRID ─────────────────────────────────────── */
+  .problem-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+  .problem-item {
+    background: none;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+  .problem-item .problem-icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .problem-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0;
+  }
+  .problem-item p { font-size: 15px; margin: 0; }
+
+  /* ── ROLE CARD ────────────────────────────────────────── */
+  .role-card {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .role-card:first-of-type { border-top: none; padding-top: 8px; }
+  .role-card h4 {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .role-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .role-item {
+    display: block;
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 0;
+  }
+  .role-dot { display: none; }
+
+  /* ── WORK STREAMS ─────────────────────────────────────── */
+  .streams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .stream {
+    background: none;
+    padding: 0;
+  }
+  .stream-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .stream-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .stream h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .stream p { font-size: 15px; }
+
+  /* ── SCREENSHOTS ──────────────────────────────────────── */
+  .screenshot-block {
+    margin: 32px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .screenshot-block img {
+    width: 100%;
+    display: block;
+  }
+  .screenshot-caption {
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .screenshot-row .screenshot-block { margin: 0; }
+
+  /* ── QUOTE ────────────────────────────────────────────── */
+  .quote {
+    border-left: 2px solid var(--accent);
+    padding: 4px 20px;
+    margin: 40px 0;
+  }
+  .quote p {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .quote cite {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── OUTCOMES ─────────────────────────────────────────── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .outcome {
+    background: none;
+    padding: 0;
+  }
+  .outcome-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .outcome h4 {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .outcome p { font-size: 14px; }
+
+  /* ── SYSTEM / DESIGN DETAIL ───────────────────────────── */
+  .token-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 24px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .token-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface2);
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+  .token-label { color: var(--text-muted); }
+  .token-value { color: var(--text); font-weight: 500; font-family: 'SF Mono', monospace; font-size: 12px; }
+
+  /* ── UP NEXT ──────────────────────────────────────────── */
+  .up-next {
+    margin-top: 80px;
+    padding: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .up-next:hover { border-color: var(--text-dim); }
+  .up-next-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .up-next h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .up-next-arrow { font-size: 28px; color: var(--text-dim); }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .section-label.reveal { transition-delay: 0s; }
+  h2.reveal { transition-delay: 0.08s; }
+  .callout.reveal, .role-card.reveal, .stream.reveal, .outcome.reveal {
+    transition-delay: 0.12s;
+  }
+
+  /* ── BACK NAV ─────────────────────────────────────────── */
+  .back-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: rgba(248,247,244,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 100;
+  }
+  .back-nav a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s;
+  }
+  .back-nav a:hover { color: var(--text); }
+  .back-nav .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .back-nav .breadcrumb span { color: var(--text-dim); }
+  .back-nav .breadcrumb .current { color: var(--text); }
+  .back-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .back-nav-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim) !important;
+    text-decoration: none;
+    transition: color 0.15s;
+    display: inline !important;
+  }
+  .back-nav-link:hover { color: var(--text) !important; }
+
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92); }
+
+  /* ── MODE TOGGLE ──────────────────────────────────────── */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--border);
+    border-radius: 100px;
+    padding: 3px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .mode-toggle .m-opt {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .mode-toggle .m-opt.active {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 24px 60px; grid-template-columns: 1fr; }
+    .hero-visual { height: 240px; }
+    .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 0; }
+    nav { display: none; }
+    .problem-grid,
+    .outcomes-grid,
+    .streams,
+    .screenshot-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── HERO FACTS ───────────────────────────────────────── */
+  .hero-facts { display: grid; grid-template-columns: repeat(4, auto); gap: 32px; justify-content: start; margin-top: 4px; }
+  .hero-fact-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
+  .hero-fact-value { font-size: 14px; color: var(--text); }
+  /* ── IMAGE PLACEHOLDER ────────────────────────────────── */
+  .img-placeholder {
+    aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+    background: var(--surface2); color: var(--text-dim); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 24px;
+  }
+  /* ── PATTERNS / FEATURES ──────────────────────────────── */
+  .quote p { font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1.3; }
+  h3.sub { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 24px; color: var(--text); margin: 48px 0 12px; }
+  @media (max-width: 768px) { .hero-facts { grid-template-columns: 1fr 1fr; } }
+
+  @media (max-width: 768px) {
+    .hero-facts { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* teal italic emphasis in headlines */
+  .hero h1 em, h2 em { color: var(--accent); font-style: italic; }
+
+  /* ── floating images (global) — no frame, no box, caption floats ── */
+  .screenshot-block { background: none !important; border: none !important; border-radius: 0 !important; overflow: visible !important; }
+  .screenshot-block img { background: none !important; border-radius: 12px; }
+  .screenshot-caption { border: none !important; background: none !important; padding: 12px 0 0 !important; }
+
+  /* ── up-next (global, boxless) ── */
+  .up-next { background: none !important; border: none !important; border-radius: 0 !important; padding: 32px 0 !important; }
+  .up-next-arrow { transition: transform 0.2s, color 0.2s; }
+  .up-next:hover .up-next-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* caption contrast (WCAG AA 4.5:1 in both modes) */
+  .screenshot-caption { color: var(--text-muted) !important; font-size: 14px !important; }
+
+  /* ── header + breadcrumb (global) ── */
+  .back-nav { background: rgba(10,10,10,0.92) !important; }
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92) !important; }
+  .back-nav .breadcrumb { gap: 10px; font-size: 13px; }
+  .back-nav .breadcrumb a { color: var(--text-muted) !important; transition: color 0.15s; }
+  .back-nav .breadcrumb a:hover { color: var(--accent) !important; }
+  .back-nav .bc-home { gap: 10px; }
+  .back-nav .bc-logo { width: 28px; height: 28px; display: block; transition: transform 0.2s; }
+  .back-nav .bc-home:hover .bc-logo { transform: rotate(-8deg) scale(1.06); }
+  .back-nav .bc-name { font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .back-nav .bc-home:hover .bc-name { color: var(--accent); }
+  .back-nav .bc-sep { color: var(--text-dim) !important; }
+  .back-nav .breadcrumb .current { color: var(--text) !important; }
+
+  .streams.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 768px) { .streams.three { grid-template-columns: 1fr; } }
+
+  .mode-labels { display: grid; grid-template-columns: 45.75% 1fr; margin-bottom: 10px; }
+  .mode-labels span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+
+  /* ── page scale (global): fill large screens like browser zoom does ── */
+  @media (min-width: 1400px) { html { zoom: 1.15; } }
+  @media (min-width: 1600px) { html { zoom: 1.28; } }
+  @media (min-width: 1800px) { html { zoom: 1.4; } }
+  @media (min-width: 2100px) { html { zoom: 1.6; } }
+  @media (min-width: 2500px) { html { zoom: 1.85; } }
+
+  /* ── hero video background (matches homepage) ── */
+  .hero { position: relative; overflow: hidden; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; transform: scaleX(-1); pointer-events: none; z-index: 0; }
+  .hero > *:not(.hero-video) { position: relative; z-index: 1; }
+
+  /* ── tighter section rhythm (global) ── */
+  section + section { margin-top: 56px !important; padding-top: 48px !important; }
+  .section-label { margin-bottom: 14px !important; }
+  h2 { margin-bottom: 22px !important; }
+  .screenshot-block { margin-top: 28px !important; margin-bottom: 0 !important; }
+  .screenshot-block + .screenshot-block { margin-top: 40px !important; }
+  .up-next { margin-top: 56px !important; }
+
+  /* ── before / after table ── */
+  .ba-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  .ba-table th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--text-dim); padding: 0 24px 14px 0; border-bottom: 1px solid var(--border); }
+  .ba-table th.after { color: var(--accent); }
+  .ba-table td { vertical-align: top; padding: 18px 24px 18px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+  .ba-table td:first-child { width: 22%; font-weight: 600; color: var(--text); }
+  .ba-table td.after { color: var(--text); }
+  .ba-table tr:last-child td { border-bottom: none; }
+  .hero-visual.contain .hero-visual-bg { background-size: contain; background-position: center; }
+  @media (max-width: 768px) {
+    .ba-table, .ba-table tbody, .ba-table tr, .ba-table td { display: block; width: 100% !important; }
+    .ba-table thead { display: none; }
+    .ba-table td { border-bottom: none; padding: 4px 0; }
+    .ba-table tr { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .ba-table td.before::before { content: 'Before — '; color: var(--text-dim); }
+    .ba-table td.after::before { content: 'After — '; color: var(--accent); }
+  }
+
+  /* screenshot-row fix: grid items align to the top */
+  .screenshot-row { align-items: start; margin-top: 28px !important; }
+  .screenshot-row .screenshot-block, .screenshot-row .screenshot-block + .screenshot-block { margin: 0 !important; }
+
+  /* ── WCAG AA contrast pass (4.5:1 minimum for small text, both modes) ── */
+  :root { --text-muted: #a8a8a8 !important; --text-dim: #8a8a8a !important; --label: #8a8a8a !important; --text-light: #a8a8a8 !important; }
+  body.light-mode {
+    --accent: #00796e !important; --text-muted: #4a4a4a !important; --text-dim: #666666 !important;
+    --label: #666666 !important; --text-light: #4a4a4a !important;
+  }
+  .chip { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt.active { color: var(--text) !important; }
+
+  .hero.no-visual { grid-template-columns: 1fr; }
+  .hero.no-visual .hero-text { max-width: 900px; }
+  .artifact-link { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 32px; padding: 24px 28px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface2); text-decoration: none; transition: border-color 0.2s; }
+  .artifact-link:hover { border-color: var(--accent); }
+  .artifact-link .al-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+  .artifact-link .al-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: var(--text); }
+  .artifact-link .al-desc { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .artifact-link .al-arrow { font-size: 24px; color: var(--text-muted); transition: transform 0.2s, color 0.2s; }
+  .artifact-link:hover .al-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* ── library grid ── */
+  .lib-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .lib-card { padding: 24px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); }
+  .lib-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); color: var(--accent); margin-bottom: 16px; }
+  .lib-icon svg { width: 20px; height: 20px; }
+  .lib-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: var(--text); margin-bottom: 8px; }
+  .lib-card p { font-size: 14px; line-height: 1.6; margin: 0 0 14px !important; }
+  .lib-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lib-tags span { font-size: 11px; padding: 3px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-muted); }
+  @media (max-width: 900px) { .lib-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .lib-grid { grid-template-columns: 1fr; } }
+
+  /* ── patient journey map ── */
+  .journey { margin-top: 28px; padding: 28px; border-radius: 24px; background: var(--surface); border: 1px solid var(--border); --crit: #f59e42; }
+  body.light-mode .journey { --crit: #b45309; }
+  .journey-head { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+  .journey-head b { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 26px; color: var(--text); margin-right: 6px; }
+  .journey-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .jt { display: flex; flex-direction: column; gap: 6px; padding: 12px 10px; min-height: 104px; border-radius: 12px; background: var(--surface2); border: 1px solid var(--border); }
+  .jt.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .jn { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; line-height: 1; color: var(--accent); }
+  .jname { font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--text); flex: 1; }
+  .jdots { display: flex; flex-wrap: wrap; gap: 4px; }
+  .jd { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .jd.crit { background: var(--crit); }
+  .jd.mod { background: var(--accent); opacity: 0.8; }
+  .jt.gap { background: none; border: 1.5px dashed var(--text-dim); }
+  .jt.gap .jn { color: var(--text-dim); }
+  .jt.gap .jname { color: var(--text-muted); }
+  .jgap { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--text-muted); }
+  .journey-legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 12px; color: var(--text-muted); }
+  .journey-legend span { display: flex; align-items: center; gap: 8px; }
+  .jl-gap { width: 12px; height: 12px; border-radius: 3px; border: 1.5px dashed var(--text-dim); }
+  .journey-detail { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .jdl-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 16px; }
+  .jdl-cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; }
+  .jdl-h { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .journey-detail ul { list-style: none; padding: 0; margin: 0; }
+  .journey-detail li { display: flex; gap: 10px; align-items: baseline; font-size: 14px; line-height: 1.55; color: var(--text-muted); margin-bottom: 8px; }
+  .journey-detail p { font-size: 14px; line-height: 1.6; margin: 0 !important; }
+  @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(4, 1fr); } .jdl-cols { grid-template-columns: 1fr; gap: 20px; } }
+  @media (max-width: 560px) { .journey-grid { grid-template-columns: repeat(2, 1fr); } .journey { padding: 20px; } }
+</style>
+</head>
+<body>
+
+<!-- back nav -->
+<header class="back-nav">
+  <div class="breadcrumb">
+    <a href="index.html" class="bc-home" title="Home"><img src="logo.svg" alt="" class="bc-logo"><span class="bc-name">Ivie Borovatz</span></a>
+    <span class="bc-sep">/</span>
+    <a href="index.html#work" class="bc-link">Case Studies</a>
+    <span class="bc-sep">/</span>
+    <span class="current">Research Knowledge Library</span>
+  </div>
+  <div class="back-nav-right">
+    <a href="index.html#work" class="back-nav-link">Work</a>
+    <a href="index.html#about" class="back-nav-link">About</a>
+    <a href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener" class="back-nav-link">Résumé</a>
+    <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener" class="back-nav-link">LinkedIn</a>
+    <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+      <span class="m-opt" id="optLight">Light</span>
+      <span class="m-opt active" id="optMagic">&#10022; Magic</span>
+    </button>
+  </div>
+</header>
+
+<!-- hero -->
+<div style="height:52px"></div>
+<section class="hero">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
+  <div class="hero-text">
+    <p class="hero-meta">AdvancedMD · Research Infrastructure</p>
+    <h1>The research existed.<br><em>Nobody could find it.</em></h1>
+    <p class="hero-sub">Years of discovery sessions, behavioral data, and product knowledge lived across AdvancedMD — but finding any of it meant knowing where to look and who to ask. This is how I made that knowledge usable.</p>
+    <div class="hero-chips">
+      <span class="chip">Research Operations</span>
+      <span class="chip">Knowledge Architecture</span>
+      <span class="chip">Service Mapping</span>
+      <span class="chip">AI / RAG</span>
+      <span class="chip">AdvancedMD · 2025–2026</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-bg" style="background-image: url('research-library-thumb.jpg');"></div>
+  </div>
+</section>
+
+<!-- body -->
+<div class="page">
+  <nav id="case-nav">
+    <div class="nav-section">Overview</div>
+    <a href="#problem">The Problem</a>
+    <div class="nav-section">Work</div>
+    <a href="#before-after">Before → After</a>
+    <a href="#decisions">Key Decisions</a>
+    <div class="nav-section">Results</div>
+    <a href="#outcomes">Outcomes</a>
+  </nav>
+
+  <main class="content">
+
+    <!-- 01 PROBLEM -->
+    <section id="problem">
+      <p class="section-label">01 — The Problem</p>
+      <h2>Data is only useful<br><em>when it’s being used.</em></h2>
+
+      <p>AdvancedMD had accumulated a lot of UX research: discovery sessions, Pendo behavioral data, Aha! feedback, role definitions, and workflow documentation.</p>
+
+      <p>The research existed. It was just stored in ways optimized for creating it, not retrieving it. Teams starting new research often couldn’t find what had already been learned.</p>
+
+      <div class="callout">
+        <p><strong>The result was duplicated effort — and gaps no one could see.</strong></p>
+      </div>
+
+      <p><strong>My role:</strong> I designed and built the research knowledge architecture — structure, taxonomy, service maps, and RAG optimization — so teams could retrieve existing knowledge, identify gaps, and understand workflows across the ecosystem.</p>
+    </section>
+
+    <!-- 02 BEFORE / AFTER -->
+    <section id="before-after">
+      <p class="section-label">02 — Before → After</p>
+      <h2>From knowledge in people’s heads<br><em>to a queryable library.</em></h2>
+
+      <table class="ba-table">
+        <thead><tr><th></th><th>Before</th><th class="after">After</th></tr></thead>
+        <tbody>
+          <tr><td>Research retrieval</td><td class="before">Finding past research meant knowing the right person to ask or where to search manually.</td><td class="after">Structured for AI-assisted retrieval — query the library and surface relevant sessions, personas, workflows, and findings.</td></tr>
+          <tr><td>Behavioral data</td><td class="before">Pendo data existed, but it wasn’t connected to qualitative research.</td><td class="after">Behavioral data is tagged and linked to the related discovery sessions and workflow documentation.</td></tr>
+          <tr><td>Cross-product understanding</td><td class="before">Understanding how a workflow spanned PM and EHR depended on knowing who to ask.</td><td class="after">Service maps document workflows across PM, EHR, billing, and scheduling, with known gaps flagged.</td></tr>
+          <tr><td>Research gaps</td><td class="before">Unknown until a project needed something that didn’t exist.</td><td class="after">Surfaced up front — the library shows what’s documented and what’s missing before a project starts.</td></tr>
+          <tr><td>New research planning</td><td class="before">Started from scratch, or from memory.</td><td class="after">Starts from the existing knowledge base, so new sessions extend what’s known instead of re-covering it.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="screenshot-block" style="margin-top:48px !important;">
+        <a href="th-research-web.png" target="_blank" title="Open full size"><img src="th-research-web.png" alt="A research session alongside the insights database linking feedback to product areas" style="width:100%;display:block;" /></a>
+        <div class="screenshot-caption">Insights from sessions and customer feedback are tagged to product areas, so the next team can find them.</div>
+      </div>
+    </section>
+
+    <!-- 03 DECISIONS -->
+    <section id="decisions">
+      <p class="section-label">03 — Key Decisions</p>
+      <h2>Design for the person<br><em>who wasn’t in the room.</em></h2>
+
+      <div class="streams" style="margin-top:32px;">
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">1</div><h3>Optimized for retrieval, not storage</h3></div>
+          <p>Most research repositories are organized for the person who created them. This one is organized for someone who wasn’t in the room.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">2</div><h3>Connected the what and the why</h3></div>
+          <p>Pendo shows what users do. Discovery sessions explain why. The library links the two.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">3</div><h3>Service maps as connective tissue</h3></div>
+          <p>Individual artifacts are useful on their own. Service maps show where PM, EHR, billing, and scheduling workflows intersect, so cross-product decisions are informed instead of assumed.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">4</div><h3>Claude for synthesis, sources for truth</h3></div>
+          <p>I used Claude to analyze and synthesize large bodies of existing research, then validated every finding against the source material.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">5</div><h3>Gaps as a feature</h3></div>
+          <p>Knowing what you don’t know is as valuable as knowing what you do. The library calls out undocumented areas explicitly.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">The patient journey service map</h3>
+      <p>The master map follows a patient from acquisition to reporting. Each stage pulls together pain points, KPIs, and desired states from discovery sessions across nine client practices — and the stages without research are called out, not hidden.</p>
+
+      <div class="journey">
+        <div class="journey-head">
+          <span><b>14</b> stages</span><span><b>12</b> mapped</span><span><b>2</b> gaps flagged</span><span><b>9</b> client practices</span>
+        </div>
+        <div class="journey-grid">
+          <div class="jt gap"><span class="jn">01</span><span class="jname">Acquisition</span><span class="jgap">Gap flagged</span></div>
+          <div class="jt"><span class="jn">02</span><span class="jname">Referrals</span><span class="jdots" aria-label="2 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">03</span><span class="jname">Intake</span><span class="jdots" aria-label="2 critical, 3 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">04</span><span class="jname">Scheduling</span><span class="jdots" aria-label="3 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">05</span><span class="jname">Pre-Visit</span><span class="jdots" aria-label="2 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">06</span><span class="jname">Check-In</span><span class="jdots" aria-label="3 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">07</span><span class="jname">Visit</span><span class="jdots" aria-label="3 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">08</span><span class="jname">Post-Visit</span><span class="jdots" aria-label="3 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt sel"><span class="jn">09</span><span class="jname">Billing</span><span class="jdots" aria-label="3 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">10</span><span class="jname">Payment Posting</span><span class="jdots" aria-label="4 critical, 1 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span></span></div>
+          <div class="jt gap"><span class="jn">11</span><span class="jname">Patient Billing</span><span class="jgap">Gap flagged</span></div>
+          <div class="jt"><span class="jn">12</span><span class="jname">Patient Payments</span><span class="jdots" aria-label="4 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">13</span><span class="jname">Collections</span><span class="jdots" aria-label="4 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+          <div class="jt"><span class="jn">14</span><span class="jname">Reporting</span><span class="jdots" aria-label="4 critical, 2 moderate pain points"><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd crit"></span><span class="jd mod"></span><span class="jd mod"></span></span></div>
+        </div>
+        <div class="journey-legend">
+          <span><i class="jd crit"></i>Critical pain point</span>
+          <span><i class="jd mod"></i>Moderate pain point</span>
+          <span><i class="jl-gap"></i>No research yet</span>
+        </div>
+
+        <div class="journey-detail">
+          <div class="jdl-label">Stage 09 — Billing · Claim edits &amp; scrubbing</div>
+          <div class="jdl-cols">
+            <div>
+              <div class="jdl-h">Top pain points</div>
+              <ul>
+                <li><span class="jd crit"></span>Held claims need a manual touch even when the fix is fully predictable</li>
+                <li><span class="jd crit"></span>The rule builder can’t express compound conditions</li>
+                <li><span class="jd crit"></span>Credentialing exceptions only work payer by payer</li>
+                <li><span class="jd mod"></span>No bulk configuration or copying rules across states</li>
+                <li><span class="jd mod"></span>Errors are caught after charge entry instead of before</li>
+              </ul>
+            </div>
+            <div>
+              <div class="jdl-h">Desired state</div>
+              <p>Compound rule logic, rules that correct and release claims automatically, bulk import, and validation at charge entry.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub">Inside the library</h3>
+      <p>Every artifact lives in one of six connected collections, structured so a question can pull from several at once.</p>
+      <div class="lib-grid">
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Discovery sessions</div>
+          <p>Interview transcripts and synthesized findings, organized by role and workflow.</p>
+          <div class="lib-tags"><span>Transcripts</span><span>Syntheses</span></div>
+        </div>
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Behavioral data</div>
+          <p>Pendo usage by page, role, and segment — linked back to the sessions that explain it.</p>
+          <div class="lib-tags"><span>Pendo exports</span><span>Usage summaries</span></div>
+        </div>
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Customer feedback</div>
+          <p>Aha! ideas and recurring feedback themes, tagged to product areas.</p>
+          <div class="lib-tags"><span>Aha! ideas</span><span>Themes</span></div>
+        </div>
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Roles &amp; personas</div>
+          <p>Role definitions and responsibilities across PM and EHR.</p>
+          <div class="lib-tags"><span>Role definitions</span><span>Personas</span></div>
+        </div>
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Service maps</div>
+          <p>Cross-product workflows with pain points, desired states, and KPIs.</p>
+          <div class="lib-tags"><span>PM</span><span>EHR</span><span>Billing</span><span>Scheduling</span></div>
+        </div>
+        <div class="lib-card">
+          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="lib-title">Gap register</div>
+          <p>What isn’t documented yet — flagged before a project starts.</p>
+          <div class="lib-tags"><span>Known gaps</span><span>Open questions</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 OUTCOMES -->
+    <section id="outcomes">
+      <p class="section-label">04 — Outcomes</p>
+      <h2>Knowing what we know —<br><em>and what we don’t.</em></h2>
+
+      <div class="outcomes-grid" style="margin-top:32px;">
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>A queryable library</h4>
+          <p>Research structured and searchable across product domains.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>Cross-product service maps</h4>
+          <p>Completed for core workflows across PM, EHR, billing, and scheduling.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>Behavior linked to context</h4>
+          <p>The discovery session backlog is connected to Pendo behavioral data.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>Gaps made visible</h4>
+          <p>Missing product knowledge documented for the first time, as a deliberate artifact.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- UP NEXT -->
+    <a class="up-next" href="ux-library.html">
+      <div>
+        <div class="up-next-label">Up next</div>
+        <h3>UI Modernization</h3>
+      </div>
+      <div class="up-next-arrow">→</div>
+    </a>
+
+  </main>
+</div>
+
+<script>
+  // Mode toggle — default dark, Light is opt-in (matches index.html)
+  function setMode(light) {
+    document.body.classList.toggle('light-mode', light);
+    document.getElementById('optLight').classList.toggle('active', light);
+    document.getElementById('optMagic').classList.toggle('active', !light);
+    localStorage.setItem('colorMode', light ? 'light' : 'magic');
+  }
+  function toggleMode() {
+    setMode(!document.body.classList.contains('light-mode'));
+  }
+  // Restore saved mode
+  if (localStorage.getItem('colorMode') === 'light') setMode(true);
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Scroll entrance animations
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.section-label, h2, .callout, .role-card, .stream, .outcome').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+</script>
+<script>
+  (function(){
+    function syncHeroVideo(){
+      var v=document.getElementById('heroVideo'); if(!v) return;
+      var want=document.body.classList.contains('light-mode')?'hero-bg-light.mp4':'hero-bg.mp4';
+      if(v.getAttribute('data-src')!==want){ v.setAttribute('data-src',want); v.src=want; v.play().catch(function(){}); }
+    }
+    if (typeof setMode==='function'){ var _sm=setMode; window.setMode=setMode=function(l){ _sm(l); syncHeroVideo(); }; }
+    syncHeroVideo();
+  })();
+</script>
+</body>
+</html>
