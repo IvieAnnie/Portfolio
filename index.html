@@ -637,6 +637,14 @@
     body.light-mode .expertise-desc { color: #555; }
     body.light-mode .footer-title, body.light-mode .footer-links a { color: #666; }
     body.light-mode .mode-toggle .m-opt { color: #555; }
+
+    /* ── mobile nav fix ── */
+    .nav-logo span { white-space: nowrap; }
+    @media (max-width: 760px) {
+      .nav-right > a { display: none; }
+      .nav-logo { font-size: 13px; }
+      .mode-toggle .m-opt { padding: 5px 11px; }
+    }
 </style>
 </head>
 <body>
@@ -728,7 +736,7 @@
         <div class="case-img-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div>
         <p class="case-num">Practice Management</p>
         <h3 class="case-title">Patient Demographics</h3>
-        <p class="case-tags">Research · Iteration · Live</p>
+        <p class="case-tags">User Research · Iteration · Figma</p>
         <p class="case-desc">We shipped it. Users hated it. Then we listened. How customer feedback changed the direction of a major Patient Demographics redesign — without starting over.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
@@ -775,9 +783,10 @@
         <p>I'm currently exploring new opportunities where I can bring both deep IC craft and cross-functional leadership to teams working on meaningful problems.</p>
       </div>
       <div class="about-links">
+        <a class="about-link" href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener">Résumé</a>
         <a class="about-link" href="https://www.linkedin.com/in/ivieborovatz" target="_blank">LinkedIn</a>
         <a class="about-link" href="mailto:ivieborovatz@gmail.com">Email</a>
-        <a class="about-link" href="https://www.behance.net" target="_blank">Behance</a>
+        <a class="about-link" href="https://www.behance.net/IvieBorovatz" target="_blank">Behance</a>
       </div>
     </div>
   </section>

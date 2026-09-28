@@ -697,6 +697,21 @@
   .journey-detail p { font-size: 14px; line-height: 1.6; margin: 0 !important; }
   @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(4, 1fr); } .jdl-cols { grid-template-columns: 1fr; gap: 20px; } }
   @media (max-width: 560px) { .journey-grid { grid-template-columns: repeat(2, 1fr); } .journey { padding: 20px; } }
+
+  /* ── mobile header fix ── */
+  .back-nav { gap: 12px; }
+  .back-nav .breadcrumb { min-width: 0; white-space: nowrap; }
+  .back-nav .bc-name { white-space: nowrap; }
+  @media (max-width: 760px) {
+    .back-nav { padding: 0 16px !important; }
+    .back-nav .breadcrumb .bc-sep, .back-nav .breadcrumb .bc-link, .back-nav .breadcrumb .current { display: none !important; }
+    .back-nav-right { gap: 12px; }
+    .back-nav-right .back-nav-link { display: none !important; }
+    .mode-toggle .m-opt { padding: 5px 11px !important; }
+  }
+
+  /* mobile reveal fix: show content immediately on phones */
+  @media (max-width: 760px) { .reveal { opacity: 1 !important; transform: none !important; } }
 </style>
 </head>
 <body>
