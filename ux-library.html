@@ -659,6 +659,24 @@
 
   /* mobile reveal fix: show content immediately on phones */
   @media (max-width: 760px) { .reveal { opacity: 1 !important; transform: none !important; } }
+
+  /* ── mobile hamburger menu ── */
+  .mnav-btn { display: none; background: none; border: 0; width: 40px; height: 40px; padding: 0; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; color: #e8e8e8; }
+  body.light-mode .mnav-btn { color: #1a1a1a; }
+  .mnav-btn span { display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
+  .mnav-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mnav-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .mnav-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mnav-panel { display: none; position: fixed; left: 0; right: 0; z-index: 99; padding: 4px 24px 16px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  body.light-mode .mnav-panel { background: rgba(248,247,244,0.98); border-bottom-color: rgba(0,0,0,0.08); }
+  .mnav-panel.open { display: block; }
+  .mnav-panel a { display: block; padding: 14px 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: #e8e8e8; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .mnav-panel a:last-child { border-bottom: none; }
+  body.light-mode .mnav-panel a { color: #1a1a1a; border-bottom-color: rgba(0,0,0,0.07); }
+  .mnav-panel a:hover { color: #00c4b4; }
+  body.light-mode .mnav-panel a:hover { color: #00796e; }
+  @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
+  @media (min-width: 761px) { .mnav-panel { display: none !important; } }
 </style>
 </head>
 <body>
@@ -682,8 +700,17 @@
       <span class="m-opt" id="optLight">Light</span>
       <span class="m-opt active" id="optMagic">&#10022; Magic</span>
     </button>
+    <button class="mnav-btn" id="mnavBtn" aria-label="Menu" aria-expanded="false" aria-controls="mnavPanel" onclick="var p=document.getElementById('mnavPanel'),o=p.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
   </div>
 </header>
+<nav class="mnav-panel" id="mnavPanel" style="top:52px;" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#work">Case Studies</a>
+  <a href="index.html#about">About</a>
+  <a href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener">Résumé</a>
+  <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="mailto:ivieborovatz@gmail.com">Email</a>
+</nav>
 
 <!-- hero -->
 <div style="height:52px"></div>
@@ -928,5 +955,6 @@
     syncHeroVideo();
   })();
 </script>
+<script>document.querySelectorAll('#mnavPanel a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mnavPanel').classList.remove('open');document.getElementById('mnavBtn').setAttribute('aria-expanded','false')})});</script>
 </body>
 </html>
