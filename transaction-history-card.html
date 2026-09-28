@@ -929,5 +929,17 @@
   })();
 </script>
 <script>document.querySelectorAll('#mnavPanel a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mnavPanel').classList.remove('open');document.getElementById('mnavBtn').setAttribute('aria-expanded','false')})});</script>
+<script>
+  // Label outbound clicks for GoatCounter event tracking
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var h=a.getAttribute('href'), n=null;
+    if (/Resume.*\.pdf$/i.test(h)) n='resume-download';
+    else if (/linkedin\.com/i.test(h)) n='linkedin-click';
+    else if (/^mailto:/i.test(h)) n='email-click';
+    else if (/behance\.net/i.test(h)) n='behance-click';
+    if (n) { a.setAttribute('data-goatcounter-click', n); a.setAttribute('data-goatcounter-title', (a.textContent||'').trim()); }
+  });
+</script>
+<script data-goatcounter="https://ivieborovatz.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
