@@ -662,6 +662,7 @@
 </style>
 </head>
 <body>
+<script>try{if(localStorage.getItem('colorMode')!=='magic')document.body.classList.add('light-mode')}catch(e){document.body.classList.add('light-mode')}</script>
 
 <!-- back nav -->
 <header class="back-nav">
@@ -885,7 +886,7 @@
     setMode(!document.body.classList.contains('light-mode'));
   }
   // Restore saved mode
-  if (localStorage.getItem('colorMode') === 'light') setMode(true);
+  if (localStorage.getItem('colorMode') !== 'magic') setMode(true);
 
   // Active nav on scroll
   const sections = document.querySelectorAll('section[id]');

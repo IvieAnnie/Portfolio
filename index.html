@@ -648,6 +648,7 @@
 </style>
 </head>
 <body>
+<script>try{if(localStorage.getItem('colorMode')!=='magic')document.body.classList.add('light-mode')}catch(e){document.body.classList.add('light-mode')}</script>
 
   <!-- TOP NAV -->
   <nav class="top-nav">
@@ -847,7 +848,7 @@
   function toggleMode() {
     setMode(!document.body.classList.contains('light-mode'));
   }
-  if (localStorage.getItem('colorMode') === 'light') setMode(true);
+  if (localStorage.getItem('colorMode') !== 'magic') setMode(true);
 </script>
 </body>
 </html>
