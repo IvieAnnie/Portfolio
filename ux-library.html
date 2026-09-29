@@ -178,6 +178,49 @@
   }
   nav .nav-section:first-child { padding-top: 0; }
 
+
+  /* ── STANDARDS MOCKUPS (rebuilt, unbranded) ─────────────── */
+  .sd-frame{background:#f6f7f9;border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;margin:28px 0 10px;color:#1c1c2e;font-family:'DM Sans',system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+  body.light-mode .sd-frame{box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .sd-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#e9ecef;border-bottom:1px solid rgba(0,0,0,.06)}
+  .sd-bar i{width:9px;height:9px;border-radius:50%;background:#c9cdd3;display:block}
+  .sd-bar span{margin-left:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6b6f78}
+  .sd-body{padding:22px 24px}
+  .sd-body h5{font-size:15px;font-weight:600;margin:0 0 12px;color:#1c1c2e;letter-spacing:0}
+  .sd-body p,.sd-body li{color:#44474f;font-size:13px;line-height:1.55;margin:0}
+  .sd-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:700px){.sd-2{grid-template-columns:1fr}.sd-body{padding:16px}}
+  .sd-card{background:#fff;border:1px solid #e1e4e8;border-radius:10px;padding:16px 18px}
+  .sd-card.do{border-top:3px solid #00796e}.sd-card.dont{border-top:3px solid #c5221f}
+  .sd-card .t{font-weight:600;font-size:14px;margin-bottom:8px}.sd-card.do .t{color:#00796e}.sd-card.dont .t{color:#c5221f}
+  .sd-card ul{padding-left:18px;margin:0}.sd-card li{margin-bottom:4px}
+  .sd-warn{margin-top:14px;background:#fff4d6;border:1px solid #f1d98a;border-radius:8px;padding:10px 14px;font-size:13px;color:#5b4a12}
+  .sd-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e1e4e8;border-radius:10px;overflow:hidden}
+  .sd-table th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6b6f78;background:#f0f2f4;padding:9px 12px;font-weight:600}
+  .sd-table td{padding:9px 12px;border-top:1px solid #eceef1;color:#2b2d33;vertical-align:middle}
+  .sd-table td b{color:#1c1c2e}
+  .sd-sw{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:8px;border:1px solid rgba(0,0,0,.1)}
+  .sd-hex{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#f0f2f4;padding:2px 6px;border-radius:4px}
+  .sd-table td.sd-pass{color:#00796e;font-weight:600}.sd-table td.sd-fail{color:#c5221f;font-weight:700}
+  .sd-code{background:#1e2127;color:#d7dae0;border-radius:8px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.6;margin-top:14px;white-space:pre;overflow-x:auto}
+  .sd-code .c{color:#7f8793}.sd-code .k{color:#7fd1c7}
+  .sd-card.built{border-left:3px solid #00796e}.sd-card.must{border-left:3px solid #c5221f}
+  .sd-card.built .t{color:#00796e}.sd-card.must .t{color:#c5221f}
+  .sd-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  @media (max-width:700px){.sd-icons{grid-template-columns:repeat(2,1fr)}}
+  .sd-ic{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e1e4e8;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#2b2d33}
+  .sd-ic svg{width:26px;height:26px;flex:none}
+  .sd-chips{display:flex;gap:6px;margin-bottom:14px}.sd-chips span{font-size:11px;border:1px solid #c9cdd3;border-radius:999px;padding:4px 10px;color:#44474f;background:#fff}.sd-chips span.on{background:#dff3f0;border-color:#00796e;color:#00796e}
+  .sd-cap{font-size:13px !important;color:var(--text-dim) !important;margin:8px 0 36px !important}
+  .sd-scroll{overflow-x:auto}
+
+  .cd-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 8px}
+  @media (max-width:760px){.cd-gallery{grid-template-columns:1fr}}
+  .cd-gallery figure{margin:0}
+  .cd-gallery img{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  body.light-mode .cd-gallery img{box-shadow:0 6px 18px rgba(0,0,0,.08)}
+  .cd-gallery figcaption{font-size:13px;color:var(--text-dim);margin-top:8px;line-height:1.45}
+
   /* ── CONTENT ──────────────────────────────────────────── */
   .content { min-width: 0; }
 
@@ -742,6 +785,7 @@
     <div class="nav-section">Work</div>
     <a href="#before-after">Before → After</a>
     <a href="#decisions">Key Decisions</a>
+    <a href="#standards">Standards Library</a>
     <div class="nav-section">Results</div>
     <a href="#outcomes">Outcomes</a>
   </nav>
@@ -793,6 +837,13 @@
       <div class="callout">
         <p><strong>My role:</strong> I led the governance layer — usage decisions, component guidance, Figma module upgrades, and accessibility specifications for engineering. I also built a Claude Design library so the UX team could prototype with the same components.</p>
       </div>
+
+      <div class="cd-gallery">
+        <figure><img src="cd-patient-search.png" alt="Patient search component with enabled, focused, and recent-searches states" loading="lazy"><figcaption><strong>Patient search</strong> — enabled, focused, and recent-search states.</figcaption></figure>
+        <figure><img src="cd-button-states.png" alt="Filled button shown in enabled, hover, focus, pressed, and disabled states" loading="lazy"><figcaption><strong>Buttons</strong> — every M3 variant, with each interaction state.</figcaption></figure>
+        <figure><img src="cd-expansion-panels.png" alt="Expansion panels showing patient demographics, insurance details, and visit notes" loading="lazy"><figcaption><strong>Expansion panels</strong> — accordion and multi-mode, with realistic sample data.</figcaption></figure>
+      </div>
+      <p class="sd-cap">From the Claude Design library: production-matched components with sample data, so designers prototype with what engineering actually ships.</p>
     </section>
 
     <!-- 03 BEFORE / AFTER -->
@@ -860,9 +911,116 @@
       </div>
     </section>
 
-    <!-- 05 OUTCOMES -->
+
+    <!-- 05 STANDARDS -->
+    <section id="standards">
+      <p class="section-label">05 — The Standards Library</p>
+      <h2>Documented once. <em>Built in by default.</em></h2>
+
+      <p>Governance only works if people can find it and trust it. Our lead developer and I recorded in-depth working sessions on every topic — feedback patterns, form fields, accessibility, writing, icons. I researched each one, blended our decisions with outside standards like Material 3 and WCAG, and wrote the final documentation.</p>
+
+      <p>The result is a living documentation site shared by design and engineering: numbered UX standards written as decision records, component pages with “use for / don’t use for” rules, accessibility requirements with the code to meet them, writing standards, and a product icon library. The examples below are rebuilt and simplified from it, with names and brand details removed.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Component · Dialog</span></div>
+        <div class="sd-body">
+          <h5>When to use a modal dialog</h5>
+          <div class="sd-2">
+            <div class="sd-card do"><div class="t">Use for</div><ul><li>Critical system and save errors</li><li>Decisions that need explicit confirmation before the system can proceed</li><li>Notices that must be acknowledged</li></ul></div>
+            <div class="sd-card dont"><div class="t">Don’t use for</div><ul><li>Non-blocking feedback — use a snackbar</li><li>Field-level validation — use field decorators</li><li>Page or form-level errors — use an inline message</li></ul></div>
+          </div>
+          <div class="sd-warn">⚠ Don’t add an X close button to the top-right of a dialog. Use explicit action buttons for dismissal.</div>
+        </div>
+      </div>
+      <p class="sd-cap">Every component page opens with the same “use for / don’t use for” rules, so teams stop re-deciding the basics.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>UX Standard · Choosing feedback</span></div>
+        <div class="sd-body sd-scroll">
+          <h5>Match the component to the interruption the message deserves</h5>
+          <table class="sd-table">
+            <thead><tr><th>Message type</th><th>Component</th><th>Behavior</th></tr></thead>
+            <tbody>
+              <tr><td>Field-level validation error</td><td><b>Field decorator + tooltip</b></td><td>No layout shift</td></tr>
+              <tr><td>Success confirmation</td><td><b>Snackbar</b></td><td>Auto-dismisses</td></tr>
+              <tr><td>Page or form error</td><td><b>Inline message</b></td><td>Shifts UI; sits above the form</td></tr>
+              <tr><td>Critical error requiring action</td><td><b>Modal dialog</b></td><td>Blocks the task until acknowledged</td></tr>
+              <tr><td>Stacked patient messages</td><td><b>Side sheet + message cards</b></td><td>Keeps the record in view</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="sd-cap">Standards are written as decision records, so the next team knows what was decided and why.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Component patterns</span></div>
+        <div class="sd-body">
+          <h5>Buttons — what M3 gives you, and what your team must add</h5>
+          <div class="sd-2">
+            <div class="sd-card built"><div class="t">Built in</div><ul><li>Renders a native button — keyboard accessible</li><li>Disabled state sets aria-disabled</li><li>Activates on Enter and Space</li></ul></div>
+            <div class="sd-card must"><div class="t">Must add</div><ul><li>aria-label on every icon-only button — describe the action, not the icon</li><li>aria-hidden on icons inside labeled buttons</li><li>A visible :focus-visible outline (global)</li></ul></div>
+          </div>
+<div class="sd-code"><span class="c">&lt;!-- Icon-only button: must have an aria-label --&gt;</span>
+&lt;button mat-icon-button <span class="k">[attr.aria-label]</span>="'Edit record for ' + patient.name"&gt;
+  &lt;mat-icon <span class="k">aria-hidden</span>="true"&gt;edit&lt;/mat-icon&gt;
+&lt;/button&gt;</div>
+        </div>
+      </div>
+      <p class="sd-cap">The “must add” column is where most audit failures come from. Our lead developer turned this documentation into a coding skill so it happens by default.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Color token audit</span></div>
+        <div class="sd-body sd-scroll">
+          <h5>Checking our own color tokens against WCAG AA</h5>
+          <table class="sd-table">
+            <thead><tr><th>Token</th><th>Hex</th><th>Ratio on white</th><th>Decision</th></tr></thead>
+            <tbody>
+              <tr><td><span class="sd-sw" style="background:#1c1c2e"></span>Body text</td><td><span class="sd-hex">#1c1c2e</span></td><td class="sd-pass">16.7 : 1</td><td>All text sizes</td></tr>
+              <tr><td><span class="sd-sw" style="background:#44474f"></span>Secondary text</td><td><span class="sd-hex">#44474f</span></td><td class="sd-pass">9.3 : 1</td><td>All text sizes</td></tr>
+              <tr><td><span class="sd-sw" style="background:#74777f"></span>Muted text / input border</td><td><span class="sd-hex">#74777f</span></td><td class="sd-pass">4.5 : 1</td><td>Minimum for body text and borders</td></tr>
+              <tr><td><span class="sd-sw" style="background:#aaaaaa"></span>Placeholder</td><td><span class="sd-hex">#aaaaaa</span></td><td class="sd-fail">2.3 : 1 — fails</td><td>Replaced with the muted token</td></tr>
+              <tr><td><span class="sd-sw" style="background:#d0d3db"></span>Divider</td><td><span class="sd-hex">#d0d3db</span></td><td class="sd-fail">1.5 : 1 — fails</td><td>Decorative only — never for input state</td></tr>
+              <tr><td><span class="sd-sw" style="background:#f29900"></span>Warning amber</td><td><span class="sd-hex">#f29900</span></td><td class="sd-fail">2.3 : 1 — fails</td><td>Icon accent only, never the sole text color</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="sd-cap">Auditing our own palette turned up tokens that failed AA — and turned each one into a rule. Values simplified for illustration.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Interaction guide</span></div>
+        <div class="sd-body sd-scroll">
+          <h5>Focus management in a single-page app (WCAG 2.4.2)</h5>
+          <table class="sd-table">
+            <thead><tr><th>Trigger</th><th>Move focus to</th><th>Announce</th></tr></thead>
+            <tbody>
+              <tr><td>Route change (new page)</td><td>The page’s &lt;h1&gt;</td><td>New page title (polite)</td></tr>
+              <tr><td>Dialog opens</td><td>First focusable element</td><td>— dialog role announces itself</td></tr>
+              <tr><td>Dialog closes</td><td>The element that opened it</td><td>—</td></tr>
+              <tr><td>Form submit fails</td><td>First field with an error</td><td>Error count (assertive)</td></tr>
+              <tr><td>Search results load</td><td>Stay in the search field</td><td>Result count (polite)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="sd-cap">In a single-page app, screen readers don’t hear page changes on their own. These rules make every route change predictable.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Icons · Product library</span></div>
+        <div class="sd-body">
+          <div class="sd-chips"><span class="on">Filled</span><span>Outlined</span><span>Duotone</span></div>
+          <div class="sd-icons"><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>Appointment</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Eligibility verified</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm1 16h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>Eligibility failed</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 17a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm.5-9H11v4l3.5 2.1.75-1.23-2.75-1.62V9z"/></svg>Eligibility pending</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Document</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM10 4h4v2h-4V4zm6 11h-3v3h-2v-3H8v-2h3v-3h2v3h3v2z"/></svg>Care team</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Family</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M7 2v2h1v6.4L3.6 18.2A2.5 2.5 0 0 0 5.8 22h12.4a2.5 2.5 0 0 0 2.2-3.8L16 10.4V4h1V2H7zm3 2h4v7l2.2 4H7.8L10 11V4z"/></svg>Lab result</div></div>
+        </div>
+      </div>
+      <p class="sd-cap">A product icon set built for healthcare workflows — including eligibility states — in filled, outlined, and duotone styles. Representative icons shown.</p>
+
+      <div class="callout">
+        <p><strong>Also documented:</strong> form-field layout and density rules (no space reserved for errors that rarely appear), UX writing standards for voice, tense, and error messages, and a WCAG AA reference.</p>
+      </div>
+    </section>
+    <!-- 06 OUTCOMES -->
     <section id="outcomes">
-      <p class="section-label">05 — Outcomes</p>
+      <p class="section-label">06 — Outcomes</p>
       <h2>A foundation <em>we can keep upgrading.</em></h2>
 
       <div class="outcomes-grid" style="margin-top:32px;">
