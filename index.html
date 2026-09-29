@@ -463,14 +463,20 @@
       align-items: center;
     }
 
-    .footer-left {}
+    .footer-left {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+    }
+    .footer-sep { color: rgba(255,255,255,0.25); }
+    body.light-mode .footer-sep { color: rgba(0,0,0,0.25); }
 
     .footer-name {
       font-size: 18px;
       font-weight: 700;
       color: var(--white);
       letter-spacing: -0.01em;
-      margin-bottom: 8px;
     }
 
     .footer-title {
@@ -480,10 +486,9 @@
     }
 
     .footer-credit {
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.06em;
-      margin-top: 10px;
     }
     .footer-heart { color: var(--accent); }
 
@@ -865,9 +870,11 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-left">
-      <div class="footer-name">Ivie Borovatz</div>
-      <div class="footer-title">Salt Lake City, UT</div>
-      <div class="footer-credit">Coded with <span class="footer-heart" aria-label="love">&#9829;</span> and Claude</div>
+      <span class="footer-name">Ivie Borovatz</span>
+      <span class="footer-sep">&middot;</span>
+      <span class="footer-credit">Coded with <span class="footer-heart" aria-label="love">&#9829;</span> and Claude</span>
+      <span class="footer-sep">&middot;</span>
+      <span class="footer-title">Salt Lake City, UT</span>
     </div>
     <div class="footer-links">
       <a href="#work">Work</a>
