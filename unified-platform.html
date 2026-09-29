@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Modernization — Material 3 Governance — Ivie Borovatz</title>
+<title>Unified Practice Platform — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Moving from a customized component library back to standard Material 3.">
-  <meta property="og:title" content="UI Modernization — Material 3 Governance — Ivie Borovatz">
-  <meta property="og:description" content="Moving from a customized component library back to standard Material 3.">
-  <meta property="og:image" content="https://www.ivieborovatz.com/m3-components-hero.jpg">
+  <meta name="description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta property="og:title" content="Unified Practice Platform — Ivie Borovatz">
+  <meta property="og:description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta property="og:image" content="https://www.ivieborovatz.com/unified-platform-hero-purple.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -538,25 +538,6 @@
     .screenshot-row { grid-template-columns: 1fr; }
   }
 
-  /* ── HERO FACTS ───────────────────────────────────────── */
-  .hero-facts { display: grid; grid-template-columns: repeat(4, auto); gap: 32px; justify-content: start; margin-top: 4px; }
-  .hero-fact-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
-  .hero-fact-value { font-size: 14px; color: var(--text); }
-  /* ── IMAGE PLACEHOLDER ────────────────────────────────── */
-  .img-placeholder {
-    aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
-    background: var(--surface2); color: var(--text-dim); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 24px;
-  }
-  /* ── PATTERNS / FEATURES ──────────────────────────────── */
-  .quote p { font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1.3; }
-  h3.sub { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 24px; color: var(--text); margin: 48px 0 12px; }
-  @media (max-width: 768px) { .hero-facts { grid-template-columns: 1fr 1fr; } }
-
-  @media (max-width: 768px) {
-    .hero-facts { grid-template-columns: 1fr 1fr; }
-  }
-
   /* teal italic emphasis in headlines */
   .hero h1 em, h2 em { color: var(--accent); font-style: italic; }
 
@@ -570,8 +551,34 @@
   .up-next-arrow { transition: transform 0.2s, color 0.2s; }
   .up-next:hover .up-next-arrow { transform: translateX(6px); color: var(--accent); }
 
+  .mode-labels { display: grid; grid-template-columns: 45.75% 1fr; margin-bottom: 10px; }
+  .mode-labels span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+
   /* caption contrast (WCAG AA 4.5:1 in both modes) */
   .screenshot-caption { color: var(--text-muted) !important; font-size: 14px !important; }
+
+  /* two-column role cards */
+  .role-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 56px; margin-top: 32px; }
+  .role-pair .role-card { border-top: none; padding: 0; }
+  @media (max-width: 768px) { .role-pair { grid-template-columns: 1fr; } }
+
+  /* ── embedded service map (SMB workflow overview) ── */
+  .svc-map { --amber-c: #f0b429; --orange-c: #f59e42; }
+  body.light-mode .svc-map { --amber-c: #8a5a00; --orange-c: #b45309; }
+  .svc-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; color: var(--text); margin-bottom: 18px; }
+  .svc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .svc-tile { padding: 14px 14px 16px; border-radius: 14px; min-height: 104px; font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); border: 1px solid; }
+  .svc-num { display: block; font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1; margin-bottom: 10px; }
+  .svc-tile.critical { background: rgba(240,140,41,0.12); border-color: rgba(240,140,41,0.4); }
+  .svc-tile.critical .svc-num { color: var(--orange-c); }
+  .svc-tile.moderate { background: var(--accent-dim); border-color: rgba(0,196,180,0.35); }
+  .svc-tile.moderate .svc-num { color: var(--accent); }
+  .svc-legend { display: flex; gap: 24px; margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+  .svc-legend span { display: flex; align-items: center; gap: 8px; }
+  .svc-legend .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid; }
+  .svc-legend .sw.crit { background: rgba(240,140,41,0.12); border-color: var(--orange-c); }
+  .svc-legend .sw.mod { background: var(--accent-dim); border-color: var(--accent); }
+  @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
 
   /* ── header + breadcrumb (global) ── */
   .back-nav { background: rgba(10,10,10,0.92) !important; }
@@ -586,12 +593,6 @@
   .back-nav .bc-home:hover .bc-name { color: var(--accent); }
   .back-nav .bc-sep { color: var(--text-dim) !important; }
   .back-nav .breadcrumb .current { color: var(--text) !important; }
-
-  .streams.three { grid-template-columns: repeat(3, 1fr); }
-  @media (max-width: 768px) { .streams.three { grid-template-columns: 1fr; } }
-
-  .mode-labels { display: grid; grid-template-columns: 45.75% 1fr; margin-bottom: 10px; }
-  .mode-labels span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 
   /* ── page scale (global): fill large screens like browser zoom does ── */
   @media (min-width: 1400px) { html { zoom: 1.15; } }
@@ -613,27 +614,15 @@
   .screenshot-block + .screenshot-block { margin-top: 40px !important; }
   .up-next { margin-top: 56px !important; }
 
-  /* ── before / after table ── */
-  .ba-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
-  .ba-table th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--text-dim); padding: 0 24px 14px 0; border-bottom: 1px solid var(--border); }
-  .ba-table th.after { color: var(--accent); }
-  .ba-table td { vertical-align: top; padding: 18px 24px 18px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; color: var(--text-muted); }
-  .ba-table td:first-child { width: 22%; font-weight: 600; color: var(--text); }
-  .ba-table td.after { color: var(--text); }
-  .ba-table tr:last-child td { border-bottom: none; }
-  .hero-visual.contain .hero-visual-bg { background-size: contain; background-position: center; }
-  @media (max-width: 768px) {
-    .ba-table, .ba-table tbody, .ba-table tr, .ba-table td { display: block; width: 100% !important; }
-    .ba-table thead { display: none; }
-    .ba-table td { border-bottom: none; padding: 4px 0; }
-    .ba-table tr { padding: 16px 0; border-bottom: 1px solid var(--border); }
-    .ba-table td.before::before { content: 'Before — '; color: var(--text-dim); }
-    .ba-table td.after::before { content: 'After — '; color: var(--accent); }
-  }
-
   /* screenshot-row fix: grid items align to the top */
   .screenshot-row { align-items: start; margin-top: 28px !important; }
   .screenshot-row .screenshot-block, .screenshot-row .screenshot-block + .screenshot-block { margin: 0 !important; }
+
+  /* ── stat callout ── */
+  .stat-callout { display: flex; align-items: center; gap: 28px; margin: 40px 0; padding: 6px 0 6px 20px; border-left: 2px solid var(--accent); }
+  .stat-num { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(56px, 7vw, 84px); line-height: 0.9; color: var(--accent); flex-shrink: 0; }
+  .stat-callout p { margin: 0 !important; font-size: 18px; line-height: 1.5; color: var(--text); max-width: 460px; }
+  @media (max-width: 600px) { .stat-callout { flex-direction: column; align-items: flex-start; gap: 10px; } }
 
   /* ── WCAG AA contrast pass (4.5:1 minimum for small text, both modes) ── */
   :root { --text-muted: #a8a8a8 !important; --text-dim: #8a8a8a !important; --label: #8a8a8a !important; --text-light: #a8a8a8 !important; }
@@ -689,7 +678,7 @@
     <span class="bc-sep">/</span>
     <a href="index.html#work" class="bc-link">Case Studies</a>
     <span class="bc-sep">/</span>
-    <span class="current">UI Modernization</span>
+    <span class="current">Unified Practice Platform</span>
   </div>
   <div class="back-nav-right">
     <a href="index.html#work" class="back-nav-link">Work</a>
@@ -698,7 +687,7 @@
     <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener" class="back-nav-link">LinkedIn</a>
     <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
       <span class="m-opt" id="optLight">Light</span>
-      <span class="m-opt active" id="optMagic">&#10022; Magic</span>
+      <span class="m-opt active" id="optMagic">✦ Magic</span>
     </button>
     <button class="mnav-btn" id="mnavBtn" aria-label="Menu" aria-expanded="false" aria-controls="mnavPanel" onclick="var p=document.getElementById('mnavPanel'),o=p.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
   </div>
@@ -717,183 +706,276 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · Design Infrastructure</p>
-    <h1>When tech debt<br><em>becomes a blocker.</em></h1>
-    <p class="hero-sub">We’d been warning for years that our customized component library would stop us from upgrading. Then it did. This is how we moved to unaltered Material 3 without losing consistency along the way.</p>
+    <p class="hero-meta">Healthcare Software · Platform Strategy</p>
+    <h1>It wasn't enough to be<br>under one umbrella.<br>It had to feel <em>like one thing.</em></h1>
+    <p class="hero-sub">Leading the MVP redesign of a unified practice management + EHR experience — built for small practices that the original platform had outgrown.</p>
     <div class="hero-chips">
-      <span class="chip">Design Systems</span>
-      <span class="chip">Governance</span>
-      <span class="chip">Angular Material 3</span>
-      <span class="chip">Accessibility</span>
+      <span class="chip">UX Architecture</span>
+      <span class="chip">Platform Design</span>
+      <span class="chip">AI / RAG</span>
+      <span class="chip">Service Mapping</span>
+      <span class="chip">Design System</span>
+      <span class="chip">Angular Material M3</span>
+      <span class="chip">AI Prototyping</span>
+      <span class="chip">Figma</span>
       <span class="chip">Healthcare SaaS · 2025–2026</span>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-visual-bg" style="background-image: url('m3-components-hero.jpg'); background-position: center;"></div>
+    <div class="hero-visual-bg" style="background-image: url('unified-platform-hero-purple.jpg');"></div>
   </div>
 </section>
 
 <!-- body -->
 <div class="page">
+  <!-- nav -->
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
     <a href="#problem">The Problem</a>
-    <a href="#role">The Transition</a>
+    <a href="#research">Research</a>
     <div class="nav-section">Work</div>
-    <a href="#before-after">Before → After</a>
-    <a href="#decisions">Key Decisions</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#platform">Platform</a>
+    <a href="#foundation">Foundation</a>
     <div class="nav-section">Results</div>
-    <a href="#outcomes">Outcomes</a>
+    <a href="#status">Status</a>
   </nav>
 
+  <!-- content -->
   <main class="content">
 
     <!-- 01 PROBLEM -->
     <section id="problem">
       <p class="section-label">01 — The Problem</p>
-      <h2>We saw it coming. <em>Then it happened.</em></h2>
+      <h2>The platform outgrew<br><em>the practices we built it for.</em></h2>
 
-      <p>The platform had been using a heavily customized version of Angular Material. We’d been telling leadership for years that the customization would eventually block us from upgrading — and that we needed resources to maintain the library.</p>
-
-      <p>It did. We identified breaking changes that kept the product from upgrading past Angular 18 without breaking core UI behavior.</p>
+      <p>The platform had spent years getting more capable. For small practices, it had also gotten more complicated.</p>
 
       <div class="callout">
-        <p><strong>The choice wasn’t about design preference anymore.</strong> It was a technical ceiling with product and velocity implications.</p>
+        <p><strong>A significant share of small practices were leaving — many before they were fully up and running.</strong></p>
       </div>
 
-      <p>We gave leadership three options:</p>
+      <p>Practice management and clinical work lived in different parts of the platform. Users had to understand where information lived, which side owned a task, and when they needed to move somewhere else to continue the workflow.</p>
 
-      <div class="streams three" style="margin-top:24px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Reskin the whole library</h3></div>
-          <p>Invest heavily in upgrading and re-customizing every component.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Buy a new library</h3></div>
-          <p>Purchase and implement a different Angular component library.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Transition to unaltered M3</h3></div>
-          <p>Create an elegant transition plan back to standard Material 3. <strong>This is the option leadership chose.</strong></p>
-        </div>
+      <p>An earlier simplification approach focused largely on limiting features. This project gave us an opportunity to ask a different question:</p>
+
+      <div class="callout">
+        <p><strong>What if we organized the experience around how a practice works instead of how the existing product was organized?</strong></p>
       </div>
     </section>
 
-    <!-- 02 TRANSITION -->
-    <section id="role">
-      <p class="section-label">02 — The Transition</p>
-      <h2>Unaltered didn’t mean <em>undocumented.</em></h2>
+    <!-- 02 RESEARCH -->
+    <section id="research">
+      <p class="section-label">02 — Research</p>
+      <h2>The barrier between the applications<br><em>was creating work.</em></h2>
 
-      <p>We worked with an offshore team for two months to upgrade the library from customized Material 2 to standard Material 3, one component at a time. Each component had to be stripped of its customizations so that when a product team turned on the upgrade, it would run cleanly — one-for-one — and update the UI without breaking anything.</p>
+      <p>I started by mapping how different roles actually moved through their day, then tested those workflows against client discovery, behavioral data, customer requests, and the structure of the existing product.</p>
 
-      <p>Standard components still leave room for interpretation, so I defined the rules for how each one is used: for example, when a text field needs multiple icons, the exact order and placement, so users aren’t surprised and can rely on how it behaves. Those rules kept dev teams — and designers — from drifting apart as the upgrades rolled out.</p>
+      <p><strong>The navigation wasn't the starting point. The workflow was.</strong></p>
 
-      <p>I mapped out the first upgrades, designed the new experience, and reviewed and tested each component as the team completed it.</p>
-
-      <div class="callout">
-        <p><strong>My role:</strong> I led the governance layer — usage decisions, component guidance, Figma module upgrades, and accessibility specifications for engineering. I also built a Claude Design library so the UX team could prototype with the same components.</p>
+      <div class="role-pair">
+      <div class="role-card">
+        <h4>01 · Map the day</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>We mapped the work of providers, front desk, billing, and administrative roles — including where information was needed, where decisions happened, and where the product interrupted the workflow.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>For front-desk users, the scheduler functioned as a command center. Eligibility, patient balances, and other information were useful in the context of the appointment rather than as separate destinations.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>For billers, behavioral data showed a recurring sequence across transactions, patient and insurance information, coding, claims, ERA, payment entry, and end-of-day work. The architecture needed to support that sequence rather than impose a different one.</div></div>
+        </div>
       </div>
-    </section>
 
-    <!-- 03 BEFORE / AFTER -->
-    <section id="before-after">
-      <p class="section-label">03 — Before → After</p>
-      <h2>From overridden <em>to intentional.</em></h2>
+      <div class="role-card">
+        <h4>02 · Validate the patterns</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>I compared workflow findings with a broader body of customer feedback and product data to distinguish isolated requests from structural problems.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div>Checkout existed in both PM and EHR, but information didn't reliably flow between them. Appointment confirmations could require leaving the EHR scheduler for a PM workflow. PM and EHR even supported different numbers of simultaneously open patient records.</div></div>
+          <div class="role-item"><div class="role-dot"></div><div><strong>The boundary between the products was creating work.</strong></div></div>
+        </div>
+      </div>
+      </div>
 
-      <table class="ba-table">
-        <thead><tr><th></th><th>Before</th><th class="after">After</th></tr></thead>
-        <tbody>
-          <tr><td>Component library</td><td class="before">Heavily overridden, brand-flavored Material — diverged significantly from standard M3.</td><td class="after">Standard Material 3, with custom components only where genuinely needed and deliberately justified.</td></tr>
-          <tr><td>Angular compatibility</td><td class="before">Blocked at Angular 18 due to accumulated customization debt.</td><td class="after">Migration path to current Angular versions unblocked.</td></tr>
-          <tr><td>Dark mode</td><td class="before">Custom dark stylesheet required per component.</td><td class="after">Inherited from M3 — one switch, consistent behavior.</td></tr>
-          <tr><td>Accessibility</td><td class="before">Custom implementation required per component.</td><td class="after">WCAG 2 baseline inherited from standard M3, with documented additions where components need more.</td></tr>
-          <tr><td>Figma ↔ Eng handoff</td><td class="before">Design files reflected our custom components, not standard M3. The gap between design and production was large.</td><td class="after">Figma modules upgraded to M3. Developers working in the same component language as designers.</td></tr>
-          <tr><td>New feature decisions</td><td class="before">“What should this look like?” answered ad hoc.</td><td class="after">Governance layer: color decisions, density choices, outlined vs. filled rationale, and documented accessibility requirements engineering builds in by default.</td></tr>
-        </tbody>
-      </table>
+      <div class="role-card" style="margin-top:16px;">
+        <h4>03 · Translate workflow into architecture</h4>
+        <div class="role-items">
+          <div class="role-item"><div class="role-dot"></div><div>The research became a set of architectural decisions about what belonged in navigation, what should remain attached to the patient, and what information should surface inside the workflow instead of requiring another destination.</div></div>
+        </div>
+      </div>
 
-      <div class="screenshot-block" style="margin-top:48px !important;">
-        <div class="mode-labels" style="grid-template-columns: 54.7% 1fr;"><span>Before · Customized</span><span>After · Standard M3</span></div>
-        <img src="m3-before-after-ai-summary-v2.png" alt="AI Action Note Summary dialog before and after the Material 3 upgrade" style="width:100%;display:block;" />
-        <div class="screenshot-caption">AI Action Note Summary — the heavy custom header gives way to standard M3 dialog structure, clearer hierarchy, and consistent actions.</div>
+      <div class="screenshot-block" style="margin-top:32px;">
+        <div class="svc-map" role="img" aria-label="SMB workflow service map: ten workflow steps, seven critical gaps (orange) and three moderate gaps (green)">
+          <div class="svc-title">SMB Workflow Overview</div>
+          <div class="svc-grid">
+          <div class="svc-tile critical"><span class="svc-num">1</span>Start of Day &amp; Dashboard</div>
+          <div class="svc-tile critical"><span class="svc-num">2</span>Clinical Documentation</div>
+          <div class="svc-tile critical"><span class="svc-num">3</span>Outcome Measures &amp; Forms</div>
+          <div class="svc-tile moderate"><span class="svc-num">4</span>Medication Management</div>
+          <div class="svc-tile critical"><span class="svc-num">5</span>Charge Entry &amp; Billing</div>
+          <div class="svc-tile critical"><span class="svc-num">6</span>Credentialing &amp; Payer Setup</div>
+          <div class="svc-tile moderate"><span class="svc-num">7</span>Reporting &amp; Analytics</div>
+          <div class="svc-tile critical"><span class="svc-num">8</span>ERA Auto-Posting &amp; Payment Flow</div>
+          <div class="svc-tile critical"><span class="svc-num">9</span>Online Self-Service Scheduling</div>
+          <div class="svc-tile moderate"><span class="svc-num">10</span>New Practice Onboarding &amp; Training</div>
+          </div>
+          <div class="svc-legend">
+            <span><i class="sw crit"></i>Critical gap</span>
+            <span><i class="sw mod"></i>Moderate gap</span>
+          </div>
+        </div>
+        <div class="screenshot-caption">Mapping the practice workflow connected what users were doing, where they got stuck, and what the product could do differently.</div>
       </div>
 
       <div class="screenshot-block">
-        <div class="mode-labels" style="grid-template-columns: 53.8% 1fr;"><span>Before · Customized</span><span>After · Standard M3</span></div>
-        <img src="m3-before-after-phone.png" alt="Phone Numbers dialog before and after the Material 3 upgrade" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Phone Numbers — outlined M3 fields replace underline-only inputs, with visible labels and a clear focus state.</div>
-      </div>
-
-      <div class="screenshot-block" >
-        <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
-        <img src="unified-platform-m3-modes-nolabel.png" alt="The same Profile Settings screen in dark and light mode" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Dark mode and accessibility come from the standard M3 baseline instead of per-component custom work.</div>
+        <a href="unified-platform-biller-workflows.png" target="_blank" title="Open full size"><img src="unified-platform-biller-workflows.png" alt="Biller workflows by segment from Pendo data, alongside the biller's morning, midday, and end-of-day workflow map" style="width:100%;display:block;" /></a>
+        <div class="screenshot-caption">Role-level workflows helped distinguish what belonged in global navigation from what should appear in the context of the work.</div>
       </div>
     </section>
 
-    <!-- 04 DECISIONS -->
-    <section id="decisions">
-      <p class="section-label">04 — Key Decisions</p>
-      <h2>Make customization <em>a decision, not a default.</em></h2>
+    <!-- 03 ARCHITECTURE -->
+    <section id="architecture">
+      <p class="section-label">03 — Architecture</p>
+      <h2>One app. Keep the <em>context.</em></h2>
+
+      <p>The goal wasn't to put PM and EHR screens next to each other.</p>
+
+      <p><strong>It was to stop making users care which product owned the task.</strong></p>
+
+      <p>The dashboard brings forward work based on the user's role. Once a patient is opened, that patient context stays available as the user moves between clinical, scheduling, messaging, and financial work.</p>
+
+      <p>That led to a few structural rules:</p>
+
+      <div class="streams" style="margin-top:28px;">
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">1</div><h3>Navigation follows work</h3></div>
+          <p>Primary destinations reflect the workflows different roles actually move through.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">2</div><h3>Patient information stays with the patient</h3></div>
+          <p>Users shouldn't have to repeatedly search for the same person as they move between related tasks.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">3</div><h3>Information appears where it's useful</h3></div>
+          <p>Eligibility belongs with appointment workflows. Balances can surface where staff are interacting with patients. Not every capability needs another navigation destination.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">4</div><h3>Different roles can start differently</h3></div>
+          <p>A provider, front-desk user, and biller don't begin their day with the same priorities, so the experience shouldn't assume they do.</p>
+        </div>
+      </div>
+
+      <div class="screenshot-block" style="margin-top:40px !important;">
+          <img src="amd-dashboard-panel.jpg" alt="Patient side panel" style="width:100%;display:block;" />
+          <div class="screenshot-caption">Patient side panel — patient information stays available while the user works.</div>
+        </div>
+        <div class="screenshot-block">
+          <img src="amd-claims.jpg" alt="Claims" style="width:100%;display:block;" />
+          <div class="screenshot-caption">Claims — billing work without leaving the experience.</div>
+        </div>
+    </section>
+
+    <!-- 04 PLATFORM -->
+    <section id="platform">
+      <p class="section-label">04 — Platform</p>
+      <h2>A new experience. <em>Not another silo.</em></h2>
+
+      <p>A ground-up rebuild of the underlying systems wasn't a practical path for a platform this deep.</p>
+
+      <div class="callout">
+        <p><strong>Instead of rebuilding from the inside out, what if we worked from the outside in?</strong> Start with the experience users touch, and keep the proven backend underneath it.</p>
+      </div>
+
+      <p>This wasn't designed as a separate product or a ground-up rewrite.</p>
+
+      <p>It runs on the same codebase as the existing platform, allowing the experience to modernize incrementally while continuing to use existing capabilities underneath it. Client-level feature controls and routing allow a simplified mode to be enabled and tested without creating a separate branch or disrupting the existing legacy experience.</p>
+
+      <p>That means capabilities built elsewhere in the platform can surface inside the new experience rather than being rebuilt specifically for it.</p>
+
+      <p>The tradeoff is honest: some screens will still look dated while they wait for their UI refresh. But because the new experience and the main product share a design language, every screen we modernize benefits both.</p>
+
+      <div class="callout">
+        <p><strong>A new experience on the same platform — not another silo.</strong> The base shell and new top navigation have already shipped as pieces of the new infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- 05 FOUNDATION -->
+    <section id="foundation">
+      <p class="section-label">05 — Foundation</p>
+      <h2>Modernize without creating<br><em>another thing to maintain.</em></h2>
+
+      <p>The experience wasn't the only thing that needed modernization.</p>
+
+      <p>The component library had been customized so heavily that it had become technical debt and blocked framework upgrades. There were several options: invest heavily in upgrading the customized system, replace it with another proprietary library, or move back toward standard Angular Material 3.</p>
+
+      <p>We chose the third direction.</p>
+
+      <div class="callout">
+        <p><strong>Use the standard when it solves the problem. Customize when the product actually requires it.</strong></p>
+      </div>
+
+      <p>I helped define how and why components should be used, supported the shared Figma library, and created design resources that give Design and Engineering the same definitions and intent — including enough structured guidance to support AI-assisted development.</p>
+
+      <p>This project became the first major place to put that direction into practice.</p>
+
+      <p><strong>Moving back to the standard also meant getting its built-in capabilities for free.</strong></p>
 
       <div class="streams" style="margin-top:32px;">
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Custom when genuinely needed — not by default</h3></div>
-          <p>The shift wasn’t “never customize.” It was making customization intentional and documentable, so the next decision could be informed by the last.</p>
+          <div class="stream-header"><div class="stream-num">1</div><h3>WCAG 2 accessibility, built in</h3></div>
+          <p>Material 3 components ship with accessible contrast, focus states, and keyboard and screen-reader support, so accessibility isn't something we have to rebuild component by component.</p>
         </div>
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Settled outlined vs. filled with rationale, not preference</h3></div>
-          <p>The team had strong opinions on both sides. I resolved it by documenting the M3-intended use cases for each and applying that framework consistently.</p>
+          <div class="stream-header"><div class="stream-num">2</div><h3>Dark mode, built in</h3></div>
+          <p>Theming comes from design tokens, so the same screens support light and dark modes without designing and maintaining a second UI.</p>
         </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Upgraded Figma modules to M3</h3></div>
-          <p>Designers working in our custom Figma components while engineers worked toward standard M3 was creating rework on both sides. Upgrading the modules closed the gap.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Accessibility callouts that became a default</h3></div>
-          <p>Rather than assuming M3 inheritance covered everything, I identified the places where developers would need to add code to make components WCAG 2 compliant. Our lead developer used that documentation to build a skill that helps developers do this by default — and adds Pendo tagging by default too.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Showed it instead of specifying it</h3></div>
-          <p>Instead of writing a spec document, I showed what M3 modules looked like applied to real product screens — making the governance tangible rather than theoretical.</p>
-        </div>
+      </div>
+
+      <div class="screenshot-block" style="margin-top:40px;">
+        <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
+        <img src="unified-platform-m3-modes-nolabel.png" alt="Profile Settings in dark mode and light mode" style="width:100%;display:block;" />
+        <div class="screenshot-caption">The same Profile Settings screen in dark and light mode, both from one set of Material 3 components.</div>
       </div>
     </section>
 
-    <!-- 05 OUTCOMES -->
-    <section id="outcomes">
-      <p class="section-label">05 — Outcomes</p>
-      <h2>A foundation <em>we can keep upgrading.</em></h2>
+    <!-- 06 STATUS -->
+    <section id="status">
+      <p class="section-label">06 — Status</p>
+      <h2>Build the foundation <em>for a better workflow.</em></h2>
+
+      <p>Early validation with existing clients has been promising.</p>
+
+      <p>What exists today is the foundation: workflow-based architecture, the simplified shell, shared navigation patterns, patient context, and a UI system designed to evolve with the platform instead of becoming another layer of technical debt. The shell infrastructure allows the simplified mode to be enabled per client while preserving the existing legacy experience.</p>
 
       <div class="outcomes-grid" style="margin-top:32px;">
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Angular upgrade path unblocked</h4>
-          <p>The product is no longer held at Angular 18 by customization debt.</p>
+          <h4>Unified workflow surface</h4>
+          <p>Users can move between clinical, scheduling, and billing tasks without switching between PM and EHR or repeatedly finding the same patient.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Dark mode and accessibility by default</h4>
-          <p>Both are inherited as defaults across the new experience.</p>
+          <h4>Built around the workflow</h4>
+          <p>Navigation and scope came from how practices actually work, not from recreating existing PM and EHR menus.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Shared component resources</h4>
-          <p>Figma and Claude component resources established for design and engineering.</p>
+          <h4>A UI we can keep upgrading</h4>
+          <p>The new experience starts with standard Material 3 instead of adding another deeply customized layer to maintain.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Living governance reference</h4>
-          <p>Documentation available as a living reference for ongoing component decisions.</p>
+          <h4>One platform, not another silo</h4>
+          <p>Existing platform capabilities can work inside the new experience instead of being rebuilt specifically for it.</p>
         </div>
+      </div>
+
+      <div class="callout" style="margin-top:40px;">
+        <p>The real test comes next: whether it actually makes running a small practice easier.</p>
       </div>
     </section>
 
     <!-- UP NEXT -->
-    <a class="up-next" href="unified-platform.html">
+    <a class="up-next" href="transaction-history-card.html">
       <div>
         <div class="up-next-label">Up next</div>
-        <h3>Unified Practice Platform</h3>
+        <h3>Patient Transaction History</h3>
       </div>
       <div class="up-next-arrow">→</div>
     </a>
