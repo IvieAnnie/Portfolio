@@ -834,12 +834,11 @@
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
     <a href="#problem">The Problem</a>
-    <a href="#unify">One Summary</a>
+    <a href="#plans">What We Planned</a>
     <div class="nav-section">Work</div>
-    <a href="#principles">Principles</a>
-    <a href="#screens">The Screens</a>
+    <a href="#solution">How We Solved It</a>
     <div class="nav-section">Results</div>
-    <a href="#status">Status</a>
+    <a href="#feedback">Feedback</a>
   </nav>
 
   <main class="content">
@@ -854,7 +853,7 @@
     <!-- 01 PROBLEM -->
     <section id="problem">
       <p class="section-label">01 — The Problem</p>
-      <h2>Billing teams were wary of <em>AI handling their work</em></h2>
+      <h2>Billing teams don’t trust <em>AI with their work</em></h2>
 
       <p>Insurance payment posting and collections follow-up are some of the most repetitive work in a medical practice. They’re also some of the most consequential. A wrong posting means a wrong patient balance, a confused patient on the phone, and someone on the billing team cleaning it up.</p>
 
@@ -863,20 +862,30 @@
       <div class="callout"><p>Before they’d let AI do this work, the people accountable for it needed to see what it decided and why.</p></div>
     </section>
 
-    <!-- 02 UNIFY -->
-    <section id="unify">
-      <p class="section-label">02 — One Summary</p>
-      <h2>Unifying two teams’ <em>AI summary designs</em></h2>
+    <!-- 02 PLANS -->
+    <section id="plans">
+      <p class="section-label">02 — What We Planned</p>
+      <h2>The AI features <em>we planned to introduce</em></h2>
 
+      <p>Two AI features were coming to billing work:</p>
+      <p><strong>AI collections summary.</strong> On request, it summarizes the collections activity on a visit, with the last action taken and the next one to take.</p>
+      <p><strong>AI payment posting.</strong> It reads insurance payment files (ERAs) and either recommends how to post each line or posts it automatically.</p>
+
+      <h3 class="sub">A path with and without AI</h3>
+      <p>The AI features come with an add-on that not every practice will buy. So every screen had to work for practices that subscribe to it and for practices that don’t.</p>
+    </section>
+
+    <!-- 03 SOLUTION -->
+    <section id="solution">
+      <p class="section-label">03 — How We Solved It</p>
+      <h2>How the design <em>builds trust</em></h2>
+
+      <h3 class="sub">One summary design across modules</h3>
       <p>Two product teams had each started designing an AI summary for different screens. I pulled them together so the summary looks and behaves the same everywhere: the same placement, labels, states, and feedback.</p>
 
       <p>That matters more for AI than for most features. If the AI explains itself one way in collections and another way somewhere else, users have to rebuild their trust each time. With one pattern, they learn it once.</p>
-    </section>
 
-    <!-- 03 PRINCIPLES -->
-    <section id="principles">
-      <p class="section-label">03 — Principles</p>
-      <h2>Seven principles for <em>trustworthy AI features</em></h2>
+      <h3 class="sub">Seven principles for trustworthy AI features</h3>
 
       <div class="streams" style="margin-top:32px;">
         <div class="stream">
@@ -908,12 +917,8 @@
           <p>Every summary is labeled as AI-generated, asks the user to review it, shows when it was generated, and has thumbs up and down right beside it.</p>
         </div>
       </div>
-    </section>
 
-    <!-- 04 SCREENS -->
-    <section id="screens">
-      <p class="section-label">04 — The Screens</p>
-      <h2>The four states of the <em>AI collections summary</em></h2>
+      <h3 class="sub">The four states of the AI collections summary</h3>
 
       <p>The collections summary has four states, and each one tells the user exactly where they stand. Summaries only run when someone asks for one.</p>
 
@@ -957,18 +962,21 @@
       </figure>
     </section>
 
-    <!-- 05 STATUS -->
-    <section id="status">
-      <p class="section-label">05 — Status</p>
-      <h2>AI features that work the same <em>in every module</em></h2>
+    <!-- 04 FEEDBACK -->
+    <section id="feedback">
+      <p class="section-label">04 — Feedback</p>
+      <h2>How we’re gathering feedback <em>and listening</em></h2>
 
+      <p>Feedback is built in where the AI’s output appears. Every summary is labeled as AI-generated, asks the user to review it, and has thumbs up and down right beside it. I also supported the technical product manager’s research.</p>
+
+      <p>It’s too early for outcomes. Three signals will show whether trust is growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
+
+      <h3 class="sub">Where each feature stands</h3>
       <table class="status-table">
         <tr><td>Live</td><td>AI summary in collections</td></tr>
         <tr><td>Next</td><td>The same summary in Transaction History, with its beta</td></tr>
         <tr><td>In design</td><td>AI payment posting: per-line status, recommend-only or automatic posting, overrides</td></tr>
       </table>
-
-      <p style="margin-top:28px;">It’s too early for outcomes. The design is built to show whether trust is growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
     </section>
 
     <!-- UP NEXT -->
