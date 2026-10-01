@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Trust in AI — Ivie Borovatz</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="description" content="Designing the small, visible moves that help wary healthcare billing teams trust AI.">
+  <meta property="og:title" content="Building Trust in AI — Ivie Borovatz">
+  <meta property="og:description" content="Designing the small, visible moves that help wary healthcare billing teams trust AI.">
+  <meta property="og:image" content="https://www.ivieborovatz.com/ai-trust-hero.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #00c4b4;
+    --accent-dim: rgba(0,196,180,0.12);
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --text-dim: #555;
+    --nav-width: 220px;
+    --red: #e05252;
+    --yellow: #d4a847;
+  }
+  body.light-mode {
+    --accent: #00a89a;
+    --accent-dim: rgba(0,168,154,0.1);
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --text-dim: #999;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--surface);
+    padding: 80px 60px 80px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-text { display: flex; flex-direction: column; }
+  .hero-visual {
+    background: var(--surface2);
+    border-radius: 30px;
+    overflow: hidden;
+    height: 360px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .hero-visual-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(0,196,180,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(30px, 4vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── LAYOUT ───────────────────────────────────────────── */
+  .page {
+    display: grid;
+    grid-template-columns: var(--nav-width) 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 160px;
+    gap: 80px;
+  }
+
+  /* ── SIDE NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    height: fit-content;
+  }
+  nav a {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 0;
+    border-left: 2px solid transparent;
+    padding-left: 14px;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  nav a:hover, nav a.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+  }
+  nav .nav-section {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 20px 0 8px 14px;
+    font-weight: 600;
+  }
+  nav .nav-section:first-child { padding-top: 0; }
+
+  /* ── CONTENT ──────────────────────────────────────────── */
+  .content { min-width: 0; }
+
+  section[id] { scroll-margin-top: 40px; }
+
+  section + section {
+    margin-top: 120px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  p { color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); }
+
+  /* ── CALLOUT ──────────────────────────────────────────── */
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 2px 20px;
+    margin: 40px 0;
+  }
+  .callout p { color: var(--text); margin: 0; font-size: 17px; line-height: 1.65; }
+
+  /* ── PROBLEM GRID ─────────────────────────────────────── */
+  .problem-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+  .problem-item {
+    background: none;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+  .problem-item .problem-icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .problem-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0;
+  }
+  .problem-item p { font-size: 15px; margin: 0; }
+
+  /* ── ROLE CARD ────────────────────────────────────────── */
+  .role-card {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .role-card:first-of-type { border-top: none; padding-top: 8px; }
+  .role-card h4 {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .role-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .role-item {
+    display: block;
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 0;
+  }
+  .role-dot { display: none; }
+
+  /* ── WORK STREAMS ─────────────────────────────────────── */
+  .streams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .stream {
+    background: none;
+    padding: 0;
+  }
+  .stream-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .stream-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .stream h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .stream p { font-size: 15px; }
+
+  /* ── SCREENSHOTS ──────────────────────────────────────── */
+  .screenshot-block {
+    margin: 32px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .screenshot-block img {
+    width: 100%;
+    display: block;
+  }
+  .screenshot-caption {
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .screenshot-row .screenshot-block { margin: 0; }
+
+  /* ── QUOTE ────────────────────────────────────────────── */
+  .quote {
+    border-left: 2px solid var(--accent);
+    padding: 4px 20px;
+    margin: 40px 0;
+  }
+  .quote p {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .quote cite {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── OUTCOMES ─────────────────────────────────────────── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 56px;
+    margin-top: 40px;
+  }
+  .outcome {
+    background: none;
+    padding: 0;
+  }
+  .outcome-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .outcome h4 {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .outcome p { font-size: 14px; }
+
+  /* ── SYSTEM / DESIGN DETAIL ───────────────────────────── */
+  .token-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 24px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .token-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface2);
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+  .token-label { color: var(--text-muted); }
+  .token-value { color: var(--text); font-weight: 500; font-family: 'SF Mono', monospace; font-size: 12px; }
+
+  /* ── UP NEXT ──────────────────────────────────────────── */
+  .up-next {
+    margin-top: 80px;
+    padding: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .up-next:hover { border-color: var(--text-dim); }
+  .up-next-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .up-next h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .up-next-arrow { font-size: 28px; color: var(--text-dim); }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .section-label.reveal { transition-delay: 0s; }
+  h2.reveal { transition-delay: 0.08s; }
+  .callout.reveal, .role-card.reveal, .stream.reveal, .outcome.reveal {
+    transition-delay: 0.12s;
+  }
+
+  /* ── BACK NAV ─────────────────────────────────────────── */
+  .back-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: rgba(248,247,244,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 100;
+  }
+  .back-nav a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s;
+  }
+  .back-nav a:hover { color: var(--text); }
+  .back-nav .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .back-nav .breadcrumb span { color: var(--text-dim); }
+  .back-nav .breadcrumb .current { color: var(--text); }
+  .back-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .back-nav-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim) !important;
+    text-decoration: none;
+    transition: color 0.15s;
+    display: inline !important;
+  }
+  .back-nav-link:hover { color: var(--text) !important; }
+
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92); }
+
+  /* ── MODE TOGGLE ──────────────────────────────────────── */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--border);
+    border-radius: 100px;
+    padding: 3px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .mode-toggle .m-opt {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    color: var(--text-muted);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .mode-toggle .m-opt.active {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 24px 60px; grid-template-columns: 1fr; }
+    .hero-visual { height: 240px; }
+    .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 0; }
+    nav { display: none; }
+    .problem-grid,
+    .outcomes-grid,
+    .streams,
+    .screenshot-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── HERO FACTS ───────────────────────────────────────── */
+  .hero-facts { display: grid; grid-template-columns: repeat(4, auto); gap: 32px; justify-content: start; margin-top: 4px; }
+  .hero-fact-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
+  .hero-fact-value { font-size: 14px; color: var(--text); }
+  /* ── IMAGE PLACEHOLDER ────────────────────────────────── */
+  .img-placeholder {
+    aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+    background: var(--surface2); color: var(--text-dim); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 24px;
+  }
+  /* ── PATTERNS / FEATURES ──────────────────────────────── */
+  .quote p { font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1.3; }
+  h3.sub { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 24px; color: var(--text); margin: 48px 0 12px; }
+  @media (max-width: 768px) { .hero-facts { grid-template-columns: 1fr 1fr; } }
+
+  @media (max-width: 768px) {
+    .hero-facts { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* teal italic emphasis in headlines */
+  .hero h1 em, h2 em { color: var(--accent); font-style: italic; }
+
+  /* ── floating images (global) — no frame, no box, caption floats ── */
+  .screenshot-block { background: none !important; border: none !important; border-radius: 0 !important; overflow: visible !important; }
+  .screenshot-block img { background: none !important; border-radius: 12px; }
+  .screenshot-caption { border: none !important; background: none !important; padding: 12px 0 0 !important; }
+
+  /* ── up-next (global, boxless) ── */
+  .up-next { background: none !important; border: none !important; border-radius: 0 !important; padding: 32px 0 !important; }
+  .up-next-arrow { transition: transform 0.2s, color 0.2s; }
+  .up-next:hover .up-next-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* caption contrast (WCAG AA 4.5:1 in both modes) */
+  .screenshot-caption { color: var(--text-muted) !important; font-size: 14px !important; }
+
+  /* ── header + breadcrumb (global) ── */
+  .back-nav { background: rgba(10,10,10,0.92) !important; }
+  body.light-mode .back-nav { background: rgba(248,247,244,0.92) !important; }
+  .back-nav .breadcrumb { gap: 10px; font-size: 13px; }
+  .back-nav .breadcrumb a { color: var(--text-muted) !important; transition: color 0.15s; }
+  .back-nav .breadcrumb a:hover { color: var(--accent) !important; }
+  .back-nav .bc-home { gap: 10px; }
+  .back-nav .bc-logo { width: 28px; height: 28px; display: block; transition: transform 0.2s; }
+  .back-nav .bc-home:hover .bc-logo { transform: rotate(-8deg) scale(1.06); }
+  .back-nav .bc-name { font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .back-nav .bc-home:hover .bc-name { color: var(--accent); }
+  .back-nav .bc-sep { color: var(--text-dim) !important; }
+  .back-nav .breadcrumb .current { color: var(--text) !important; }
+
+  .streams.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 768px) { .streams.three { grid-template-columns: 1fr; } }
+
+  .mode-labels { display: grid; grid-template-columns: 45.75% 1fr; margin-bottom: 10px; }
+  .mode-labels span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+
+  /* ── page scale (global): fill large screens like browser zoom does ── */
+  @media (min-width: 1400px) { html { zoom: 1.15; } }
+  @media (min-width: 1600px) { html { zoom: 1.28; } }
+  @media (min-width: 1800px) { html { zoom: 1.4; } }
+  @media (min-width: 2100px) { html { zoom: 1.6; } }
+  @media (min-width: 2500px) { html { zoom: 1.85; } }
+
+  /* ── hero video background (matches homepage) ── */
+  .hero { position: relative; overflow: hidden; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; transform: scaleX(-1); pointer-events: none; z-index: 0; }
+  .hero > *:not(.hero-video) { position: relative; z-index: 1; }
+
+  /* ── tighter section rhythm (global) ── */
+  section + section { margin-top: 56px !important; padding-top: 48px !important; }
+  .section-label { margin-bottom: 14px !important; }
+  h2 { margin-bottom: 22px !important; }
+  .screenshot-block { margin-top: 28px !important; margin-bottom: 0 !important; }
+  .screenshot-block + .screenshot-block { margin-top: 40px !important; }
+  .up-next { margin-top: 56px !important; }
+
+  /* ── before / after table ── */
+  .ba-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  .ba-table th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--text-dim); padding: 0 24px 14px 0; border-bottom: 1px solid var(--border); }
+  .ba-table th.after { color: var(--accent); }
+  .ba-table td { vertical-align: top; padding: 18px 24px 18px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+  .ba-table td:first-child { width: 22%; font-weight: 600; color: var(--text); }
+  .ba-table td.after { color: var(--text); }
+  .ba-table tr:last-child td { border-bottom: none; }
+  .hero-visual.contain .hero-visual-bg { background-size: contain; background-position: center; }
+  @media (max-width: 768px) {
+    .ba-table, .ba-table tbody, .ba-table tr, .ba-table td { display: block; width: 100% !important; }
+    .ba-table thead { display: none; }
+    .ba-table td { border-bottom: none; padding: 4px 0; }
+    .ba-table tr { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .ba-table td.before::before { content: 'Before — '; color: var(--text-dim); }
+    .ba-table td.after::before { content: 'After — '; color: var(--accent); }
+  }
+
+  /* screenshot-row fix: grid items align to the top */
+  .screenshot-row { align-items: start; margin-top: 28px !important; }
+  .screenshot-row .screenshot-block, .screenshot-row .screenshot-block + .screenshot-block { margin: 0 !important; }
+
+  /* ── WCAG AA contrast pass (4.5:1 minimum for small text, both modes) ── */
+  :root { --text-muted: #a8a8a8 !important; --text-dim: #8a8a8a !important; --label: #8a8a8a !important; --text-light: #a8a8a8 !important; }
+  body.light-mode {
+    --accent: #00796e !important; --text-muted: #4a4a4a !important; --text-dim: #666666 !important;
+    --label: #666666 !important; --text-light: #4a4a4a !important;
+  }
+  .chip { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt { color: var(--text-muted) !important; }
+  .mode-toggle .m-opt.active { color: var(--text) !important; }
+
+  .hero.no-visual { grid-template-columns: 1fr; }
+  .hero.no-visual .hero-text { max-width: 900px; }
+  .artifact-link { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 32px; padding: 24px 28px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface2); text-decoration: none; transition: border-color 0.2s; }
+  .artifact-link:hover { border-color: var(--accent); }
+  .artifact-link .al-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+  .artifact-link .al-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: var(--text); }
+  .artifact-link .al-desc { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .artifact-link .al-arrow { font-size: 24px; color: var(--text-muted); transition: transform 0.2s, color 0.2s; }
+  .artifact-link:hover .al-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* ── library grid ── */
+  .lib-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .lib-card { padding: 24px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); }
+  .lib-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); color: var(--accent); margin-bottom: 16px; }
+  .lib-icon svg { width: 20px; height: 20px; }
+  .lib-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: var(--text); margin-bottom: 8px; }
+  .lib-card p { font-size: 14px; line-height: 1.6; margin: 0 0 14px !important; }
+  .lib-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lib-tags span { font-size: 11px; padding: 3px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-muted); }
+  @media (max-width: 900px) { .lib-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .lib-grid { grid-template-columns: 1fr; } }
+
+  /* ── patient journey map ── */
+  .journey { margin-top: 28px; padding: 28px; border-radius: 24px; background: var(--surface); border: 1px solid var(--border); --crit: #f59e42; }
+  body.light-mode .journey { --crit: #b45309; }
+  .journey-head { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+  .journey-head b { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 26px; color: var(--text); margin-right: 6px; }
+  .journey-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .jt { display: flex; flex-direction: column; gap: 6px; padding: 12px 10px; min-height: 104px; border-radius: 12px; background: var(--surface2); border: 1px solid var(--border); }
+  .jt.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .jn { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; line-height: 1; color: var(--accent); }
+  .jname { font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--text); flex: 1; }
+  .jdots { display: flex; flex-wrap: wrap; gap: 4px; }
+  .jd { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .jd.crit { background: var(--crit); }
+  .jd.mod { background: var(--accent); opacity: 0.8; }
+  .jt.gap { background: none; border: 1.5px dashed var(--text-dim); }
+  .jt.gap .jn { color: var(--text-dim); }
+  .jt.gap .jname { color: var(--text-muted); }
+  .jgap { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--text-muted); }
+  .journey-legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 12px; color: var(--text-muted); }
+  .journey-legend span { display: flex; align-items: center; gap: 8px; }
+  .jl-gap { width: 12px; height: 12px; border-radius: 3px; border: 1.5px dashed var(--text-dim); }
+  .journey-detail { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .jdl-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 16px; }
+  .jdl-cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; }
+  .jdl-h { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .journey-detail ul { list-style: none; padding: 0; margin: 0; }
+  .journey-detail li { display: flex; gap: 10px; align-items: baseline; font-size: 14px; line-height: 1.55; color: var(--text-muted); margin-bottom: 8px; }
+  .journey-detail p { font-size: 14px; line-height: 1.6; margin: 0 !important; }
+  @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(4, 1fr); } .jdl-cols { grid-template-columns: 1fr; gap: 20px; } }
+  @media (max-width: 560px) { .journey-grid { grid-template-columns: repeat(2, 1fr); } .journey { padding: 20px; } }
+
+  /* ── mobile header fix ── */
+  .back-nav { gap: 12px; }
+  .back-nav .breadcrumb { min-width: 0; white-space: nowrap; }
+  .back-nav .bc-name { white-space: nowrap; }
+  @media (max-width: 760px) {
+    .back-nav { padding: 0 16px !important; }
+    .back-nav .breadcrumb .bc-sep, .back-nav .breadcrumb .bc-link, .back-nav .breadcrumb .current { display: none !important; }
+    .back-nav-right { gap: 12px; }
+    .back-nav-right .back-nav-link { display: none !important; }
+    .mode-toggle .m-opt { padding: 5px 11px !important; }
+  }
+
+  /* mobile reveal fix: show content immediately on phones */
+  @media (max-width: 760px) { .reveal { opacity: 1 !important; transform: none !important; } }
+
+  /* ── mobile hamburger menu ── */
+  .mnav-btn { display: none; background: none; border: 0; width: 40px; height: 40px; padding: 0; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; color: #e8e8e8; }
+  body.light-mode .mnav-btn { color: #1a1a1a; }
+  .mnav-btn span { display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
+  .mnav-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mnav-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .mnav-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mnav-panel { display: none; position: fixed; left: 0; right: 0; z-index: 99; padding: 4px 24px 16px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  body.light-mode .mnav-panel { background: rgba(248,247,244,0.98); border-bottom-color: rgba(0,0,0,0.08); }
+  .mnav-panel.open { display: block; }
+  .mnav-panel a { display: block; padding: 14px 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: #e8e8e8; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .mnav-panel a:last-child { border-bottom: none; }
+  body.light-mode .mnav-panel a { color: #1a1a1a; border-bottom-color: rgba(0,0,0,0.07); }
+  .mnav-panel a:hover { color: #00c4b4; }
+  body.light-mode .mnav-panel a:hover { color: #00796e; }
+  @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
+  @media (min-width: 761px) { .mnav-panel { display: none !important; } }
+
+  /* at-a-glance case summary */
+  .glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px;margin:0 0 56px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .glance div{min-width:0}
+  .glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:6px}
+  .glance dd{margin:0;font-size:15px;line-height:1.6;color:var(--text-muted)}
+  @media (max-width:700px){.glance{grid-template-columns:1fr}}
+
+  /* status table */
+  .status-table{width:100%;border-collapse:collapse;margin-top:36px;font-size:15px}
+  .status-table td{padding:12px 0;border-top:1px solid var(--border);vertical-align:top;color:var(--text-muted)}
+  .status-table td:first-child{width:160px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;padding-top:15px}
+  /* redrawn product mockups (unbranded, sample data) */
+  .mock-fig{margin:32px 0 40px}
+  .sum-states{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .sum-card{background:#f4f5f8;color:#1c1c2e;border-radius:14px;padding:18px;font-size:13.5px;line-height:1.5;border:1px solid rgba(0,0,0,.06)}
+  .sum-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+  .sum-title{font-weight:600;display:flex;align-items:center;gap:6px}
+  .spark{color:#2f5fb3}.warn{color:#b3261e}
+  .mbtn{border:1px solid #74777f;border-radius:999px;padding:3px 12px;font-size:12px;color:#2f4f8f;white-space:nowrap}
+  .mbtn.primary{background:#2f5fb3;border-color:#2f5fb3;color:#fff}
+  .sum-text{color:#1c1c2e;margin:0 0 10px;font-size:13.5px}
+  .sum-kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12.5px;color:#44474f;margin-bottom:8px}
+  .sum-kv span:nth-child(odd){font-weight:600;color:#1c1c2e}
+  .sum-time{font-style:italic;font-size:12px;color:#44474f;margin:0 0 10px}
+  .sum-note{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;background:#dbe6fb;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#1c1c2e}
+  .thumbs{white-space:nowrap}
+  .sum-empty{font-style:italic;color:#44474f;margin:0;font-size:13.5px}
+  .sum-err strong{color:#8c1d18;font-weight:600}
+  .sum-states{align-items:start}
+  .sum-err{background:#fde3e1;border-radius:10px;padding:10px 12px;color:#8c1d18;display:flex;flex-direction:column;font-size:12.5px}
+  .post-mock{background:#f4f5f8;color:#1c1c2e;border-radius:14px;padding:6px 18px 10px;font-size:13.5px;border:1px solid rgba(0,0,0,.06)}
+  .post-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+  .post-bar b{color:#146c43}
+  .toggle{width:34px;height:20px;border-radius:999px;background:#2f5fb3;position:relative;display:inline-block}
+  .toggle i{position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff}
+  .post-tip{background:#3b3d45;color:#fff;border-radius:6px;padding:4px 10px;font-size:12px}
+  .post-row{display:grid;grid-template-columns:1.6fr 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+  .post-row:last-child{border-bottom:none}
+  .st{display:flex;flex-direction:column;font-weight:600;color:#2f4f8f}
+  .st small{font-weight:400;font-size:12px;color:#44474f}
+  .st.exc{color:#a8461a}.st.ok{color:#146c43}.st.dim{color:#44474f;font-weight:500}
+  .st small.conf{color:#2f4f8f;font-weight:600}
+  @media (max-width:700px){.sum-states{grid-template-columns:1fr}.post-row{grid-template-columns:1.4fr 1fr auto}}
+</style>
+</head>
+<body>
+<script>try{if(localStorage.getItem('colorMode')!=='magic')document.body.classList.add('light-mode')}catch(e){document.body.classList.add('light-mode')}</script>
+
+<!-- back nav -->
+<header class="back-nav">
+  <div class="breadcrumb">
+    <a href="index.html" class="bc-home" title="Home"><img src="logo.svg" alt="" class="bc-logo"><span class="bc-name">Ivie Borovatz</span></a>
+    <span class="bc-sep">/</span>
+    <a href="index.html#work" class="bc-link">Case Studies</a>
+    <span class="bc-sep">/</span>
+    <span class="current">Building Trust in AI</span>
+  </div>
+  <div class="back-nav-right">
+    <a href="index.html#work" class="back-nav-link">Work</a>
+    <a href="index.html#about" class="back-nav-link">About</a>
+    <a href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener" class="back-nav-link">Résumé</a>
+    <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener" class="back-nav-link">LinkedIn</a>
+    <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+      <span class="m-opt" id="optLight">Light</span>
+      <span class="m-opt active" id="optMagic">&#10022; Magic</span>
+    </button>
+    <button class="mnav-btn" id="mnavBtn" aria-label="Menu" aria-expanded="false" aria-controls="mnavPanel" onclick="var p=document.getElementById('mnavPanel'),o=p.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mnav-panel" id="mnavPanel" style="top:52px;" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#work">Case Studies</a>
+  <a href="index.html#about">About</a>
+  <a href="Ivie-Borovatz-Resume-UX-Architect.pdf" target="_blank" rel="noopener">Résumé</a>
+  <a href="https://www.linkedin.com/in/ivieborovatz/" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="mailto:ivieborovatz@gmail.com">Email</a>
+</nav>
+
+<!-- hero -->
+<div style="height:52px"></div>
+<section class="hero">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
+  <div class="hero-text">
+    <p class="hero-meta">Healthcare Software · AI Experience</p>
+    <h1>Trust isn’t one feature.<br><em>It’s a lot of small ones.</em></h1>
+    <p class="hero-sub">Billing teams are wary of AI touching their money, and they should be. I designed the small, visible moves that let them see what the AI decided, check it, and stay in control.</p>
+    <div class="hero-chips">
+      <span class="chip">AI Experience</span>
+      <span class="chip">Trust &amp; Transparency</span>
+      <span class="chip">Billing Workflows</span>
+      <span class="chip">Healthcare SaaS · 2025–2026</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-bg" style="background-image: url('ai-trust-hero.jpg'); background-position: center;"></div>
+  </div>
+</section>
+
+<!-- body -->
+<div class="page">
+  <nav id="case-nav">
+    <div class="nav-section">Overview</div>
+    <a href="#problem">The Problem</a>
+    <a href="#unify">One Summary</a>
+    <div class="nav-section">Work</div>
+    <a href="#principles">Principles</a>
+    <a href="#screens">The Screens</a>
+    <div class="nav-section">Results</div>
+    <a href="#status">Status</a>
+  </nav>
+
+  <main class="content">
+
+    <dl class="glance" aria-label="Project summary">
+      <div><dt>My role</dt><dd>Designed the AI collections summary and the AI payment posting experience end to end, and supported the technical product manager’s research.</dd></div>
+      <div><dt>Worked with</dt><dd>A technical product manager and two product teams that had each started designing the same AI summary.</dd></div>
+      <div><dt>Constraints</dt><dd>Billers are accountable for every dollar posted. The AI can’t be a black box, and it can’t leave a mess when it fails.</dd></div>
+      <div><dt>Status</dt><dd>The AI summary is live in collections and comes to Transaction History with its beta. AI payment posting is in design.</dd></div>
+    </dl>
+
+    <!-- 01 PROBLEM -->
+    <section id="problem">
+      <p class="section-label">01 — The Problem</p>
+      <h2>The AI could do the work.<br><em>Would anyone let it?</em></h2>
+
+      <p>Insurance payment posting and collections follow-up are some of the most repetitive work in a medical practice. They’re also some of the most consequential. A wrong posting means a wrong patient balance, a confused patient on the phone, and someone on the billing team cleaning it up.</p>
+
+      <p>So the people doing this work are careful, and they’re skeptical of anything that promises to “just handle it.” An AI that posts payments or summarizes a visit’s history is asking them to hand over something they’re responsible for.</p>
+
+      <div class="callout"><p>The question wasn’t whether the AI could do the work. It was what the people accountable for the work would need to see before they’d let it.</p></div>
+    </section>
+
+    <!-- 02 UNIFY -->
+    <section id="unify">
+      <p class="section-label">02 — One Summary</p>
+      <h2>Two teams were designing<br><em>the same thing.</em></h2>
+
+      <p>Two product teams had each started designing an AI summary for different screens. I pulled them together so the summary looks and behaves the same everywhere: the same placement, labels, states, and feedback.</p>
+
+      <p>That matters more for AI than for most features. If the AI explains itself one way in collections and another way somewhere else, users have to rebuild their trust each time. With one pattern, they learn it once.</p>
+    </section>
+
+    <!-- 03 PRINCIPLES -->
+    <section id="principles">
+      <p class="section-label">03 — Principles</p>
+      <h2>Show the judgment,<br><em>not just the result.</em></h2>
+
+      <div class="streams" style="margin-top:32px;">
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">1</div><h3>People choose how much the AI does</h3></div>
+          <p>The practice decides, per payer, whether the AI only recommends or posts automatically. The on/off switch says in plain words what will happen: “Matching ERAs post automatically.”</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">2</div><h3>Every line shows its status</h3></div>
+          <p>Auto-posted with a confidence score, posting, pending, or an exception with the reason. Nothing happens off-screen.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">3</div><h3>Suggestions look like suggestions</h3></div>
+          <p>When the AI isn’t sure, it says so, “AI suggestion — review before acting,” and shows the candidate visits so a biller can choose.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">4</div><h3>Anything the AI posts can be overridden</h3></div>
+          <p>A biller can override any AI posting, and overrides and rule changes are logged. Control never moves out of reach.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">5</div><h3>Fail without side effects</h3></div>
+          <p>If the AI service doesn’t respond, the work is left exactly as it was: “The claim line is unchanged — you can retry or work it manually.”</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">6</div><h3>Say so when there isn’t enough to go on</h3></div>
+          <p>If there isn’t enough new collections activity, the summary doesn’t stretch to fill the space. It says “Not enough new collections activity to summarize yet.” It’s the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>: an honest gap beats a confident guess.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-header"><div class="stream-num">7</div><h3>Ask for feedback where the output is</h3></div>
+          <p>Every summary is labeled as AI-generated, asks the user to review it, shows when it was generated, and has thumbs up and down right beside it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 SCREENS -->
+    <section id="screens">
+      <p class="section-label">04 — The Screens</p>
+      <h2>Four states,<br><em>all of them honest.</em></h2>
+
+      <p>The collections summary has four states, and each one tells the user exactly where they stand. Summaries only run when someone asks for one.</p>
+
+      <figure class="mock-fig">
+        <div class="sum-states">
+          <div class="sum-card">
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
+            <p class="sum-text">Insurance paid most claims on this visit. One needed a code correction and rebill before payment.</p>
+            <div class="sum-kv"><span>Last action</span><span>Payment follow-up</span><span>Next action</span><span>Confirm payments are fully applied</span></div>
+            <p class="sum-time">Summary generated: Nov 17, 11:38 AM</p>
+            <div class="sum-note"><span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn primary">Generate</span></div>
+            <p class="sum-empty">No summary yet. Generate one from the collections activity on this visit.</p>
+          </div>
+          <div class="sum-card">
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
+            <p class="sum-empty">Not enough new collections activity to summarize yet.</p>
+          </div>
+          <div class="sum-card">
+            <div class="sum-head"><span class="sum-title"><span class="warn" aria-hidden="true">⚠</span>AI collections summary</span><span class="mbtn">Retry</span></div>
+            <div class="sum-err"><strong>AI summary unavailable</strong><span>Try again, or contact support.</span></div>
+          </div>
+        </div>
+        <figcaption class="screenshot-caption">Generated, empty, not enough activity, and unavailable. Redrawn and simplified, with sample data.</figcaption>
+      </figure>
+
+      <h3 class="sub">Payment posting: the AI shows its work</h3>
+      <p>In the payment posting design, every line carries its own AI status. Billers can see at a glance what posted, what’s in progress, and what needs them, along with the reason.</p>
+
+      <figure class="mock-fig">
+        <div class="post-mock">
+          <div class="post-bar"><span><b>89%</b> AI auto-posted</span><span class="toggle" aria-hidden="true"><i></i></span><span class="post-tip">AI auto-posting is on. Matching ERAs post automatically.</span></div>
+          <div class="post-row"><span class="st exc">⚠ Exception<small>Visit ID not matched</small></span><span>Visit 1</span><span>$78.70</span></div>
+          <div class="post-row"><span class="st ok">✓ Auto-posted<small class="conf">✦ 98% confidence</small></span><span>Visit 2</span><span>$119.40</span></div>
+          <div class="post-row"><span class="st">◌ Posting…</span><span>Visit 3</span><span>$32.60</span></div>
+          <div class="post-row"><span class="st dim">• Pending</span><span>Visit 4</span><span>$96.20</span></div>
+        </div>
+        <figcaption class="screenshot-caption">Per-line AI status in the payment posting design. Redrawn and simplified, with sample data.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 05 STATUS -->
+    <section id="status">
+      <p class="section-label">05 — Status</p>
+      <h2>Live in one place.<br><em>Built to learn from it.</em></h2>
+
+      <table class="status-table">
+        <tr><td>Live</td><td>AI summary in collections</td></tr>
+        <tr><td>Next</td><td>The same summary in Transaction History, with its beta</td></tr>
+        <tr><td>In design</td><td>AI payment posting: per-line status, recommend-only or automatic posting, overrides</td></tr>
+      </table>
+
+      <p style="margin-top:28px;">It’s too early for outcomes. The design is built to show whether trust is growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
+    </section>
+
+    <!-- UP NEXT -->
+    <a class="up-next" href="unified-platform.html">
+      <div>
+        <div class="up-next-label">Up next</div>
+        <h3>Unified Practice Platform</h3>
+      </div>
+      <div class="up-next-arrow">→</div>
+    </a>
+
+  </main>
+</div>
+
+
+<script>
+  // Mode toggle — default dark, Light is opt-in (matches index.html)
+  function setMode(light) {
+    document.body.classList.toggle('light-mode', light);
+    document.getElementById('optLight').classList.toggle('active', light);
+    document.getElementById('optMagic').classList.toggle('active', !light);
+    localStorage.setItem('colorMode', light ? 'light' : 'magic');
+  }
+  function toggleMode() {
+    setMode(!document.body.classList.contains('light-mode'));
+  }
+  // Restore saved mode
+  if (localStorage.getItem('colorMode') !== 'magic') setMode(true);
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Scroll entrance animations
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.section-label, h2, .callout, .role-card, .stream, .outcome').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+</script>
+<script>
+  (function(){
+    function syncHeroVideo(){
+      var v=document.getElementById('heroVideo'); if(!v) return;
+      var want=document.body.classList.contains('light-mode')?'hero-bg-light.mp4':'hero-bg.mp4';
+      if(v.getAttribute('data-src')!==want){ v.setAttribute('data-src',want); v.src=want; v.play().catch(function(){}); }
+    }
+    if (typeof setMode==='function'){ var _sm=setMode; window.setMode=setMode=function(l){ _sm(l); syncHeroVideo(); }; }
+    syncHeroVideo();
+  })();
+</script>
+<script>document.querySelectorAll('#mnavPanel a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mnavPanel').classList.remove('open');document.getElementById('mnavBtn').setAttribute('aria-expanded','false')})});</script>
+<script>
+  // Label outbound clicks for GoatCounter event tracking
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var h=a.getAttribute('href'), n=null;
+    if (/Resume.*\.pdf$/i.test(h)) n='resume-download';
+    else if (/linkedin\.com/i.test(h)) n='linkedin-click';
+    else if (/^mailto:/i.test(h)) n='email-click';
+    else if (/behance\.net/i.test(h)) n='behance-click';
+    if (n) { a.setAttribute('data-goatcounter-click', n); a.setAttribute('data-goatcounter-title', (a.textContent||'').trim()); }
+  });
+</script>
+<script data-goatcounter="https://ivieborovatz.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
