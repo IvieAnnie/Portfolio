@@ -624,6 +624,8 @@
   .hero-framework { font-size: 14px; color: var(--text-muted); margin: -20px 0 28px; }
   .hero-framework a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
   .hero-framework a:hover { text-decoration-thickness: 2px; }
+  .inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .inline-link:hover { text-decoration-thickness: 2px; }
 
   /* ── mobile header fix ── */
   .back-nav { gap: 12px; }
@@ -723,8 +725,8 @@
     <a href="#research">Research</a>
     <div class="nav-section">Work</div>
     <a href="#design">Design</a>
-    <div class="nav-section">Results</div>
-    <a href="#measurement">Measurement</a>
+    <div class="nav-section">After Launch</div>
+    <a href="#tracking">Tracking Adoption</a>
   </nav>
 
   <main class="content">
@@ -825,46 +827,21 @@
       </div>
     </section>
 
-    <!-- 04 MEASUREMENT -->
-    <section id="measurement">
-      <p class="section-label">04 — Measurement</p>
-      <h2>Success criteria <em>set before beta</em></h2>
+    <!-- 04 TRACKING -->
+    <section id="tracking">
+      <p class="section-label">04 — Tracking Adoption</p>
+      <h2>How we’ll track adoption <em>after launch</em></h2>
 
-      <p>Before rolling the redesign out broadly, we needed a clear way to know whether it was actually working.</p>
+      <p>Transaction History hasn’t launched yet, so there are no results to show. The plan for tracking it follows what worked on <a class="inline-link" href="patient-demographic-card.html">Patient Demographics</a>: watch who switches back to the legacy screen, read their feedback, and fix the friction behind it.</p>
 
-      <p>I worked with Product to establish the signals we'd use to determine whether the redesign actually improved the workflow.</p>
+      <h3 class="sub">“Back to Legacy” as the main signal</h3>
+      <p>Users will be able to switch back to the legacy screen. How many people use that switch, and how often, shows whether the new card is working for them. On Patient Demographics, falling use of the same kind of switch was the clearest sign that each fix was landing.</p>
 
-      <div class="outcomes-grid" style="margin-top:32px;">
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Back to Legacy</h4>
-          <p>Are users abandoning the new experience?</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Flyout usage</h4>
-          <p>Are users completing more work without navigating away?</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Preferred View saves</h4>
-          <p>Are different roles adapting the card to their workflow?</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Time on task</h4>
-          <p>Is common financial work becoming faster?</p>
-        </div>
-      </div>
+      <h3 class="sub">Listening and responding to feedback</h3>
+      <p>When people switch back, we’ll look at what they were trying to do and what feedback they’ve left, find the friction behind it, and fix it in iterations, the same way we did on Patient Demographics.</p>
 
-      <div class="callout" style="margin-top:48px;">
-        <p>The same early work also surfaced unresolved issues — including payment fragmentation and balance discrepancies between the new and legacy views — that needed attention before broader adoption.</p>
-      </div>
-
-      <div class="screenshot-block">
-        <img src="th-beta-dashboard-web.png" alt="Pendo dashboard: visitors by role, time on card, and feature usage" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Pendo usage across roles gave us the baseline. Success criteria were defined before beta so we could compare behavior against the legacy experience, rather than declare the redesign successful because it shipped.</div>
-      </div>
+      <h3 class="sub">Supporting signals</h3>
+      <p>I also worked with Product to define three supporting signals: whether users complete more work in the flyout without navigating away, whether different roles save Preferred Views, and whether common financial work gets faster.</p>
     </section>
 
     <!-- UP NEXT -->
