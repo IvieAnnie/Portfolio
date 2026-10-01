@@ -857,7 +857,7 @@
           <tr><td>Component library</td><td class="before">Heavily overridden, brand-flavored Material — diverged significantly from standard M3.</td><td class="after">Standard Material 3, with custom components only where genuinely needed and deliberately justified.</td></tr>
           <tr><td>Angular compatibility</td><td class="before">Blocked at Angular 18 due to accumulated customization debt.</td><td class="after">Migration path to current Angular versions unblocked.</td></tr>
           <tr><td>Dark mode</td><td class="before">Custom dark stylesheet required per component.</td><td class="after">Inherited from M3 — one switch, consistent behavior.</td></tr>
-          <tr><td>Accessibility</td><td class="before">Custom implementation required per component.</td><td class="after">WCAG 2 baseline inherited from standard M3, with documented additions where components need more.</td></tr>
+          <tr><td>Accessibility</td><td class="before">Custom implementation required per component.</td><td class="after">Standard M3 supplies accessible semantics and keyboard support; we documented, built, and tested what each component still needed.</td></tr>
           <tr><td>Figma ↔ Eng handoff</td><td class="before">Design files reflected our custom components, not standard M3. The gap between design and production was large.</td><td class="after">Figma modules upgraded to M3. Developers working in the same component language as designers.</td></tr>
           <tr><td>New feature decisions</td><td class="before">“What should this look like?” answered ad hoc.</td><td class="after">Governance layer: color decisions, density choices, outlined vs. filled rationale, and documented accessibility requirements engineering builds in by default.</td></tr>
         </tbody>
@@ -878,7 +878,7 @@
       <div class="screenshot-block" >
         <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
         <img src="unified-platform-m3-modes-nolabel.png" alt="The same Profile Settings screen in dark and light mode" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Dark mode and accessibility come from the standard M3 baseline instead of per-component custom work.</div>
+        <div class="screenshot-caption">Dark mode comes from the standard M3 baseline, and so does the accessibility foundation that our documented additions build on.</div>
       </div>
     </section>
 
@@ -977,8 +977,8 @@
             <tbody>
               <tr><td><span class="sd-sw" style="background:#1c1c2e"></span>Body text</td><td><span class="sd-hex">#1c1c2e</span></td><td class="sd-pass">16.7 : 1</td><td>All text sizes</td></tr>
               <tr><td><span class="sd-sw" style="background:#44474f"></span>Secondary text</td><td><span class="sd-hex">#44474f</span></td><td class="sd-pass">9.3 : 1</td><td>All text sizes</td></tr>
-              <tr><td><span class="sd-sw" style="background:#74777f"></span>Muted text / input border</td><td><span class="sd-hex">#74777f</span></td><td class="sd-pass">4.5 : 1</td><td>Minimum for body text and borders</td></tr>
-              <tr><td><span class="sd-sw" style="background:#aaaaaa"></span>Placeholder</td><td><span class="sd-hex">#aaaaaa</span></td><td class="sd-fail">2.3 : 1 — fails</td><td>Replaced with the muted token</td></tr>
+              <tr><td><span class="sd-sw" style="background:#74777f"></span>Muted text / input border</td><td><span class="sd-hex">#74777f</span></td><td class="sd-fail">4.48 : 1 — just fails</td><td>Large text and 3:1 borders only — not body text</td></tr>
+              <tr><td><span class="sd-sw" style="background:#aaaaaa"></span>Placeholder</td><td><span class="sd-hex">#aaaaaa</span></td><td class="sd-fail">2.3 : 1 — fails</td><td>Replaced with a darker, passing token</td></tr>
               <tr><td><span class="sd-sw" style="background:#d0d3db"></span>Divider</td><td><span class="sd-hex">#d0d3db</span></td><td class="sd-fail">1.5 : 1 — fails</td><td>Decorative only — never for input state</td></tr>
               <tr><td><span class="sd-sw" style="background:#f29900"></span>Warning amber</td><td><span class="sd-hex">#f29900</span></td><td class="sd-fail">2.3 : 1 — fails</td><td>Icon accent only, never the sole text color</td></tr>
             </tbody>
@@ -990,7 +990,7 @@
       <div class="sd-frame">
         <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Interaction guide</span></div>
         <div class="sd-body sd-scroll">
-          <h5>Focus management in a single-page app (WCAG 2.4.2)</h5>
+          <h5>Focus management in a single-page app (WCAG 2.4.3 Focus Order · 4.1.3 Status Messages)</h5>
           <table class="sd-table">
             <thead><tr><th>Trigger</th><th>Move focus to</th><th>Announce</th></tr></thead>
             <tbody>
@@ -1031,8 +1031,8 @@
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Dark mode and accessibility by default</h4>
-          <p>Both are inherited as defaults across the new experience.</p>
+          <h4>Dark mode by default, accessibility by design</h4>
+          <p>Dark mode is inherited from M3; accessibility comes from the M3 foundation plus documented, tested additions.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>

@@ -666,6 +666,9 @@
   body.light-mode .mnav-panel a:hover { color: #00796e; }
   @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
   @media (min-width: 761px) { .mnav-panel { display: none !important; } }
+  .status-table{width:100%;border-collapse:collapse;margin-top:36px;font-size:15px}
+  .status-table td{padding:12px 0;border-top:1px solid var(--border);vertical-align:top;color:var(--text-muted)}
+  .status-table td:first-child{width:160px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;padding-top:15px}
 </style>
 </head>
 <body>
@@ -914,12 +917,12 @@
 
       <p>This project became the first major place to put that direction into practice.</p>
 
-      <p><strong>Moving back to the standard also meant getting its built-in capabilities for free.</strong></p>
+      <p><strong>Moving back to the standard also gave us a stronger foundation to build on.</strong></p>
 
       <div class="streams" style="margin-top:32px;">
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>WCAG 2 accessibility, built in</h3></div>
-          <p>Material 3 components ship with accessible contrast, focus states, and keyboard and screen-reader support, so accessibility isn't something we have to rebuild component by component.</p>
+          <div class="stream-header"><div class="stream-num">1</div><h3>An accessible foundation</h3></div>
+          <p>Material 3 components come with keyboard support, focus states, and screen-reader semantics. We documented what teams still had to add — labels, focus management, contrast checks — and tested against WCAG AA.</p>
         </div>
         <div class="stream">
           <div class="stream-header"><div class="stream-num">2</div><h3>Dark mode, built in</h3></div>
@@ -937,37 +940,41 @@
     <!-- 06 STATUS -->
     <section id="status">
       <p class="section-label">06 — Status</p>
-      <h2>Build the foundation <em>for a better workflow.</em></h2>
+      <h2>The foundation is in place. <em>The platform is being built on it.</em></h2>
 
-      <p>Early validation with existing clients has been promising.</p>
-
-      <p>What exists today is the foundation: workflow-based architecture, the simplified shell, shared navigation patterns, patient context, and a UI system designed to evolve with the platform instead of becoming another layer of technical debt. The shell infrastructure allows the simplified mode to be enabled per client while preserving the existing legacy experience.</p>
+      <p>The unified experience is in active development, built on the architecture and foundation I defined. The base shell and new top navigation are live as the first pieces of the new infrastructure, and we continue to build from there.</p>
 
       <div class="outcomes-grid" style="margin-top:32px;">
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Unified workflow surface</h4>
-          <p>Users can move between clinical, scheduling, and billing tasks without switching between PM and EHR or repeatedly finding the same patient.</p>
+          <h4>Workflow-based architecture</h4>
+          <p>Navigation and scope follow how practices actually work, not the existing PM and EHR menus.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
-          <h4>Built around the workflow</h4>
-          <p>Navigation and scope came from how practices actually work, not from recreating existing PM and EHR menus.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>A UI we can keep upgrading</h4>
-          <p>The new experience starts with standard Material 3 instead of adding another deeply customized layer to maintain.</p>
+          <h4>Patient context that travels</h4>
+          <p>Patient information stays with the user across clinical, scheduling, and billing tasks.</p>
         </div>
         <div class="outcome">
           <div class="outcome-num">→</div>
           <h4>One platform, not another silo</h4>
-          <p>Existing platform capabilities can work inside the new experience instead of being rebuilt specifically for it.</p>
+          <p>The new experience runs on the existing codebase, so every modernized screen benefits both.</p>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">→</div>
+          <h4>A UI that keeps upgrading</h4>
+          <p>Built on standard Material 3 — the same foundation I’m leading across the product.</p>
         </div>
       </div>
 
+      <table class="status-table">
+        <tr><td>Live</td><td>Base shell · top navigation</td></tr>
+        <tr><td>In development</td><td>Unified workflows · patient context · role-based starting points</td></tr>
+        <tr><td>Foundation</td><td>Workflow architecture · interaction patterns · Material 3 system</td></tr>
+      </table>
+
       <div class="callout" style="margin-top:40px;">
-        <p>The real test comes next: whether it actually makes running a small practice easier.</p>
+        <p>The real test is whether it makes running a small practice easier — and the foundation is built to find out.</p>
       </div>
     </section>
 
