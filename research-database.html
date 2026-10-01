@@ -730,6 +730,13 @@
   body.light-mode .mnav-panel a:hover { color: #00796e; }
   @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
   @media (min-width: 761px) { .mnav-panel { display: none !important; } }
+
+  /* at-a-glance case summary */
+  .glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px;margin:0 0 56px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .glance div{min-width:0}
+  .glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:6px}
+  .glance dd{margin:0;font-size:15px;line-height:1.6;color:var(--text-muted)}
+  @media (max-width:700px){.glance{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -800,6 +807,13 @@
 
   <main class="content">
 
+    <dl class="glance" aria-label="Project summary">
+      <div><dt>My role</dt><dd>Designed and built the knowledge architecture: structure, taxonomy, service maps, and RAG optimization.</dd></div>
+      <div><dt>Sources</dt><dd>Discovery sessions across nine client practices, Pendo behavioral data, Aha! customer feedback, and role and workflow documentation.</dd></div>
+      <div><dt>Constraints</dt><dd>Research was stored for the people who created it, spread across the organization, with no way to see what was missing.</dd></div>
+      <div><dt>Shipped</dt><dd>A queryable research library, cross-product service maps, and a register of known gaps.</dd></div>
+    </dl>
+
     <!-- 01 PROBLEM -->
     <section id="problem">
       <p class="section-label">01 — The Problem</p>
@@ -865,6 +879,10 @@
           <p>Knowing what you don’t know is as valuable as knowing what you do. The library calls out undocumented areas explicitly.</p>
         </div>
       </div>
+
+      <h3 class="sub">Where I had to correct the model</h3>
+      <p>Early on, I built a skill to turn client discovery sessions into friction maps. The model kept blurring the columns. It mixed up friction with goals, customer outcomes with business impact, and feature ideas with KPIs, and it was too wordy. It took several rounds of discovery sessions and corrections to lock in a precise definition for each column. Once those were set, it distilled the sessions correctly.</p>
+      <p>I want it to extrapolate only the obvious. If the friction is that a task takes the front desk too long, the impact is time saved and the KPI is reduced time on task. Beyond that, the skill tells it not to infer, because once it fills a cell you can’t tell what it heard from what it guessed. The model doesn’t like leaving a cell empty, but an empty cell is useful: it shows us exactly what we still need to learn.</p>
 
       <h3 class="sub">The patient journey service map</h3>
       <p>The master map follows a patient from acquisition to reporting. Each stage pulls together pain points, KPIs, and desired states from discovery sessions across nine client practices — and the stages without research are called out, not hidden.</p>

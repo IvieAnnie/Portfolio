@@ -720,6 +720,13 @@
   body.light-mode .mnav-panel a:hover { color: #00796e; }
   @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
   @media (min-width: 761px) { .mnav-panel { display: none !important; } }
+
+  /* at-a-glance case summary */
+  .glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px;margin:0 0 56px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .glance div{min-width:0}
+  .glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:6px}
+  .glance dd{margin:0;font-size:15px;line-height:1.6;color:var(--text-muted)}
+  @media (max-width:700px){.glance{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -791,6 +798,13 @@
   </nav>
 
   <main class="content">
+
+    <dl class="glance" aria-label="Project summary">
+      <div><dt>My role</dt><dd>Led the governance layer: usage rules, Figma module upgrades, accessibility specifications for engineering, and the standards documentation.</dd></div>
+      <div><dt>Worked with</dt><dd>Our lead developer, an offshore engineering team, and 12+ development teams adopting the upgrade, including six I partnered with directly.</dd></div>
+      <div><dt>Constraints</dt><dd>Customization had blocked upgrades past Angular 18. Every component had to upgrade one-for-one without breaking the UI.</dd></div>
+      <div><dt>Shipped</dt><dd>Standard Material 3 components, upgraded Figma modules, a living standards site, and a Claude Design library. Rolling out as teams move to Angular 20 and beyond.</dd></div>
+    </dl>
 
     <!-- 01 PROBLEM -->
     <section id="problem">
@@ -1045,6 +1059,12 @@
           <p>Documentation available as a living reference for ongoing component decisions.</p>
         </div>
       </div>
+
+      <h3 class="sub">Adoption</h3>
+      <p>Rollout has dedicated UX and engineering support, and because every team has to move to Angular 20 and beyond, the standards are being adopted as part of that upgrade. Teams across the product have told us the library documentation is what they’d needed for years.</p>
+
+      <h3 class="sub">What I’m improving next</h3>
+      <p>Our AI-assisted upgrade works, but teams found it token-heavy. I’m reviewing the upgrade process to find where the skill can be leaner.</p>
     </section>
 
     <!-- UP NEXT -->
