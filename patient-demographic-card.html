@@ -633,6 +633,37 @@
   .result-callout p { margin: 0 !important; font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; color: var(--text); }
   .result-callout strong { color: var(--accent); font-weight: 400; font-style: italic; }
 
+  /* ── package list + chart ── */
+  .inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .inline-link:hover { text-decoration-thickness: 2px; }
+  .package-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--border); }
+  .package-list li { display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 16px 0; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+  .package-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+  .package-list strong { font-weight: 600; }
+  .bt-chart { margin: 40px 0 0; }
+  .bt-chart-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+  .bt-chart-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+  .bt-svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .bt-grid { stroke: var(--border); stroke-width: 1.5; }
+  .bt-axis { fill: var(--text-dim); font-size: 18px; font-family: inherit; }
+  .bt-area { fill: var(--accent-dim); }
+  .bt-line { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+  .bt-marker { stroke: var(--text-dim); stroke-width: 1.5; stroke-dasharray: 4 5; }
+  .bt-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 3; }
+  .bt-num { fill: var(--text); font-size: 20px; font-weight: 600; font-family: inherit; }
+  .bt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .bt-stat { display: flex; gap: 12px; align-items: flex-start; padding-top: 14px; border-top: 1px solid var(--border); }
+  .bt-stat-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+  .bt-stat-val { font-family: 'DM Serif Display', Georgia, serif; font-size: 30px; line-height: 1.1; color: var(--text); }
+  .bt-stat-label { font-size: 13px; color: var(--text-muted); }
+  .bt-note { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+  @media (max-width: 600px) {
+    .bt-stats { grid-template-columns: 1fr; gap: 0; }
+    .bt-stat { padding: 12px 0; }
+    .bt-axis { font-size: 26px; }
+    .bt-num { font-size: 28px; }
+  }
+
   /* ── mobile header fix ── */
   .back-nav { gap: 12px; }
   .back-nav .breadcrumb { min-width: 0; white-space: nowrap; }
@@ -731,7 +762,9 @@
     <a href="#response">The Response</a>
     <a href="#turning-point">The Turning Point</a>
     <a href="#correction">The Correction</a>
+    <a href="#quiet-problem">The Quiet Problem</a>
     <div class="nav-section">Results</div>
+    <a href="#results">The Results</a>
     <a href="#lesson">The Lesson</a>
   </nav>
 
@@ -823,47 +856,79 @@
       <p class="section-label">05 — The Correction</p>
       <h2>Fix what failed. <em>Keep what worked.</em></h2>
 
-      <p>We didn't throw away the card architecture. We focused the iteration on the problems research had exposed.</p>
+      <p>We didn't throw away the card architecture. We focused the iteration on the problems research had exposed, and I designed every change in the package we shipped in response.</p>
 
-      <div class="outcomes-grid" style="margin-top:32px;">
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Two-column layout</h4>
-          <p>More patient information visible without returning to the dense legacy form.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Required fields only</h4>
-          <p>High-volume users can focus data entry on the fields that matter.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Keyboard flow</h4>
-          <p>Expanded sections restore tab-through entry without requiring constant mouse interaction.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Stronger hierarchy</h4>
-          <p>Labels, values, and related information are easier to distinguish.</p>
-        </div>
-      </div>
+      <ul class="package-list">
+        <li><span><strong>Two-column layout:</strong> density without the legacy form.</span></li>
+        <li><span><strong>Original name convention restored.</strong></span></li>
+        <li><span><strong>Appointment mini card:</strong> the next visit, visible without leaving the patient.</span></li>
+        <li><span><strong>Chart number in patient search:</strong> faster lookup the way staff already identify patients.</span></li>
+        <li><span><strong>Sticky settings:</strong> cards remember how each user left them.</span></li>
+        <li><span><strong>Type-ahead instead of pop-ups:</strong> no more second step for every selection.</span></li>
+      </ul>
 
-      <p style="margin-top:40px;">Those changes, along with several smaller workflow corrections, were incorporated into the final design.</p>
+      <p style="margin-top:40px;">The overall card direction stayed in place, but every section got its own detailed workflow design. We improved how each component worked. Where nearly every click used to open a second-step pop-up, fields are now type-ahead dropdowns that let users keep typing without breaking their flow. Each card section is designed around the task it supports, not a generic form.</p>
+    </section>
 
-      <div class="result-callout">
-        <div class="result-label">The result</div>
-        <p>Support calls and customer ideas about Patient Demographics <strong>dropped dramatically</strong> after the iteration shipped.</p>
+    <!-- 06 QUIET PROBLEM -->
+    <section id="quiet-problem">
+      <p class="section-label">06 — The Quiet Problem</p>
+      <h2>The fix that mattered most <em>wasn't the one people shouted about.</em></h2>
+
+      <p>The loudest feedback was about density and layout, so that's where I focused research. But another issue kept surfacing in client ideas: how names were displayed.</p>
+
+      <p>The new card launched with a leadership decision to show names in title case and First Last order, which looks cleaner and more readable. The catch was in the data underneath. The legacy system had captured names in ALL CAPS for years, and a database of names can't be reliably converted to title case. Names like McArthur and MacDonald break. Clients ended up with a mix of title-case and all-caps names on the same screens, in a different order from the rest of the product.</p>
+
+      <p>As the feedback came in, I identified the pattern and brought it to our product owner, and we presented the evidence to the executive team: strong client voting and a clear workflow cost. We recommended returning to the original name convention. Leadership agreed, and the fix shipped in September 2025, restoring Last, First order and ALL CAPS–compatible names.</p>
+
+      <div class="quote">
+        <p>A better-looking format isn't better if the data can't support it.</p>
       </div>
     </section>
 
-    <!-- 06 LESSON -->
+    <!-- 07 RESULTS -->
+    <section id="results">
+      <p class="section-label">07 — The Results</p>
+      <h2>Each change removed <em>a reason to go back.</em></h2>
+
+      <p>Layout and usability complaints, the loudest feedback at launch, fell to near zero. No ideas about the card have come in since March 2026. Support cases spiked twice as clients moved off the legacy screen, then settled below where they were before the transition.</p>
+
+      <p>Usage data showed the same thing. Comparing the same month a year apart, each user made about 61% fewer dead clicks and about 18% fewer clicks overall, and spent about three fewer minutes a day on patient information. That's an estimated 12+ hours a year back for each person. Finding a patient now takes about half the clicks it used to.</p>
+
+      <div class="bt-chart" role="figure" aria-labelledby="btTitle">
+        <div class="bt-chart-title" id="btTitle">"Back to Classic" use, as % of peak</div>
+        <div class="bt-chart-sub">Weekly users switching back to the legacy screen, from peak through the legacy sunset.</div>
+        <svg class="bt-svg" viewBox="0 0 800 300" role="img" aria-label="Back to Classic use fell from its peak to 89% at the name format fix, 53% at the two-column layout, 13% at the legacy sunset, and then to zero.">
+          <line x1="56" x2="784" y1="276.0" y2="276.0" class="bt-grid"/><text x="46" y="282.0" class="bt-axis" text-anchor="end">0%</text><line x1="56" x2="784" y1="146.0" y2="146.0" class="bt-grid"/><text x="46" y="152.0" class="bt-axis" text-anchor="end">50%</text><line x1="56" x2="784" y1="16.0" y2="16.0" class="bt-grid"/><text x="46" y="22.0" class="bt-axis" text-anchor="end">100%</text>
+          <path d="M56.0,276.0 L56.0,16.0 L75.2,21.7 L94.3,20.2 L113.5,20.3 L132.6,36.8 L151.8,28.0 L170.9,27.8 L190.1,27.0 L209.3,30.9 L228.4,32.9 L247.6,36.4 L266.7,37.2 L285.9,39.9 L305.1,51.8 L324.2,40.9 L343.4,43.4 L362.5,42.6 L381.7,48.2 L400.8,47.1 L420.0,58.9 L439.2,80.7 L458.3,94.8 L477.5,104.9 L496.6,113.3 L515.8,119.4 L534.9,145.9 L554.1,129.5 L573.3,131.1 L592.4,132.9 L611.6,161.1 L630.7,157.7 L649.9,137.9 L669.1,142.7 L688.2,143.1 L707.4,150.3 L726.5,163.5 L745.7,193.3 L764.8,241.2 L784.0,276.0 L784.0,276.0 Z" class="bt-area"/>
+          <polyline points="56.0,16.0 75.2,21.7 94.3,20.2 113.5,20.3 132.6,36.8 151.8,28.0 170.9,27.8 190.1,27.0 209.3,30.9 228.4,32.9 247.6,36.4 266.7,37.2 285.9,39.9 305.1,51.8 324.2,40.9 343.4,43.4 362.5,42.6 381.7,48.2 400.8,47.1 420.0,58.9 439.2,80.7 458.3,94.8 477.5,104.9 496.6,113.3 515.8,119.4 534.9,145.9 554.1,129.5 573.3,131.1 592.4,132.9 611.6,161.1 630.7,157.7 649.9,137.9 669.1,142.7 688.2,143.1 707.4,150.3 726.5,163.5 745.7,193.3 764.8,241.2 784.0,276.0" class="bt-line"/>
+          <line x1="343.4" x2="343.4" y1="16" y2="276.0" class="bt-marker"/><circle cx="343.4" cy="43.4" r="6" class="bt-dot"/><text x="343.4" y="29.4" class="bt-num" text-anchor="middle">1</text><line x1="649.9" x2="649.9" y1="16" y2="276.0" class="bt-marker"/><circle cx="649.9" cy="137.9" r="6" class="bt-dot"/><text x="649.9" y="123.9" class="bt-num" text-anchor="middle">2</text><line x1="764.8" x2="764.8" y1="16" y2="276.0" class="bt-marker"/><circle cx="764.8" cy="241.2" r="6" class="bt-dot"/><text x="764.8" y="227.2" class="bt-num" text-anchor="middle">3</text>
+        </svg>
+        <div class="bt-stats"><div class="bt-stat"><div class="bt-stat-num">1</div><div><div class="bt-stat-val">89%</div><div class="bt-stat-label">Name Format Fix</div></div></div><div class="bt-stat"><div class="bt-stat-num">2</div><div><div class="bt-stat-val">53%</div><div class="bt-stat-label">Two-Column Layout</div></div></div><div class="bt-stat"><div class="bt-stat-num">3</div><div><div class="bt-stat-val">13%</div><div class="bt-stat-label">Legacy Sunset</div></div></div></div>
+        <div class="bt-note">Weekly unique users of the "Back to Classic" switch, shown as a percentage of the peak week.</div>
+      </div>
+
+      <p style="margin-top:32px;">These results reflect the package together with retiring the legacy screen, so no single change gets the credit. The data shows them working together.</p>
+
+      <div class="callout">
+        <p><em>Listening told us what frustrated people. Measuring told us what was making them leave.</em></p>
+      </div>
+    </section>
+
+    <!-- 08 LESSON -->
     <section id="lesson">
-      <p class="section-label">06 — The Lesson</p>
+      <p class="section-label">08 — The Lesson</p>
       <h2>Sometimes the redesign <em>needs a redesign.</em></h2>
 
       <p>The strongest lesson wasn't that the original direction was wrong. It was that our beta hadn't represented the people with the most demanding workflows.</p>
 
       <p>Once those users were in the room, the problems became much easier to understand — and the solution didn't require throwing away the work we'd already done.</p>
+
+      <div class="callout">
+        <p><strong>Good research doesn't just find problems. It gives you the evidence to change a decision.</strong></p>
+      </div>
+
+      <p>Building the Patient Card meant creating a new card framework and workflow pattern, and the platform continues to build on it. The card framework became the foundation for what came next, <a href="transaction-history-card.html" class="inline-link">including Patient Transaction History</a>.</p>
 
       <div class="quote">
         <p>Good UX isn't getting it right the first time. It's recognizing when you didn't — and knowing what to do next.</p>
