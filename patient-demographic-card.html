@@ -737,7 +737,7 @@
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
     <p class="hero-meta">Healthcare Software · Practice Management</p>
-    <h1>We shipped it.<br>Users hated it.<br><em>Then we listened.</em></h1>
+    <h1>Fixing a Patient Demographics redesign <em>that billing users rejected</em></h1>
     <p class="hero-sub">How customer feedback changed the direction of a major Patient Demographics redesign — without starting over.</p>
     <div class="hero-chips">
       <span class="chip">UX Architect</span>
@@ -791,7 +791,7 @@
     <!-- 02 THE PROBLEM -->
     <section id="missed">
       <p class="section-label">02 — The Problem</p>
-      <h2>The people who used it most <em>were the ones it failed.</em></h2>
+      <h2>The redesign didn't work <em>for billing and coding users</em></h2>
 
       <p>Early beta sessions were encouraging. But the cohort skewed toward smaller practices and intake-focused workflows. We hadn't adequately tested the design with the billing and coding users who spend the most time in Patient Demographics.</p>
 
@@ -838,15 +838,11 @@
     <!-- 03 RESPONSE -->
     <section id="response">
       <p class="section-label">03 — The Response</p>
-      <h2>Go back to <em>the people we missed.</em></h2>
+      <h2>Research with <em>billing, coding, and operations users</em></h2>
 
       <p>Rather than defend the redesign or simply revert to legacy, I went directly to the users whose workflows hadn't been adequately represented in beta.</p>
 
       <p>I conducted nine structured sessions with billing, coding, and operations users, working through their actual workflows and testing possible changes as we went.</p>
-
-      <div class="callout">
-        <p><strong>The goal wasn't to defend the redesign. It was to understand why it wasn't working.</strong></p>
-      </div>
 
       <div class="screenshot-block">
         <a href="demographics-research-web.png" target="_blank" title="Open full size"><img src="demographics-research-web.png" alt="Remote session with a billing user on the demographics card alongside the feedback database" style="width:100%;display:block;" /></a>
@@ -857,7 +853,7 @@
     <!-- 04 TURNING POINT -->
     <section id="turning-point">
       <p class="section-label">04 — The Turning Point</p>
-      <h2>The answer showed up <em>in the session.</em></h2>
+      <h2>Finding the layout fix <em>during a research session</em></h2>
 
       <p>During one session, I started manipulating the cards with the user to understand what was making the information difficult to read.</p>
 
@@ -878,7 +874,7 @@
     <!-- 05 CORRECTION -->
     <section id="correction">
       <p class="section-label">05 — The Correction</p>
-      <h2>Fix what failed. <em>Keep what worked.</em></h2>
+      <h2>The changes we shipped <em>in response</em></h2>
 
       <p>We didn't throw away the card architecture. We focused the iteration on the problems research had exposed, and I designed every change in the package we shipped in response.</p>
 
@@ -897,23 +893,19 @@
     <!-- 06 QUIET PROBLEM -->
     <section id="quiet-problem">
       <p class="section-label">06 — The Quiet Problem</p>
-      <h2>The fix that mattered most <em>wasn't the one people shouted about.</em></h2>
+      <h2>Restoring the original <em>name format</em></h2>
 
       <p>The loudest feedback was about density and layout, so that's where I focused research. But another issue kept surfacing in client ideas: how names were displayed.</p>
 
       <p>The new card launched with a leadership decision to show names in title case and First Last order, which looks cleaner and more readable. The catch was in the data underneath. The legacy system had captured names in ALL CAPS for years, and a database of names can't be reliably converted to title case. Names like McArthur and MacDonald break. Clients ended up with a mix of title-case and all-caps names on the same screens, in a different order from the rest of the product.</p>
 
       <p>As the feedback came in, I identified the pattern and brought it to our product owner, and we presented the evidence to the executive team: strong client voting and a clear workflow cost. We recommended returning to the original name convention. Leadership agreed, and the fix shipped in September 2025, restoring Last, First order and ALL CAPS–compatible names.</p>
-
-      <div class="quote">
-        <p>A better-looking format isn't better if the data can't support it.</p>
-      </div>
     </section>
 
     <!-- 07 RESULTS -->
     <section id="results">
       <p class="section-label">07 — The Results</p>
-      <h2>Each change removed <em>a reason to go back.</em></h2>
+      <h2>What changed <em>after the fixes shipped</em></h2>
 
       <p>Layout and usability complaints, the loudest feedback at launch, fell to near zero. No ideas about the card have come in since March 2026. Support cases spiked twice as clients moved off the legacy screen, then settled below where they were before the transition.</p>
 
@@ -933,26 +925,18 @@
       </div>
 
       <p style="margin-top:32px;">These results reflect the package together with retiring the legacy screen, so no single change gets the credit. The data shows them working together.</p>
-
-      <div class="callout">
-        <p><em>Listening told us what frustrated people. Measuring told us what was making them leave.</em></p>
-      </div>
     </section>
 
     <!-- 08 LESSON -->
     <section id="lesson">
       <p class="section-label">08 — The Lesson</p>
-      <h2>Sometimes the redesign <em>needs a redesign.</em></h2>
+      <h2>What I learned <em>from this project</em></h2>
 
-      <p>The strongest lesson wasn't that the original direction was wrong. It was that our beta hadn't represented the people with the most demanding workflows.</p>
+      <p>The main lesson was that our beta hadn't included the people with the most demanding workflows.</p>
 
-      <p>Once those users were in the room, the problems became much easier to understand — and the solution didn't require throwing away the work we'd already done. That's what good research is for: not just finding problems, but giving you the evidence to change a decision.</p>
+      <p>Once those users were in the room, the problems became much easier to understand — and the solution didn't require throwing away the work we'd already done. The research also gave us the evidence to change a leadership decision.</p>
 
       <p>Building the Patient Card meant creating a new card framework and workflow pattern, and the platform continues to build on it. The card framework became the foundation for what came next, <a href="transaction-history-card.html" class="inline-link">including Patient Transaction History</a>.</p>
-
-      <div class="quote">
-        <p>Good UX isn't getting it right the first time. It's recognizing when you didn't — and knowing what to do next.</p>
-      </div>
     </section>
 
     <!-- UP NEXT -->
