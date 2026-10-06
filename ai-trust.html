@@ -869,7 +869,7 @@
 
       <p>Two AI features were coming to billing work:</p>
       <p><strong>AI collections summary.</strong> On request, it summarizes the collections activity on a visit, with the last action taken and the next one to take.</p>
-      <p><strong>AI payment posting.</strong> It reads insurance payment files (ERAs) and either recommends how to post each line or posts it automatically.</p>
+      <p><strong>AI payment posting.</strong> It reads insurance payment files (ERAs) and matches each payment to its claim. We researched the most common reasons payments fail to post automatically and how billers fix each one by hand, and the agent is built to handle those first: reversals, small mismatches between what was billed and what was paid, and secondary payments. Each practice chooses whether it only recommends how to post or posts automatically. Anything it can’t resolve goes to a queue with its reasoning, and billers can override anything it posted.</p>
     </section>
 
     <!-- 03 SOLUTION -->
@@ -966,7 +966,9 @@
 
       <p>Feedback is built in where the AI’s output appears. Every summary is labeled as AI-generated, asks the user to review it, and has thumbs up and down right beside it. I also supported the technical product manager’s research.</p>
 
-      <p>It’s too early for outcomes. Three signals will show whether trust is growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
+      <p>The product team’s early assessment of the collections summary: a 75% reduction in manual note review time per claim, and more consistent collections follow-ups that no longer depend on which biller or staff member works the account.</p>
+
+      <p>Three signals will show whether trust keeps growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
 
       <h3 class="sub">Where each feature stands</h3>
       <table class="status-table">
@@ -977,6 +979,7 @@
 
       <h3 class="sub">What I learned: design for both experiences</h3>
       <p>These AI features are additions to the platform. When a practice doesn’t have them turned on, they simply don’t appear. So every new screen has to work both with the AI and without it, and that will stay true as trust in AI builds.</p>
+      <p>It also showed me that bringing in AI doesn’t have to wait for a full redesign. Adding it to the screens people already use can quietly make their jobs easier.</p>
     </section>
 
     <!-- UP NEXT -->
