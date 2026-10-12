@@ -779,6 +779,16 @@
   .pin{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#00796e;color:#fff;font-size:11px;font-weight:600;font-style:normal;margin-right:6px;flex-shrink:0;vertical-align:middle}
   .pin.in{margin:0 0 0 6px}
   .sum-note .thumbs{display:inline-flex;align-items:center}
+  /* feedback loop */
+  .loop{list-style:none;counter-reset:lp;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:relative}
+  .loop li{counter-increment:lp;padding:18px;border-radius:16px;border:1px solid var(--border);background:var(--surface2);display:flex;flex-direction:column;gap:6px;position:relative}
+  .loop li::before{content:counter(lp);font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:var(--accent);line-height:1}
+  .loop li:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:18px;color:var(--accent);font-size:14px;background:var(--bg);line-height:1;padding:2px 0}
+  .loop li:last-child::after{content:'↺ back to step 1';font-size:12px;color:var(--accent);margin-top:4px}
+  .loop b{font-size:15px;color:var(--text)}
+  .loop span{font-size:14px;line-height:1.55;color:var(--text-muted)}
+  @media (max-width:800px){.loop{grid-template-columns:1fr 1fr}.loop li::after{display:none}.loop li:last-child::after{display:block}}
+  @media (max-width:520px){.loop{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -821,7 +831,7 @@
   <div class="hero-text">
     <p class="hero-meta">Healthcare Software · AI Experience</p>
     <h1>One pattern for AI <em>across the product</em></h1>
-    <p class="hero-sub">Six AI features, built by different teams at the same time. I kept them on one pattern: at every step, the AI either tells people what it did or leaves a record they can check.</p>
+    <p class="hero-sub">Seven AI features, built by different teams at the same time. I kept them on one pattern: at every step, the AI either tells people what it did or leaves a record they can check.</p>
     <div class="hero-chips">
       <span class="chip">AI Experience</span>
       <span class="chip">Design Governance</span>
@@ -850,7 +860,7 @@
   <main class="content">
 
     <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Designed the practice management AI features: the collections summary, payment posting, and billing agents. Mentored the designer on my team who built the clinical features, and kept all six on one pattern.</dd></div>
+      <div><dt>My role</dt><dd>Designed the practice management AI features: the collections summary, payment posting, and billing agents. Mentored the designer on my team who built the clinical features, supervised the AI assistant, and kept all seven on one pattern.</dd></div>
       <div><dt>Worked with</dt><dd>A technical product manager, a designer on my team I mentored, and the billing and clinical product teams.</dd></div>
       <div><dt>Constraints</dt><dd>Billers are accountable for every dollar, and clinicians for patient care. The AI can’t be a black box, and it can’t leave a mess when it fails.</dd></div>
       <div><dt>Status</dt><dd>The AI summary is live in collections and comes to Transaction History with its beta. AI payment posting is in design.</dd></div>
@@ -869,13 +879,14 @@
     <!-- 02 FEATURES -->
     <section id="features">
       <p class="section-label">02 — The AI Features</p>
-      <h2>Six features, <em>one pattern</em></h2>
+      <h2>Seven features, <em>one pattern</em></h2>
 
       <table class="status-table">
         <tr><td>Collections summary</td><td>Summarizes a visit’s collections activity, with the last and next action. I designed it. Live.</td></tr>
         <tr><td>Transaction History</td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>. Coming with its beta.</td></tr>
         <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit. Designed by a designer on my team I mentored.</td></tr>
-        <tr><td>Clinical assistant</td><td>Suggests chart updates from the visit transcript. The provider accepts or rejects each one. Designed by the same designer.</td></tr>
+        <tr><td>Clinical assistant</td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders. The provider accepts or rejects each one. Designed by the same designer. Live for in-office and telehealth visits.</td></tr>
+        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer. I supervised its design.</td></tr>
         <tr><td>Payment posting</td><td>Matches insurance payments to claims, recommending or posting automatically. I designed it. In design.</td></tr>
         <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines. I designed them.</td></tr>
       </table>
@@ -909,6 +920,14 @@
       </figure>
 
       <p>Every summary has the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down, <span class="pin">4</span>an update button, so it runs only when asked, and <span class="pin">5</span>the time it was generated. Because feedback works the same everywhere, practices that subscribe can tell us what’s working wherever they see AI.</p>
+
+      <h3 class="sub">The feedback loop</h3>
+      <ol class="loop">
+        <li><b>The AI shows its work</b><span>An AI label, its sources or reasoning, and its status.</span></li>
+        <li><b>People check it</b><span>Review, accept or reject, or override, without leaving the task.</span></li>
+        <li><b>They respond in one click</b><span>Thumbs up and down on every summary and answer. Accepts, rejects, and overrides are logged.</span></li>
+        <li><b>It comes back to us</b><span>The product team reads one set of signals across all seven features and decides what to fix.</span></li>
+      </ol>
     </section>
 
     <!-- 04 RULES -->
@@ -927,7 +946,7 @@
         </div>
         <div class="stream">
           <div class="stream-header"><div class="stream-num">3</div><h3>Every step can be checked</h3></div>
-          <p>The AI either shows what it did, like the status on every payment line, or leaves a record people can check later, like each agent’s run history and the log of overrides.</p>
+          <p>The AI either shows what it did, like the status on every payment line, or leaves a record people can check later, like each agent’s run history and the log of overrides. Assistant answers link to their sources.</p>
         </div>
         <div class="stream">
           <div class="stream-header"><div class="stream-num">4</div><h3>No guessing, no side effects</h3></div>
