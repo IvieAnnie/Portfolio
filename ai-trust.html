@@ -797,6 +797,11 @@
   .st-chip{display:table;margin:6px 0 0;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 9px;border-radius:999px;border:1px solid var(--border);color:var(--text-muted);vertical-align:2px;white-space:nowrap}
   .st-chip.live{border-color:var(--accent);color:var(--accent)}
   @media (max-width:700px){.feat-table thead{display:none}.feat-table,.feat-table tbody,.feat-table tr,.feat-table td{display:block;width:auto!important}.feat-table tr{padding:12px 0;border-bottom:1px solid var(--border)}.feat-table td{border:0;padding:2px 0}.feat-table td:nth-child(3)::before{content:'My part: ';color:var(--text-dim)}}
+  /* summary cards stack before they get cramped */
+  .sum-states{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))!important}
+  .sum-head{flex-wrap:wrap}
+  .sum-note > span:first-child{flex:1;min-width:0}
+  @media (max-width:420px){.sum-states{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
