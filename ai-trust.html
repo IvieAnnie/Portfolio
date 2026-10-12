@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Building Trust in AI — Ivie Borovatz</title>
+<title>Designing AI — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Keeping AI features consistent across a healthcare product, so users learn one pattern for reviewing and rating AI output.">
-  <meta property="og:title" content="Building Trust in AI — Ivie Borovatz">
-  <meta property="og:description" content="Keeping AI features consistent across a healthcare product, so users learn one pattern for reviewing and rating AI output.">
+  <meta name="description" content="Shared interaction patterns across seven AI features in clinical, billing, and collections workflows.">
+  <meta property="og:title" content="Designing AI — Ivie Borovatz">
+  <meta property="og:description" content="Shared interaction patterns across seven AI features in clinical, billing, and collections workflows.">
   <meta property="og:image" content="https://www.ivieborovatz.com/ai-trust-hero.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -815,6 +815,10 @@
   .fb-chip{border:1px solid #74777f;border-radius:999px;padding:6px 14px;font-size:13px;color:#1c1c2e}
   .fb-actions{display:flex;justify-content:flex-end;gap:24px;font-weight:600;font-size:14px;color:#2f5fa0}
   .fb-actions .send{color:#44474f}
+  #intro{margin-top:0!important;padding-top:0!important}
+  .feat-table + p{margin-top:24px}
+  .feat-table th:nth-child(3){white-space:nowrap}
+  .feat-table td:nth-child(3) .st-chip{margin-top:6px}
 </style>
 </head>
 <body>
@@ -827,7 +831,7 @@
     <span class="bc-sep">/</span>
     <a href="index.html#work" class="bc-link">Case Studies</a>
     <span class="bc-sep">/</span>
-    <span class="current">Building Trust in AI</span>
+    <span class="current">Designing AI</span>
   </div>
   <div class="back-nav-right">
     <a href="index.html#work" class="back-nav-link">Work</a>
@@ -855,15 +859,9 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · AI Experience</p>
-    <h1>One pattern for AI <em>across the product</em></h1>
-    <p class="hero-sub">Seven AI features, built by different teams at the same time. I kept them on one pattern: at every step, the AI either tells people what it did or leaves a record they can check.</p>
-    <div class="hero-chips">
-      <span class="chip">AI Experience</span>
-      <span class="chip">Design Governance</span>
-      <span class="chip">Trust &amp; Transparency</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
-    </div>
+    <p class="hero-meta">AI Experience · UX Architecture · Design Governance · 2025–2026</p>
+    <h1>Designing AI for AdvancedMD</h1>
+    <p class="hero-sub">AdvancedMD had seven AI features in development across clinical, billing, and collections workflows. Different teams were solving different problems, but many of the interaction decisions were the same.</p>
   </div>
   <div class="hero-visual">
     <div class="hero-visual-bg" style="background-image: url('ai-trust-hero.jpg'); background-position: center;"></div>
@@ -873,81 +871,99 @@
 <!-- body -->
 <div class="page">
   <nav id="case-nav">
-    <div class="nav-section">Overview</div>
-    <a href="#problem">The Problem</a>
-    <a href="#features">The AI Features</a>
-    <div class="nav-section">Work</div>
-    <a href="#pattern">One Pattern</a>
-    <a href="#principles">The Rules</a>
-    <div class="nav-section">Results</div>
-    <a href="#feedback">Results</a>
+    <a href="#context">A little context</a>
+    <a href="#projects">The projects</a>
+    <a href="#summaries">Starting with summaries</a>
+    <a href="#doing">When AI does the work</a>
+    <a href="#feedback">Making feedback useful</a>
+    <a href="#status">Where things stand</a>
+    <a href="#looking-back">Looking back</a>
   </nav>
 
   <main class="content">
 
-    <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Designed the practice management AI features: the collections summary, payment posting, and billing agents. Mentored the designer on my team who built the clinical features, supervised the AI assistant, and kept all seven on one pattern.</dd></div>
-      <div><dt>Worked with</dt><dd>A technical product manager, a designer on my team I mentored, and the billing and clinical product teams.</dd></div>
-      <div><dt>Constraints</dt><dd>Billers are accountable for every dollar, and clinicians for patient care. The AI can’t be a black box, and it can’t leave a mess when it fails.</dd></div>
-      <div><dt>Status</dt><dd>The AI summary is live in collections and comes to Transaction History with its beta. AI payment posting is in design.</dd></div>
-    </dl>
-
-    <!-- 01 PROBLEM -->
-    <section id="problem">
-      <p class="section-label">01 — The Problem</p>
-      <h2>AI was arriving <em>from several teams at once</em></h2>
-
-      <p>Collections, clinical, and billing teams were all adding AI at the same time. Two teams had already started designing their own AI summary. Billers and clinicians are careful for good reason: a wrong posting means a wrong patient balance, and a wrong chart suggestion means a wrong record.</p>
-
-      <div class="callout"><p>If every AI feature explained itself differently, users would have to rebuild their trust on every screen.</p></div>
+    <section id="intro">
+      <p>Two teams had already started designing their own AI summaries. It was a small example of a bigger problem: without shared patterns, every feature would introduce another way for users to understand, review, and interact with AI.</p>
+      <p>I worked across the UX team to establish common interaction patterns while designing the practice management features myself.</p>
     </section>
 
-    <!-- 02 FEATURES -->
-    <section id="features">
-      <p class="section-label">02 — The AI Features</p>
-      <h2>Seven features, <em>one pattern</em></h2>
+    <section id="context">
+      <h2>A little context</h2>
+      <p>Healthcare software isn’t particularly forgiving of mistakes. Billers need to account for every dollar, and clinicians need to know exactly what ends up in a patient’s chart.</p>
+      <p>Our AI work ranged from relatively simple summaries to agents capable of taking action on financial records. Some features were there to help people understand information faster. Others could actually do the work.</p>
+      <p>That meant we couldn’t treat every AI interaction the same way. A summary needs to be easy to review. A suggested chart update needs an explicit decision. An automated payment needs a status, a record of what happened, and a way to handle exceptions.</p>
+      <p>The challenge was to make those behaviors familiar across the product without forcing every feature into an identical interface.</p>
+    </section>
 
+    <section id="projects">
+      <h2>The projects</h2>
+      <p>My work covered seven features at different stages of development.</p>
       <table class="feat-table">
-        <thead><tr><th>Feature</th><th>What it does</th><th>My part</th></tr></thead>
-        <tr><td>Collections summary <span class="st-chip live">Live</span></td><td>Summarizes a visit’s collections activity, with the last and next action.</td><td>Designed</td></tr>
-        <tr><td>Transaction History <span class="st-chip">Beta</span></td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>.</td><td>Designed</td></tr>
-        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit.</td><td>Mentored</td></tr>
-        <tr><td>Clinical assistant <span class="st-chip live">Live</span></td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders.</td><td>Mentored</td></tr>
-        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer.</td><td>Supervised</td></tr>
-        <tr><td>Payment posting <span class="st-chip">In design</span></td><td>Matches insurance payments to claims, recommending or posting automatically.</td><td>Designed</td></tr>
-        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines.</td><td>Designed</td></tr>
+        <thead><tr><th>Feature</th><th>What it does</th><th>My involvement</th></tr></thead>
+        <tr><td>Collections summary</td><td>Summarizes collections activity, including previous and next actions</td><td>Designed<span class="st-chip live">Live</span></td></tr>
+        <tr><td>Transaction History summary</td><td>Reuses the summary pattern in the redesigned transaction experience</td><td>Designed<span class="st-chip">Beta</span></td></tr>
+        <tr><td>Pre-visit summary</td><td>Prepares clinicians with relevant information before an appointment</td><td>Mentored</td></tr>
+        <tr><td>Clinical assistant</td><td>Suggests chart updates from visit transcripts</td><td>Mentored<span class="st-chip live">Live</span></td></tr>
+        <tr><td>AI assistant</td><td>Answers practice management questions using cited Knowledge Base articles</td><td>Supervised</td></tr>
+        <tr><td>Payment posting</td><td>Matches insurance payments to claims and supports recommended or automatic posting</td><td>Designed<span class="st-chip">In design</span></td></tr>
+        <tr><td>Billing agents</td><td>Run scheduled checks for denials, underpayments, and filing deadlines</td><td>Designed</td></tr>
       </table>
+      <p>I designed the collections, payment-posting, and billing-agent experiences. I also mentored the designer responsible for the clinical features and supervised the AI assistant work.</p>
+      <p>Working across those projects gave me a view of decisions that individual feature teams wouldn’t necessarily encounter.</p>
     </section>
 
-    <!-- 03 PATTERN -->
-    <section id="pattern">
-      <p class="section-label">03 — One Pattern</p>
-      <h2>How every AI feature <em>looks and behaves</em></h2>
-
-      <p>I worked closely with every designer on the UX team to keep one consistent governance for how AI features were delivered.</p>
-
+    <section id="summaries">
+      <h2>Starting with summaries</h2>
+      <p>The collections and pre-visit summaries were an obvious place to establish a shared pattern.</p>
+      <p>They serve different users and contain completely different information, but the basic interaction is the same. Someone needs a useful summary, needs to know when it was generated, and needs a way to tell us when something isn’t right.</p>
+      <p>We standardized the AI identification, review guidance, update controls, timestamps, and feedback behavior. A negative rating opens a short set of reasons, giving the product team something more useful than a thumbs-down count.</p>
       <figure class="mock-fig">
         <div class="sum-states">
           <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="pin">1</span><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update<span class="pin in">4</span></span></div>
-            <div class="sum-note"><span><span class="pin">2</span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><span class="pin">3</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
+            <div class="sum-note"><span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
             <p class="sum-text" style="margin-top:12px">Insurance paid most claims on this visit. One needed a code correction and rebill before payment.</p>
             <div class="sum-kv"><span>Last action</span><span>Payment follow-up</span><span>Next action</span><span>Confirm payments are fully applied</span></div>
-            <p class="sum-time"><span class="pin">5</span>Summary generated: Nov 17, 11:38 AM</p>
+            <p class="sum-time">Summary generated: Nov 17, 11:38 AM</p>
           </div>
           <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="pin">1</span><span class="spark" aria-hidden="true">✦</span>AI pre-visit summary</span><span class="mbtn">Update<span class="pin in">4</span></span></div>
-            <div class="sum-note"><span><span class="pin">2</span>Generated with AI assistance. Please review for clinical accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><span class="pin">3</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI pre-visit summary</span><span class="mbtn">Update</span></div>
+            <div class="sum-note"><span>Generated with AI assistance. Please review for clinical accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
             <p class="sum-text" style="margin-top:12px"><strong>Chief complaint:</strong> Recurring headaches, follow-up visit.</p>
             <div class="sum-kv"><span>Last visit</span><span>Nov 4</span><span>Review</span><span>Vitals, current medications, recent results</span></div>
-            <p class="sum-time"><span class="pin">5</span>Summary generated: Nov 17, 8:02 AM</p>
+            <p class="sum-time">Summary generated: Nov 17, 8:02 AM</p>
           </div>
         </div>
-        <figcaption class="screenshot-caption">The collections and pre-visit summaries share the same parts. Redrawn and simplified, with sample data.</figcaption>
+        <figcaption class="screenshot-caption">Two different workflows using the same summary controls. Redrawn with sample data.</figcaption>
       </figure>
+      <p>We also made updates deliberate rather than automatic. The user can see when the information was generated and request a new summary when needed.</p>
+      <p>It’s a small interaction decision, but an important one when someone may be making a clinical or financial decision based on the information.</p>
+    </section>
 
-      <p>Every summary has the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down, where a thumbs down asks what went wrong, <span class="pin">4</span>an update button, so it runs only when asked, and <span class="pin">5</span>the time it was generated. Because feedback works the same everywhere, practices that subscribe can tell us what’s working wherever they see AI.</p>
+    <section id="doing">
+      <h2>What happens when AI starts doing the work?</h2>
+      <p>Payment posting introduced a different set of problems.</p>
+      <p>A summary can be reviewed and ignored. An automatically posted insurance payment changes the account. The interface needs to make that distinction clear.</p>
+      <p>We designed posting controls that let practices choose, by payer, whether the AI should recommend matches or post them automatically. Each payment line shows its current status, including exceptions and work still in progress.</p>
+      <figure class="mock-fig">
+        <div class="post-mock">
+          <div class="post-bar"><span><b>89%</b> AI auto-posted</span><span class="toggle" aria-hidden="true"><i></i></span><span class="post-tip">AI auto-posting is on. Matching ERAs post automatically.</span></div>
+          <div class="post-row"><span class="st exc">⚠ Exception<small>Visit ID not matched</small></span><span>Visit 1</span><span>$78.70</span></div>
+          <div class="post-row"><span class="st ok">✓ Auto-posted<small class="conf">✦ 98% confidence</small></span><span>Visit 2</span><span>$119.40</span></div>
+          <div class="post-row"><span class="st">◌ Posting…</span><span>Visit 3</span><span>$32.60</span></div>
+          <div class="post-row"><span class="st dim">• Pending</span><span>Visit 4</span><span>$96.20</span></div>
+        </div>
+        <figcaption class="screenshot-caption">Automatic posting, exceptions, and pending work are visible at the individual payment level. Redrawn with sample data.</figcaption>
+      </figure>
+      <p>The same thinking carried into the billing agents. We distinguished agents that only report information from those that can make changes, and designed run histories so staff can review what happened.</p>
+      <p>Clinical suggestions required another variation. Rather than applying a group of changes to a chart, clinicians can accept or reject individual suggestions.</p>
+      <p>These aren’t identical interactions, and they shouldn’t be. What they share is a clear distinction between what the AI suggests, what it does, and what the person can control.</p>
+    </section>
 
+    <section id="feedback">
+      <h2>Making feedback useful</h2>
+      <p>I wanted feedback to work consistently, regardless of where someone encountered AI.</p>
+      <p>Summaries and assistant responses use the same positive and negative feedback controls. When someone reports a problem, we ask whether the response was inaccurate, outdated, incomplete, off-topic, or cited the wrong source.</p>
       <figure class="mock-fig">
         <div class="fb-wrap">
           <div class="fb-card" role="img" aria-label="AI assistant answer with a thumbs down and a follow-up asking what went wrong">
@@ -961,62 +977,25 @@
             </div>
           </div>
         </div>
+        <figcaption class="screenshot-caption">Shared feedback controls and source references.</figcaption>
       </figure>
-
-      <h3 class="sub">The feedback loop</h3>
-      <ol class="loop">
-        <li><b>The AI shows its work</b><span>An AI label, its sources or reasoning, and its status.</span></li>
-        <li><b>People check it</b><span>Review, accept or reject, or override, without leaving the task.</span></li>
-        <li><b>They respond in one click</b><span>Thumbs up and down on every summary and answer. A thumbs down asks what went wrong. Accepts, rejects, and overrides are logged.</span></li>
-        <li><b>It comes back to us</b><span>The product team reads one set of signals across all seven features and decides what to fix.</span></li>
-      </ol>
+      <p>For features that take action, the more useful signals may be different: accepted suggestions, rejected changes, overrides, posting exceptions, and agent histories.</p>
+      <p>The point wasn’t to collect feedback for its own sake. It was to give Product a consistent way to see where AI was helping and where people still needed to correct it.</p>
     </section>
 
-    <!-- 04 RULES -->
-    <section id="principles">
-      <p class="section-label">04 — The Rules</p>
-      <h2>Four rules <em>every AI feature follows</em></h2>
-
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>People choose how much the AI does</h3></div>
-          <p>Each practice chooses, per payer, whether payment posting only recommends or posts automatically. Agents are labeled read-only or write.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Suggestions stay suggestions</h3></div>
-          <p>Clinical suggestions are accepted or rejected one at a time. Anything the AI posts can be overridden, and overrides are logged.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Every step can be checked</h3></div>
-          <p>The AI either shows what it did, like the status on every payment line, or leaves a record people can check later, like each agent’s run history and the log of overrides. Assistant answers link to their sources.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>No guessing, no side effects</h3></div>
-          <p>With too little to go on, the AI says so instead of filling space, the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>. When it fails, the work is left exactly as it was.</p>
-        </div>
-      </div>
-
-      <figure class="mock-fig">
-        <div class="post-mock">
-          <div class="post-bar"><span><b>89%</b> AI auto-posted</span><span class="toggle" aria-hidden="true"><i></i></span><span class="post-tip">AI auto-posting is on. Matching ERAs post automatically.</span></div>
-          <div class="post-row"><span class="st exc">⚠ Exception<small>Visit ID not matched</small></span><span>Visit 1</span><span>$78.70</span></div>
-          <div class="post-row"><span class="st ok">✓ Auto-posted<small class="conf">✦ 98% confidence</small></span><span>Visit 2</span><span>$119.40</span></div>
-          <div class="post-row"><span class="st">◌ Posting…</span><span>Visit 3</span><span>$32.60</span></div>
-          <div class="post-row"><span class="st dim">• Pending</span><span>Visit 4</span><span>$96.20</span></div>
-        </div>
-        <figcaption class="screenshot-caption">Per-line AI status in the payment posting design. Redrawn and simplified, with sample data.</figcaption>
-      </figure>
+    <section id="status">
+      <h2>Where things stand</h2>
+      <p>The collections summary is live, and the same pattern is being carried into Transaction History. The clinical assistant is also live, while payment posting and billing agents are at earlier stages of development.</p>
+      <p>The product team’s early assessment of the collections summary estimates a 75% reduction in manual note-review time per claim. That’s an encouraging result for the feature, although it isn’t a measure of the shared UX patterns themselves.</p>
+      <p>For the broader AI experience, there’s still more to learn. I’m particularly interested in how often people override AI actions, what kinds of feedback they submit, and whether practices become comfortable moving from recommendations to automatic posting.</p>
     </section>
 
-    <!-- 05 FEEDBACK -->
-    <section id="feedback">
-      <p class="section-label">05 — Results</p>
-      <h2>What we’ve seen <em>so far</em></h2>
-
-      <p>The product team’s early assessment of the collections summary: a 75% reduction in manual note review time per claim, and follow-ups that no longer depend on which biller works the account. Next, we’re watching the thumbs feedback, how often billers override the AI, and whether practices move from “recommend only” to automatic posting.</p>
-
-      <h3 class="sub">What I learned</h3>
-      <p>Consistency had to be someone’s job. Each team was making reasonable choices for its own screen, and nothing would have pulled them together without someone deciding that AI should look and behave one way across the product.</p>
+    <section id="looking-back">
+      <h2>Looking back</h2>
+      <p>One of the interesting things about this work was how quickly reasonable, independent design decisions could turn into product-wide inconsistency.</p>
+      <p>Nobody was deliberately creating a fragmented experience. Each team was focused on getting its own feature right.</p>
+      <p>My contribution was working across those projects, recognizing where decisions should be shared, and helping the team establish patterns we could reuse as AI became part of more workflows.</p>
+      <p>And as AI moves beyond summarizing information into actually doing things, I expect those patterns will need to keep evolving.</p>
     </section>
 
     <!-- UP NEXT -->
