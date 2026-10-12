@@ -789,6 +789,12 @@
   .loop span{font-size:14px;line-height:1.55;color:var(--text-muted)}
   @media (max-width:800px){.loop{grid-template-columns:1fr 1fr}.loop li::after{display:none}.loop li:last-child::after{display:block}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
+  .feat-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
+  .feat-table th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:600;padding:0 16px 12px 0;border-bottom:1px solid var(--border)}
+  .feat-table td{padding:14px 16px 14px 0;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-muted);line-height:1.55}
+  .feat-table td:first-child{color:var(--text);font-weight:600;width:22%}
+  .feat-table td:nth-child(3),.feat-table td:nth-child(4){white-space:nowrap;font-size:14px}
+  @media (max-width:700px){.feat-table thead{display:none}.feat-table,.feat-table tbody,.feat-table tr,.feat-table td{display:block;width:auto!important}.feat-table tr{padding:12px 0;border-bottom:1px solid var(--border)}.feat-table td{border:0;padding:2px 0}.feat-table td:nth-child(3)::before{content:'My part: ';color:var(--text-dim)}.feat-table td:nth-child(4)::before{content:'Status: ';color:var(--text-dim)}}
 </style>
 </head>
 <body>
@@ -881,14 +887,15 @@
       <p class="section-label">02 — The AI Features</p>
       <h2>Seven features, <em>one pattern</em></h2>
 
-      <table class="status-table">
-        <tr><td>Collections summary</td><td>Summarizes a visit’s collections activity, with the last and next action. I designed it. Live.</td></tr>
-        <tr><td>Transaction History</td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>. Coming with its beta.</td></tr>
-        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit. Designed by a designer on my team I mentored.</td></tr>
-        <tr><td>Clinical assistant</td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders. The provider accepts or rejects each one. Designed by the same designer. Live for in-office and telehealth visits.</td></tr>
-        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer. I supervised its design.</td></tr>
-        <tr><td>Payment posting</td><td>Matches insurance payments to claims, recommending or posting automatically. I designed it. In design.</td></tr>
-        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines. I designed them.</td></tr>
+      <table class="feat-table">
+        <thead><tr><th>Feature</th><th>What it does</th><th>My part</th><th>Status</th></tr></thead>
+        <tr><td>Collections summary</td><td>Summarizes a visit’s collections activity, with the last and next action.</td><td>Designed</td><td>Live</td></tr>
+        <tr><td>Transaction History</td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>.</td><td>Designed</td><td>With its beta</td></tr>
+        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit.</td><td>Mentored</td><td>—</td></tr>
+        <tr><td>Clinical assistant</td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders.</td><td>Mentored</td><td>Live</td></tr>
+        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer.</td><td>Supervised</td><td>—</td></tr>
+        <tr><td>Payment posting</td><td>Matches insurance payments to claims, recommending or posting automatically.</td><td>Designed</td><td>In design</td></tr>
+        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines.</td><td>Designed</td><td>—</td></tr>
       </table>
     </section>
 
