@@ -920,23 +920,15 @@
         <figcaption class="screenshot-caption">The collections and pre-visit summaries side by side. Redrawn and simplified, with sample data.</figcaption>
       </figure>
 
-      <div class="streams" style="margin-top:8px;">
-        <div class="stream"><div class="stream-header"><div class="stream-num">1</div><h3>The AI mark and name</h3></div><p>Every AI feature carries the same mark and says it’s AI in its name, so nobody mistakes generated text for something a person wrote.</p></div>
-        <div class="stream"><div class="stream-header"><div class="stream-num">2</div><h3>A request to review</h3></div><p>Every summary asks the user to check it. The wording fits the domain, but the place and the tone are the same.</p></div>
-        <div class="stream"><div class="stream-header"><div class="stream-num">3</div><h3>Feedback beside the output</h3></div><p>Thumbs up and down sit right next to the review request, in every feature, so giving feedback takes one click.</p></div>
-        <div class="stream"><div class="stream-header"><div class="stream-num">4</div><h3>Runs only when asked</h3></div><p>Summaries generate or update when someone asks for one, so the user decides when the AI works.</p></div>
-        <div class="stream"><div class="stream-header"><div class="stream-num">5</div><h3>When it was generated</h3></div><p>Each summary shows its time, so users know whether it reflects the latest activity.</p></div>
-      </div>
+      <p>Every summary shares the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down beside it, <span class="pin">4</span>an update button, so it only runs when asked, and <span class="pin">5</span>the time it was generated.</p>
 
-      <h3 class="sub">Why the same feedback everywhere</h3>
-      <p>The AI features are an add-on that practices subscribe to. Because every summary asks for feedback the same way, subscribing practices can tell us what’s working wherever they see AI output, and we get one signal we can compare across features instead of a different one per screen.</p>
-      <p>When the component library moved to standard Material 3, the summary moved with it, so the pattern stays the same as screens are modernized. That work is in <a href="ux-library.html" style="color:var(--accent)">UI Modernization</a>.</p>
+      <p>The AI features are an add-on that practices subscribe to. Because every summary asks for feedback the same way, subscribing practices can tell us what’s working wherever they see AI, and we get one signal we can compare across features.</p>
     </section>
 
     <!-- 04 PRINCIPLES -->
     <section id="principles">
       <p class="section-label">04 — The Rules</p>
-      <h2>Seven rules <em>every AI feature follows</em></h2>
+      <h2>Six rules <em>every AI feature follows</em></h2>
 
       <div class="streams" style="margin-top:32px;">
         <div class="stream">
@@ -963,40 +955,7 @@
           <div class="stream-header"><div class="stream-num">6</div><h3>Say so when there isn’t enough to go on</h3></div>
           <p>If there isn’t enough new collections activity, the summary doesn’t stretch to fill the space. It says “Not enough new collections activity to summarize yet.” It’s the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>: leave the gap instead of guessing.</p>
         </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">7</div><h3>Ask for feedback where the output is</h3></div>
-          <p>Every summary is labeled as AI-generated, asks the user to review it, shows when it was generated, and has thumbs up and down right beside it.</p>
-        </div>
       </div>
-
-      <h3 class="sub">The same four states in every summary</h3>
-
-      <p>Each summary has four states, and each one tells the user exactly where they stand. These are the collections versions.</p>
-
-      <figure class="mock-fig">
-        <div class="sum-states">
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
-            <p class="sum-text">Insurance paid most claims on this visit. One needed a code correction and rebill before payment.</p>
-            <div class="sum-kv"><span>Last action</span><span>Payment follow-up</span><span>Next action</span><span>Confirm payments are fully applied</span></div>
-            <p class="sum-time">Summary generated: Nov 17, 11:38 AM</p>
-            <div class="sum-note"><span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
-          </div>
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn primary">Generate</span></div>
-            <p class="sum-empty">No summary yet. Generate one from the collections activity on this visit.</p>
-          </div>
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
-            <p class="sum-empty">Not enough new collections activity to summarize yet.</p>
-          </div>
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="warn" aria-hidden="true">⚠</span>AI collections summary</span><span class="mbtn">Retry</span></div>
-            <div class="sum-err"><strong>AI summary unavailable</strong><span>Try again, or contact support.</span></div>
-          </div>
-        </div>
-        <figcaption class="screenshot-caption">Generated, empty, not enough activity, and unavailable. Redrawn and simplified, with sample data.</figcaption>
-      </figure>
 
       <h3 class="sub">AI status on every payment line</h3>
       <p>Payment posting takes the same rules further, because the AI acts instead of summarizing. Every line carries its own AI status, so billers can see at a glance what posted, what’s in progress, and what needs them, along with the reason. Anything it can’t resolve goes to a queue with its reasoning.</p>
