@@ -793,8 +793,10 @@
   .feat-table th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:600;padding:0 16px 12px 0;border-bottom:1px solid var(--border)}
   .feat-table td{padding:14px 16px 14px 0;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-muted);line-height:1.55}
   .feat-table td:first-child{color:var(--text);font-weight:600;width:22%}
-  .feat-table td:nth-child(3),.feat-table td:nth-child(4){white-space:nowrap;font-size:14px}
-  @media (max-width:700px){.feat-table thead{display:none}.feat-table,.feat-table tbody,.feat-table tr,.feat-table td{display:block;width:auto!important}.feat-table tr{padding:12px 0;border-bottom:1px solid var(--border)}.feat-table td{border:0;padding:2px 0}.feat-table td:nth-child(3)::before{content:'My part: ';color:var(--text-dim)}.feat-table td:nth-child(4)::before{content:'Status: ';color:var(--text-dim)}}
+  .feat-table td:nth-child(3){white-space:nowrap;font-size:14px}
+  .st-chip{display:inline-block;margin-left:8px;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 9px;border-radius:999px;border:1px solid var(--border);color:var(--text-muted);vertical-align:2px;white-space:nowrap}
+  .st-chip.live{border-color:var(--accent);color:var(--accent)}
+  @media (max-width:700px){.feat-table thead{display:none}.feat-table,.feat-table tbody,.feat-table tr,.feat-table td{display:block;width:auto!important}.feat-table tr{padding:12px 0;border-bottom:1px solid var(--border)}.feat-table td{border:0;padding:2px 0}.feat-table td:nth-child(3)::before{content:'My part: ';color:var(--text-dim)}}
 </style>
 </head>
 <body>
@@ -888,14 +890,14 @@
       <h2>Seven features, <em>one pattern</em></h2>
 
       <table class="feat-table">
-        <thead><tr><th>Feature</th><th>What it does</th><th>My part</th><th>Status</th></tr></thead>
-        <tr><td>Collections summary</td><td>Summarizes a visit’s collections activity, with the last and next action.</td><td>Designed</td><td>Live</td></tr>
-        <tr><td>Transaction History</td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>.</td><td>Designed</td><td>With its beta</td></tr>
-        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit.</td><td>Mentored</td><td>—</td></tr>
-        <tr><td>Clinical assistant</td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders.</td><td>Mentored</td><td>Live</td></tr>
-        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer.</td><td>Supervised</td><td>—</td></tr>
-        <tr><td>Payment posting</td><td>Matches insurance payments to claims, recommending or posting automatically.</td><td>Designed</td><td>In design</td></tr>
-        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines.</td><td>Designed</td><td>—</td></tr>
+        <thead><tr><th>Feature</th><th>What it does</th><th>My part</th></tr></thead>
+        <tr><td>Collections summary <span class="st-chip live">Live</span></td><td>Summarizes a visit’s collections activity, with the last and next action.</td><td>Designed</td></tr>
+        <tr><td>Transaction History <span class="st-chip">Beta</span></td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>.</td><td>Designed</td></tr>
+        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit.</td><td>Mentored</td></tr>
+        <tr><td>Clinical assistant <span class="st-chip live">Live</span></td><td>Suggests chart action items from the visit transcript: problems, histories, allergies, medications, and lab orders.</td><td>Mentored</td></tr>
+        <tr><td>AI assistant</td><td>Answers practice management questions in a chat and cites the Knowledge Base articles behind each answer.</td><td>Supervised</td></tr>
+        <tr><td>Payment posting <span class="st-chip">In design</span></td><td>Matches insurance payments to claims, recommending or posting automatically.</td><td>Designed</td></tr>
+        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines.</td><td>Designed</td></tr>
       </table>
     </section>
 
