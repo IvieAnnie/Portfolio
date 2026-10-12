@@ -780,15 +780,14 @@
   .pin.in{margin:0 0 0 6px}
   .sum-note .thumbs{display:inline-flex;align-items:center}
   /* feedback loop */
-  .loop{list-style:none;counter-reset:lp;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:relative}
+  .loop{list-style:none;counter-reset:lp;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;position:relative}
   .loop li{counter-increment:lp;padding:18px;border-radius:16px;border:1px solid var(--border);background:var(--surface2);display:flex;flex-direction:column;gap:6px;position:relative}
   .loop li::before{content:counter(lp);font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:var(--accent);line-height:1}
   .loop li:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:18px;color:var(--accent);font-size:14px;background:var(--bg);line-height:1;padding:2px 0}
   .loop li:last-child::after{content:'↺ back to step 1';font-size:12px;color:var(--accent);margin-top:4px}
   .loop b{font-size:15px;color:var(--text)}
   .loop span{font-size:14px;line-height:1.55;color:var(--text-muted)}
-  @media (max-width:800px){.loop{grid-template-columns:1fr 1fr}.loop li::after{display:none}.loop li:last-child::after{display:block}}
-  @media (max-width:520px){.loop{grid-template-columns:1fr}}
+  @media (max-width:1180px){.loop li:not(:last-child)::after{display:none}}
   .feat-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
   .feat-table th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:600;padding:0 16px 12px 0;border-bottom:1px solid var(--border)}
   .feat-table td{padding:14px 16px 14px 0;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-muted);line-height:1.55}
@@ -802,6 +801,20 @@
   .sum-head{flex-wrap:wrap}
   .sum-note > span:first-child{flex:1;min-width:0}
   @media (max-width:420px){.sum-states{grid-template-columns:1fr!important}}
+  /* thumbs-down follow-up mock */
+  .fb-wrap{display:flex;justify-content:center}
+  .fb-card{background:#fff;color:#1c1c2e;border-radius:20px;padding:20px;width:100%;max-width:440px;border:1px solid rgba(0,0,0,.08);font-size:14px}
+  .fb-src-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#44474f;margin:0 0 8px}
+  .fb-src{display:flex;justify-content:space-between;align-items:center;border:1px solid #c4c6d0;border-radius:12px;padding:12px 14px;color:#44474f}
+  .fb-src b{display:block;color:#1c1c2e;font-weight:600}
+  .fb-src small{font-size:13px}
+  .fb-icons{display:flex;gap:18px;align-items:center;margin:14px 4px;color:#44474f;font-size:18px}
+  .fb-panel{background:#ecedf3;border-radius:16px;padding:16px}
+  .fb-title{font-size:15px;margin:0 0 12px;color:#1c1c2e}
+  .fb-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .fb-chip{border:1px solid #74777f;border-radius:999px;padding:6px 14px;font-size:13px;color:#1c1c2e}
+  .fb-actions{display:flex;justify-content:flex-end;gap:24px;font-weight:600;font-size:14px;color:#2f5fa0}
+  .fb-actions .send{color:#44474f}
 </style>
 </head>
 <body>
@@ -911,7 +924,7 @@
       <p class="section-label">03 — One Pattern</p>
       <h2>How every AI feature <em>looks and behaves</em></h2>
 
-      <p>I pulled the teams together on one design and mentored the designer on my team who built the clinical features on it. Every feature offers feedback and an audit trail at every step. The wording fits the domain, so clinicians review for “clinical accuracy,” but the parts stay the same.</p>
+      <p>I worked closely with every designer on the UX team to keep one consistent governance for how AI features were delivered.</p>
 
       <figure class="mock-fig">
         <div class="sum-states">
@@ -933,13 +946,29 @@
         <figcaption class="screenshot-caption">The collections and pre-visit summaries share the same parts. Redrawn and simplified, with sample data.</figcaption>
       </figure>
 
-      <p>Every summary has the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down, <span class="pin">4</span>an update button, so it runs only when asked, and <span class="pin">5</span>the time it was generated. Because feedback works the same everywhere, practices that subscribe can tell us what’s working wherever they see AI.</p>
+      <p>Every summary has the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down, where a thumbs down asks what went wrong, <span class="pin">4</span>an update button, so it runs only when asked, and <span class="pin">5</span>the time it was generated. Because feedback works the same everywhere, practices that subscribe can tell us what’s working wherever they see AI.</p>
+
+      <figure class="mock-fig">
+        <div class="fb-wrap">
+          <div class="fb-card" role="img" aria-label="AI assistant answer with a thumbs down and a follow-up asking what went wrong">
+            <p class="fb-src-label">Sources</p>
+            <div class="fb-src"><span><b>Knowledge Base article</b><small>Practice Management → Related topic</small></span><span aria-hidden="true">↗</span></div>
+            <div class="fb-icons" aria-hidden="true"><span>⧉</span><span>↻</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg><svg style="transform:rotate(180deg)" width="18" height="18" viewBox="0 0 24 24" fill="#2f5fa0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></div>
+            <div class="fb-panel">
+              <p class="fb-title">What went wrong?</p>
+              <div class="fb-chips"><span class="fb-chip">Inaccurate</span><span class="fb-chip">Out of date</span><span class="fb-chip">Not enough detail</span><span class="fb-chip">Wrong source cited</span><span class="fb-chip">Off-topic</span><span class="fb-chip">Other</span></div>
+              <div class="fb-actions"><span>Cancel</span><span class="send">Send Feedback</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="screenshot-caption">A thumbs down on an AI assistant answer asks what went wrong. Redrawn and simplified.</figcaption>
+      </figure>
 
       <h3 class="sub">The feedback loop</h3>
       <ol class="loop">
         <li><b>The AI shows its work</b><span>An AI label, its sources or reasoning, and its status.</span></li>
         <li><b>People check it</b><span>Review, accept or reject, or override, without leaving the task.</span></li>
-        <li><b>They respond in one click</b><span>Thumbs up and down on every summary and answer. Accepts, rejects, and overrides are logged.</span></li>
+        <li><b>They respond in one click</b><span>Thumbs up and down on every summary and answer. A thumbs down asks what went wrong. Accepts, rejects, and overrides are logged.</span></li>
         <li><b>It comes back to us</b><span>The product team reads one set of signals across all seven features and decides what to fix.</span></li>
       </ol>
     </section>
