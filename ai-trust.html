@@ -821,7 +821,7 @@
   <div class="hero-text">
     <p class="hero-meta">Healthcare Software · AI Experience</p>
     <h1>One pattern for AI <em>across the product</em></h1>
-    <p class="hero-sub">AI was coming to collections, clinical, and billing work at the same time, from different teams. I made sure every feature shows its work and asks for feedback the same way, so users learn it once, wherever they meet it.</p>
+    <p class="hero-sub">Six AI features, built by different teams at the same time. I kept them on one pattern: at every step, the AI either tells people what it did or leaves a record they can check.</p>
     <div class="hero-chips">
       <span class="chip">AI Experience</span>
       <span class="chip">Design Governance</span>
@@ -844,14 +844,14 @@
     <a href="#pattern">One Pattern</a>
     <a href="#principles">The Rules</a>
     <div class="nav-section">Results</div>
-    <a href="#feedback">Feedback</a>
+    <a href="#feedback">Results</a>
   </nav>
 
   <main class="content">
 
     <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Designed the AI collections summary and AI payment posting end to end. Supervised the designer on the clinical pre-visit summary and kept every AI feature on the same pattern.</dd></div>
-      <div><dt>Worked with</dt><dd>A technical product manager, the designer I supervised, and two product teams that had each started designing the same AI summary.</dd></div>
+      <div><dt>My role</dt><dd>Designed the AI collections summary and payment posting. Supervised the designers on the other AI features and kept them on one pattern.</dd></div>
+      <div><dt>Worked with</dt><dd>A technical product manager, the designers I supervised, and the billing and clinical product teams.</dd></div>
       <div><dt>Constraints</dt><dd>Billers are accountable for every dollar, and clinicians for patient care. The AI can’t be a black box, and it can’t leave a mess when it fails.</dd></div>
       <div><dt>Status</dt><dd>The AI summary is live in collections and comes to Transaction History with its beta. AI payment posting is in design.</dd></div>
     </dl>
@@ -861,36 +861,24 @@
       <p class="section-label">01 — The Problem</p>
       <h2>AI was arriving <em>from several teams at once</em></h2>
 
-      <p>AI features were being built in different parts of the product at the same time. Two product teams had each started designing an AI summary for their own screens. The clinical side was building a summary to prepare providers before a visit. Billing was planning AI that posts insurance payments.</p>
+      <p>Collections, clinical, and billing teams were all adding AI at the same time. Two teams had already started designing their own AI summary. Billers and clinicians are careful for good reason: a wrong posting means a wrong patient balance, and a wrong chart suggestion means a wrong record.</p>
 
-      <p>The people using these features are careful for good reason. A wrong posting means a wrong patient balance and someone on the billing team cleaning it up. A wrong pre-visit summary puts a provider’s attention in the wrong place. They’re skeptical of anything that promises to “just handle it.”</p>
-
-      <div class="callout"><p>If the AI explains itself one way in collections and another way in the chart, users have to rebuild their trust every time. With one pattern, they learn it once.</p></div>
+      <div class="callout"><p>If every AI feature explained itself differently, users would have to rebuild their trust on every screen.</p></div>
     </section>
 
     <!-- 02 FEATURES -->
     <section id="features">
       <p class="section-label">02 — The AI Features</p>
-      <h2>Four features, <em>one way of working</em></h2>
+      <h2>Six features, <em>one pattern</em></h2>
 
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Collections summary</h3></div>
-          <p>On request, summarizes the collections activity on a visit, with the last action taken and the next one to take. <strong>I designed it. Live.</strong></p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Transaction History summary</h3></div>
-          <p>The same summary, brought into the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a> instead of designed again. <strong>Coming with its beta.</strong></p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Pre-visit summary</h3></div>
-          <p>Prepares a provider for the visit with the chief complaint, vitals, and history. <strong>Designed by a designer I supervised, on the same pattern.</strong></p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Payment posting</h3></div>
-          <p>Reads insurance payment files (ERAs) and matches each payment to its claim, starting with the cases billers fix by hand most often. <strong>I designed it. In design.</strong></p>
-        </div>
-      </div>
+      <table class="status-table">
+        <tr><td>Collections summary</td><td>Summarizes a visit’s collections activity, with the last and next action. I designed it. Live.</td></tr>
+        <tr><td>Transaction History</td><td>The same summary, reused in the redesigned <a href="transaction-history-card.html" style="color:var(--accent)">Transaction History</a>. Coming with its beta.</td></tr>
+        <tr><td>Pre-visit summary</td><td>Prepares the provider before a visit. Designed by a designer I supervised.</td></tr>
+        <tr><td>Clinical assistant</td><td>Suggests chart updates from the visit transcript. The provider accepts or rejects each one.</td></tr>
+        <tr><td>Payment posting</td><td>Matches insurance payments to claims, recommending or posting automatically. I designed it. In design.</td></tr>
+        <tr><td>Billing agents</td><td>Run in the background on a schedule and report on denials, underpayments, and filing deadlines.</td></tr>
+      </table>
     </section>
 
     <!-- 03 PATTERN -->
@@ -898,7 +886,7 @@
       <p class="section-label">03 — One Pattern</p>
       <h2>How every AI feature <em>looks and behaves</em></h2>
 
-      <p>I pulled the two teams designing summaries together and agreed on one design: the same placement, labels, states, and feedback. When the clinical pre-visit summary started, I supervised its designer and we built it on the same pattern. The wording changes for the domain, so clinicians are asked to review for “clinical accuracy,” but the parts and where they sit stay the same.</p>
+      <p>I pulled the teams together on one design and supervised the designers who built the rest on it. Every feature offers feedback and an audit trail at every step. The wording fits the domain, so clinicians review for “clinical accuracy,” but the parts stay the same.</p>
 
       <figure class="mock-fig">
         <div class="sum-states">
@@ -920,45 +908,32 @@
         <figcaption class="screenshot-caption">The collections and pre-visit summaries side by side. Redrawn and simplified, with sample data.</figcaption>
       </figure>
 
-      <p>Every summary shares the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down beside it, <span class="pin">4</span>an update button, so it only runs when asked, and <span class="pin">5</span>the time it was generated.</p>
-
-      <p>The AI features are an add-on that practices subscribe to. Because every summary asks for feedback the same way, subscribing practices can tell us what’s working wherever they see AI, and we get one signal we can compare across features.</p>
+      <p>Every summary has the same five parts: <span class="pin">1</span>the AI mark in its name, <span class="pin">2</span>a request to review, <span class="pin">3</span>thumbs up and down, <span class="pin">4</span>an update button, so it runs only when asked, and <span class="pin">5</span>the time it was generated. Because feedback works the same everywhere, practices that subscribe can tell us what’s working wherever they see AI.</p>
     </section>
 
-    <!-- 04 PRINCIPLES -->
+    <!-- 04 RULES -->
     <section id="principles">
       <p class="section-label">04 — The Rules</p>
-      <h2>Six rules <em>every AI feature follows</em></h2>
+      <h2>Four rules <em>every AI feature follows</em></h2>
 
       <div class="streams" style="margin-top:32px;">
         <div class="stream">
           <div class="stream-header"><div class="stream-num">1</div><h3>People choose how much the AI does</h3></div>
-          <p>The practice decides, per payer, whether the AI only recommends or posts automatically. The on/off switch says in plain words what will happen: “Matching ERAs post automatically.”</p>
+          <p>Each practice chooses, per payer, whether payment posting only recommends or posts automatically. Agents are labeled read-only or write.</p>
         </div>
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Every line shows its status</h3></div>
-          <p>Auto-posted with a confidence score, posting, pending, or an exception with the reason. Nothing happens off-screen.</p>
+          <div class="stream-header"><div class="stream-num">2</div><h3>Suggestions stay suggestions</h3></div>
+          <p>Clinical suggestions are accepted or rejected one at a time. Anything the AI posts can be overridden, and overrides are logged.</p>
         </div>
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Suggestions look like suggestions</h3></div>
-          <p>When the AI isn’t sure, it says so, “AI suggestion — review before acting,” and shows the candidate visits so a biller can choose.</p>
+          <div class="stream-header"><div class="stream-num">3</div><h3>Every step can be checked</h3></div>
+          <p>The AI either shows what it did, like the status on every payment line, or leaves a record people can check later, like each agent’s run history and the log of overrides.</p>
         </div>
         <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Anything the AI posts can be overridden</h3></div>
-          <p>A biller can override any AI posting, and overrides and rule changes are logged. Control never moves out of reach.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Fail without side effects</h3></div>
-          <p>If the AI service doesn’t respond, the work is left exactly as it was: “The claim line is unchanged — you can retry or work it manually.”</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">6</div><h3>Say so when there isn’t enough to go on</h3></div>
-          <p>If there isn’t enough new collections activity, the summary doesn’t stretch to fill the space. It says “Not enough new collections activity to summarize yet.” It’s the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>: leave the gap instead of guessing.</p>
+          <div class="stream-header"><div class="stream-num">4</div><h3>No guessing, no side effects</h3></div>
+          <p>With too little to go on, the AI says so instead of filling space, the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>. When it fails, the work is left exactly as it was.</p>
         </div>
       </div>
-
-      <h3 class="sub">AI status on every payment line</h3>
-      <p>Payment posting takes the same rules further, because the AI acts instead of summarizing. Every line carries its own AI status, so billers can see at a glance what posted, what’s in progress, and what needs them, along with the reason. Anything it can’t resolve goes to a queue with its reasoning.</p>
 
       <figure class="mock-fig">
         <div class="post-mock">
@@ -974,25 +949,14 @@
 
     <!-- 05 FEEDBACK -->
     <section id="feedback">
-      <p class="section-label">05 — Feedback</p>
-      <h2>How we’re gathering feedback <em>and listening</em></h2>
+      <p class="section-label">05 — Results</p>
+      <h2>What we’ve seen <em>so far</em></h2>
 
-      <p>The product team’s early assessment of the collections summary: a 75% reduction in manual note review time per claim, and more consistent collections follow-ups that no longer depend on which biller or staff member works the account.</p>
-
-      <p>Three signals will show whether trust keeps growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time. I also supported the technical product manager’s research.</p>
-
-      <h3 class="sub">Where each feature stands</h3>
-      <table class="status-table">
-        <tr><td>Live</td><td>AI summary in collections</td></tr>
-        <tr><td>Next</td><td>The same summary in Transaction History, with its beta</td></tr>
-        <tr><td>In design</td><td>AI payment posting: per-line status, recommend-only or automatic posting, overrides</td></tr>
-      </table>
+      <p>The product team’s early assessment of the collections summary: a 75% reduction in manual note review time per claim, and follow-ups that no longer depend on which biller works the account. Next, we’re watching the thumbs feedback, how often billers override the AI, and whether practices move from “recommend only” to automatic posting.</p>
 
       <h3 class="sub">What I learned</h3>
       <p>Consistency had to be someone’s job. Each team was making reasonable choices for its own screen, and nothing would have pulled them together without someone deciding that AI should look and behave one way across the product.</p>
-      <p>These features are also additions. When a practice doesn’t subscribe, they don’t appear, so every screen has to work with the AI and without it. That made adding AI to the screens people already use possible without waiting for a full redesign.</p>
     </section>
-
 
     <!-- UP NEXT -->
     <a class="up-next" href="ux-library.html">
