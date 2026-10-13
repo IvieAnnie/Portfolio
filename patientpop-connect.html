@@ -755,6 +755,12 @@
   .pp-shot img,.pp-shot video{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18);background:#fff}
   body.light-mode .pp-shot img,body.light-mode .pp-shot video{box-shadow:0 6px 18px rgba(0,0,0,.08)}
   .pp-shot + p, .cd-gallery + p, .pp-phones + p { margin-top: 32px; }
+  .pp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:32px 0 8px}
+  @media (max-width:760px){.pp-grid2{grid-template-columns:1fr}}
+  .pp-grid2 figure{margin:0}
+  .pp-grid2 img{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  body.light-mode .pp-grid2 img{box-shadow:0 6px 18px rgba(0,0,0,.08)}
+  .pp-grid2 figcaption{font-size:13px;color:var(--text-dim);margin-top:8px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -899,6 +905,12 @@
       <p>We created an onboarding video that explained what would change and how it would affect the practice. I helped write the script and tested it with users, changing it based on what they understood and what resonated with them. When we tested the video, practices understood the implications, although some still had concerns.</p>
       <p>We also provided guidance for communicating the change to patients and offered some practices the option of keeping both numbers. We explored allowing practices to activate Connect without immediately enabling the automated attendant.</p>
       <p>We wanted practices considering the upgrade to understand how their phone numbers would change and what that meant for their patients before making a decision.</p>
+      <div class="pp-grid2">
+        <figure><img src="pp-setup-start.jpg" alt="Communication Setup start page: Never miss out on a patient lead, with a video link" loading="lazy"><figcaption>The start page, with the onboarding video</figcaption></figure>
+        <figure><img src="pp-setup-step1.jpg" alt="Step 1: Get more website leads by enabling messaging" loading="lazy"><figcaption>Step 1: Turn on messaging</figcaption></figure>
+        <figure><img src="pp-setup-step2.jpg" alt="Step 2: Test the auto attendant by calling the practice's number" loading="lazy"><figcaption>Step 2: Call the new number to test it</figcaption></figure>
+        <figure><img src="pp-setup-step3.jpg" alt="Step 3: Activate auto attendant for each location, with each location's voice and text number" loading="lazy"><figcaption>Step 3: Activate each location and see its number</figcaption></figure>
+      </div>
       <figure class="pp-shot"><video controls preload="none" playsinline poster="pp-connect-video-poster.jpg"><source src="pp-connect-video.mp4" type="video/mp4"></video><figcaption>The onboarding video practices watched before turning on Connect.</figcaption></figure>
     </section>
 
