@@ -169,6 +169,7 @@
       max-width: 520px;
       margin-bottom: 40px;
     }
+    .hero-sub:not(:last-of-type) { margin-bottom: 16px; }
     .hero-cta {
       display: inline-block;
       font-family: 'DM Sans', sans-serif;
@@ -684,6 +685,7 @@
       .hero { padding-top: calc(var(--nav-h) + 28px) !important; gap: 28px !important; }
       .hero h1 { font-size: 42px !important; line-height: 1.02 !important; margin-bottom: 18px !important; }
       .hero-sub { font-size: 16px !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
+      .hero-sub:not(:last-of-type) { margin-bottom: 12px !important; }
     }
 </style>
 </head>
@@ -719,9 +721,11 @@
       <source src="hero-bg.mp4" type="video/mp4">
     </video>
     <div class="hero-left">
-            <h1>I design screens<br>people use<br><em>eight hours a day.</em></h1>
+            <h1>I design the<br>screens people use<br><em>eight hours a day.</em></h1>
       <div>
-        <p class="hero-sub">I've been designing for twenty years, and for the last ten I've focused on UX and product design, mostly in healthcare software. I've worked on patient charts, billing workflows, design systems, AI features, and updating older products. Lately I'm as interested in the systems behind the screens as in the screens themselves. It isn't always glamorous work, but it changes how someone's day goes.</p>
+        <p class="hero-sub">I've spent twenty years in design, the last decade focused on UX and product, mostly in healthcare software.</p>
+        <p class="hero-sub">I've worked on everything from patient charts and billing workflows to AI, design systems, and modernizing legacy products. These days, I'm just as interested in the systems behind the screens as the screens themselves.</p>
+        <p class="hero-sub">It's not always glamorous work, but it's the stuff that makes a difference in someone's day.</p>
         <a href="#work" class="hero-cta" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'}); return false;">Case studies ↓</a>
       </div>
     </div>
@@ -747,7 +751,7 @@
       <div class="section-intro-left">
         <p class="section-eyebrow">Selected Work</p>
         <h2>Mostly <em>the stuff</em><br>practices use all day.</h2>
-        <p class="section-intro-sub">Billing workflows, patient records, design systems, AI-assisted research. Healthcare software for teams who don't have time for bad UX.</p>
+        <p class="section-intro-sub">A selection of projects involving complex workflows, research, and the systems that hold large products together.</p>
       </div>
       
     </div>
@@ -760,8 +764,8 @@
         <div class="case-body">
         <p class="case-num">Platform Strategy</p>
         <h3 class="case-title">Unified Practice Platform</h3>
-        <p class="case-tags">Platform Design · Design System · Service Mapping</p>
-        <p class="case-desc">Two apps, two logins, and a workflow that made small practices work harder than they should. Led the MVP redesign to unify PM + EHR under a single platform with a shared design language.</p>
+        <p class="case-tags">Platform Design · UX Architecture · Service Mapping</p>
+        <p class="case-desc">Bringing practice management and EHR into a more connected experience for small medical practices. I helped define the workflows, navigation, and shared design foundation without creating another separate product to maintain.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
       </div>
@@ -773,8 +777,8 @@
         <div class="case-img-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div>
         <p class="case-num">Practice Management</p>
         <h3 class="case-title">Patient Transaction History</h3>
-        <p class="case-tags">UX Architecture · Billing Workflows · Research</p>
-        <p class="case-desc">Modernizing a heavily used patient financial workflow under a security-driven technology mandate.</p>
+        <p class="case-tags">UX Research · Financial Workflows · Product Design</p>
+        <p class="case-desc">A required technology upgrade gave us an opportunity to rethink how billing staff review patient financial activity. I researched the existing workflow and redesigned the history around visits, configurable views, and details that stay in context.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
       </a>
@@ -785,8 +789,8 @@
         <div class="case-img-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div>
         <p class="case-num">Practice Management</p>
         <h3 class="case-title">Patient Demographics</h3>
-        <p class="case-tags">User Research · Iteration · Figma</p>
-        <p class="case-desc">How customer feedback changed the direction of a major Patient Demographics redesign — without starting over.</p>
+        <p class="case-tags">UX Research · Product Design · Iteration</p>
+        <p class="case-desc">An approved redesign received difficult feedback after launch. I went back to billing and coding users, led nine research sessions, and designed targeted improvements that made the new experience work better without abandoning the card framework.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
       </a>
@@ -797,8 +801,8 @@
         <div class="case-img-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div>
         <p class="case-num">Research Infrastructure</p>
         <h3 class="case-title">Research Knowledge Library</h3>
-        <p class="case-tags">Research Ops · Knowledge Architecture · AI / RAG</p>
-        <p class="case-desc">How I turned years of scattered sessions, behavioral data, and product knowledge into a library teams can actually query.</p>
+        <p class="case-tags">Research Architecture · UX Operations · AI-Assisted Research</p>
+        <p class="case-desc">Years of useful customer research were scattered across teams and tools. I built a searchable knowledge library that brings together discovery findings, customer feedback, and service maps so teams can find what we've already learned.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
       </a>
@@ -823,8 +827,8 @@
         <div class="case-img-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div>
         <p class="case-num">Design Infrastructure</p>
         <h3 class="case-title">UI Modernization</h3>
-        <p class="case-tags">Material 3 Governance · Design Systems · Accessibility</p>
-        <p class="case-desc">A design system that started as customization and ended as technical debt — and how the team decided to stop fighting the framework and start working with Material 3 instead.</p>
+        <p class="case-tags">Design Systems · Angular Material 3 · Accessibility</p>
+        <p class="case-desc">Years of customization had left our component library blocking framework upgrades. I worked with Engineering on the transition back to standard Material 3 and established the component guidance, accessibility standards, and design resources to support it.</p>
         <hr class="case-rule">
         <span class="case-link">Read case study →</span>
       </a>
