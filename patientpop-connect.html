@@ -732,7 +732,7 @@
   .outcome-num { font-family: 'Cambay', 'Roboto', sans-serif; font-weight: 400; font-size: clamp(36px, 4vw, 48px); }
   .outcome p { font-size: 16px; }
   .flow-fig { margin: 40px 0 8px; }
-  .flow-fig svg { width: 100%; height: auto; display: block; }
+  .flow-fig svg { width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto; }
   .flow-fig figcaption { font-size: 13px; color: var(--text-dim); margin-top: 12px; line-height: 1.45; }
   .fl-node rect { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
   .fl-node.fl-added rect, .fl-key { fill: var(--accent-dim); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 4; }
@@ -746,7 +746,7 @@
   .fl-lines .fl-dash-arrow { stroke-dasharray: 5 4; }
   .fl-head { fill: var(--text-dim); }
   .fl-legend text { font-family: 'Roboto', sans-serif; font-size: 14px; fill: var(--text-muted); }
-  .pp-phones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0 8px}
+  .pp-phones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px auto 8px;max-width:680px}
   @media (max-width:760px){.pp-phones{grid-template-columns:repeat(2,1fr)}}
   .pp-phones figure{margin:0}
   .pp-phones img{width:100%;display:block}
@@ -755,12 +755,13 @@
   .pp-shot img,.pp-shot video{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18);background:#fff}
   body.light-mode .pp-shot img,body.light-mode .pp-shot video{box-shadow:0 6px 18px rgba(0,0,0,.08)}
   .pp-shot + p, .cd-gallery + p, .pp-phones + p { margin-top: 32px; }
-  .pp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:32px 0 8px}
+  .pp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:32px 0 8px;align-items:start}
   @media (max-width:760px){.pp-grid2{grid-template-columns:1fr}}
   .pp-grid2 figure{margin:0}
   .pp-grid2 img{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18)}
   body.light-mode .pp-grid2 img{box-shadow:0 6px 18px rgba(0,0,0,.08)}
   .pp-grid2 figcaption{font-size:13px;color:var(--text-dim);margin-top:8px;line-height:1.45}
+  .pp-video{max-width:720px;margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
@@ -892,8 +893,10 @@
         </svg>
         <figcaption>A simplified recreation of the automated attendant flow. The dashed steps came out of testing with practices.</figcaption>
       </figure>
-      <figure class="pp-shot"><img src="pp-phone-menu-presets.jpg" alt="Call-to-Text settings comparing Recommended, All day, Limited, and Call Tracking phone menus" loading="lazy"><figcaption>Practices start from a recommended phone menu and can switch to a simpler one.</figcaption></figure>
-      <figure class="pp-shot"><img src="pp-phone-tree-settings.jpg" alt="Phone tree settings with English and Spanish greetings, and a voice message, call destination, and text message for each option" loading="lazy"><figcaption>Advanced settings for practices that want more control: greetings, voice and text messages, and a destination for each option.</figcaption></figure>
+      <div class="pp-grid2">
+        <figure><img src="pp-phone-menu-presets.jpg" alt="Call-to-Text settings comparing Recommended, All day, Limited, and Call Tracking phone menus" loading="lazy"><figcaption>Practices start from a recommended phone menu and can switch to a simpler one.</figcaption></figure>
+        <figure><img src="pp-phone-tree-settings.jpg" alt="Phone tree settings with English and Spanish greetings, and a voice message, call destination, and text message for each option" loading="lazy"><figcaption>Advanced settings for practices that want more control: greetings, voice and text messages, and a destination for each option.</figcaption></figure>
+      </div>
     </section>
 
     <section id="phone-number">
@@ -911,7 +914,7 @@
         <figure><img src="pp-setup-step2.jpg" alt="Step 2: Test the auto attendant by calling the practice's number" loading="lazy"><figcaption>Step 2: Call the new number to test it</figcaption></figure>
         <figure><img src="pp-setup-step3.jpg" alt="Step 3: Activate auto attendant for each location, with each location's voice and text number" loading="lazy"><figcaption>Step 3: Activate each location and see its number</figcaption></figure>
       </div>
-      <figure class="pp-shot"><video controls preload="none" playsinline poster="pp-connect-video-poster.jpg"><source src="pp-connect-video.mp4" type="video/mp4"></video><figcaption>The onboarding video practices watched before turning on Connect.</figcaption></figure>
+      <figure class="pp-shot pp-video"><video controls preload="none" playsinline poster="pp-connect-video-poster.jpg"><source src="pp-connect-video.mp4" type="video/mp4"></video><figcaption>The onboarding video practices watched before turning on Connect.</figcaption></figure>
     </section>
 
     <section id="inbox">
@@ -920,8 +923,10 @@
       <p>The existing text messaging product supported appointment reminders and other automated patient messages. We brought web-to-text and automated attendant conversations into the same messaging experience, identifying where each conversation originated.</p>
       <p>This allowed front-desk staff to manage incoming conversations alongside their existing patient communications rather than switching between separate tools.</p>
       <p>I designed how the features came together across onboarding, configuration, and the messaging inbox. Practices could turn on the Connect package, then customize or disable individual features as needed.</p>
-      <figure class="pp-shot"><img src="pp-inbox-leads.jpg" alt="Inbox conversation showing new patient, returning patient, and other leads labeled as coming from Web-to-Text" loading="lazy"><figcaption>Each conversation shows where it came from and what kind of lead it is.</figcaption></figure>
-      <figure class="pp-shot"><img src="pp-w2t-settings.jpg" alt="Web-to-Text settings with a widget on/off switch and a customizable automated reply" loading="lazy"><figcaption>Practices can turn each feature off or change its automated reply.</figcaption></figure>
+      <div class="pp-grid2">
+        <figure><img src="pp-inbox-leads.jpg" alt="Inbox conversation showing new patient, returning patient, and other leads labeled as coming from Web-to-Text" loading="lazy"><figcaption>Each conversation shows where it came from and what kind of lead it is.</figcaption></figure>
+        <figure><img src="pp-w2t-settings.jpg" alt="Web-to-Text settings with a widget on/off switch and a customizable automated reply" loading="lazy"><figcaption>Practices can turn each feature off or change its automated reply.</figcaption></figure>
+      </div>
     </section>
 
     <section id="results">
