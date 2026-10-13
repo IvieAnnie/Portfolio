@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cambay:wght@400;700&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #00c4b4;
@@ -106,8 +106,8 @@
     font-weight: 600;
   }
   .hero h1 {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: clamp(30px, 4vw, 56px);
+    font-family: 'Cambay', 'Roboto', sans-serif;
+    font-size: clamp(24px, 3.2vw, 45px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.05;
@@ -199,8 +199,8 @@
   }
 
   h2 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: clamp(26px, 3.5vw, 36px);
+    font-family: 'Cambay', 'Roboto', sans-serif;
+    font-size: clamp(21px, 2.8vw, 29px);
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.15;
@@ -342,7 +342,7 @@
   }
   .quote p {
     font-size: 17px;
-    font-style: italic;
+    font-style: normal;
     color: var(--text);
     margin-bottom: 8px;
     line-height: 1.6;
@@ -538,8 +538,8 @@
     .screenshot-row { grid-template-columns: 1fr; }
   }
 
-  /* teal italic emphasis in headlines */
-  .hero h1 em, h2 em { color: var(--accent); font-style: italic; }
+  /* teal emphasis in headlines */
+  .hero h1 em, h2 em { color: var(--accent); font-style: normal; }
 
   /* ── floating images (global) — no frame, no box, caption floats ── */
   .screenshot-block { background: none !important; border: none !important; border-radius: 0 !important; overflow: visible !important; }
@@ -565,10 +565,10 @@
   /* ── embedded service map (SMB workflow overview) ── */
   .svc-map { --amber-c: #f0b429; --orange-c: #f59e42; }
   body.light-mode .svc-map { --amber-c: #8a5a00; --orange-c: #b45309; }
-  .svc-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; color: var(--text); margin-bottom: 18px; }
+  .svc-title { font-family: 'Cambay', 'Roboto', sans-serif; font-size: 24px; color: var(--text); margin-bottom: 18px; }
   .svc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
   .svc-tile { padding: 14px 14px 16px; border-radius: 14px; min-height: 104px; font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); border: 1px solid; }
-  .svc-num { display: block; font-family: 'DM Serif Display', Georgia, serif; font-size: 26px; line-height: 1; margin-bottom: 10px; }
+  .svc-num { display: block; font-family: 'Cambay', 'Roboto', sans-serif; font-size: 21px; line-height: 1; margin-bottom: 10px; }
   .svc-tile.critical { background: rgba(240,140,41,0.12); border-color: rgba(240,140,41,0.4); }
   .svc-tile.critical .svc-num { color: var(--orange-c); }
   .svc-tile.moderate { background: var(--accent-dim); border-color: rgba(0,196,180,0.35); }
@@ -620,7 +620,7 @@
 
   /* ── stat callout ── */
   .stat-callout { display: flex; align-items: center; gap: 28px; margin: 40px 0; padding: 6px 0 6px 20px; border-left: 2px solid var(--accent); }
-  .stat-num { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(56px, 7vw, 84px); line-height: 0.9; color: var(--accent); flex-shrink: 0; }
+  .stat-num { font-family: 'Cambay', 'Roboto', sans-serif; font-size: clamp(45px, 5.6vw, 67px); line-height: 0.9; color: var(--accent); flex-shrink: 0; }
   .stat-callout p { margin: 0 !important; font-size: 18px; line-height: 1.5; color: var(--text); max-width: 460px; }
   @media (max-width: 600px) { .stat-callout { flex-direction: column; align-items: flex-start; gap: 10px; } }
 
