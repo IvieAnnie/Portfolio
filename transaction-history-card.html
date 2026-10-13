@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patient Transaction History — Ivie Borovatz</title>
+<title>Rethinking Patient Transaction History — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Modernizing a heavily used patient financial workflow under a security mandate.">
+  <meta name="description" content="Rebuilding a heavily used billing screen around how billing staff actually work.">
   <meta property="og:title" content="Patient Transaction History — Ivie Borovatz">
-  <meta property="og:description" content="Modernizing a heavily used patient financial workflow under a security mandate.">
+  <meta property="og:description" content="Rebuilding a heavily used billing screen around how billing staff actually work.">
   <meta property="og:image" content="https://www.ivieborovatz.com/th-hero-teal.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #00c4b4;
@@ -49,7 +49,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.6;
   }
@@ -106,7 +106,7 @@
     font-weight: 600;
   }
   .hero h1 {
-    font-family: 'DM Serif Display', Georgia, serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(30px, 4vw, 56px);
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -699,17 +699,12 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · Practice Management</p>
-    <h1>We had to rebuild it.<br>So we made it <em>worth rebuilding.</em></h1>
-    <p class="hero-sub">Modernizing a heavily used patient financial workflow under a security-driven technology mandate.</p>
-    <p class="hero-framework">Built on the card framework from <a href="patient-demographic-card.html">Patient Demographics</a>.</p>
+    <h1>Rethinking Patient Transaction History</h1>
     <div class="hero-chips">
-      <span class="chip">UX Architect</span>
-      <span class="chip">Platform Architecture</span>
-      <span class="chip">Billing Workflows</span>
-      <span class="chip">AI Prototyping</span>
-      <span class="chip">Figma</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
+      <span class="chip">UX Architecture</span>
+      <span class="chip">UX Research</span>
+      <span class="chip">Financial Workflows</span>
+      <span class="chip">AdvancedMD, 2025–2026</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -721,127 +716,157 @@
 <div class="page">
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
-    <a href="#constraint">The Constraint</a>
-    <a href="#research">Research</a>
+    <a href="#overview">The Rebuild</a>
+    <a href="#workflow">The Existing Workflow</a>
     <div class="nav-section">Work</div>
-    <a href="#design">Design</a>
-    <div class="nav-section">After Launch</div>
-    <a href="#tracking">Tracking Adoption</a>
+    <a href="#visits">Organizing by Visit</a>
+    <a href="#workspace">Configurable Columns</a>
+    <a href="#context">Details in Context</a>
+    <div class="nav-section">Next</div>
+    <a href="#measuring">Measuring the Redesign</a>
+    <a href="#status">Where Things Stand</a>
   </nav>
 
   <main class="content">
 
-    <!-- 01 CONSTRAINT -->
-    <section id="constraint">
-      <p class="section-label">01 — The Constraint</p>
-      <h2>A security mandate <em>required a rebuild</em></h2>
+    <section id="overview">
+      <p class="section-label">01 — The Rebuild</p>
 
-      <p>A security mandate meant the legacy Patient Transaction History had to be rebuilt on newer technology.</p>
+      <p>AdvancedMD needed to rebuild Patient Transaction History as part of a required technology upgrade. The existing screen was heavily used by billing staff, but it was built on older technology and relied on multiple windows to display financial information.</p>
 
-      <div class="callout">
-        <p>Instead of rebuilding the screen as it was, I used the migration to identify which parts of the existing workflow were worth preserving — and which friction we shouldn't carry forward.</p>
+      <p>We could have recreated the existing experience in the new framework. Instead, I wanted to understand how people were actually using it and where we could make the work easier.</p>
+
+      <p>The project also gave us an opportunity to build on the card framework we’d established for <a class="inline-link" href="patient-demographic-card.html">Patient Demographics</a>.</p>
+    </section>
+
+    <section id="workflow">
+      <p class="section-label">02 — The Existing Workflow</p>
+      <h2>Understanding the existing workflow</h2>
+
+      <p>Patient Transaction History is where billing staff review charges, payments, adjustments, and other financial activity associated with a patient.</p>
+
+      <p>The legacy screen displayed a lot of information, but reviewing that information and acting on it often required moving between separate windows.</p>
+
+      <p>Users could see a transaction in one place, open another window for details, and navigate elsewhere to complete an action.</p>
+
+      <p>That wasn’t necessarily how they thought about the work.</p>
+
+      <p>I conducted five client research sessions and three internal expert sessions, then compared what I learned with existing customer feedback.</p>
+
+      <p>One comment captured an important distinction:</p>
+
+      <div class="quote">
+        <p>“I don’t work charges, I work visits.”</p>
       </div>
+
+      <p>Billing staff weren’t simply reviewing individual transactions. They were trying to understand the financial activity associated with a visit and determine what needed attention.</p>
 
       <div class="screenshot-block">
         <img src="th-legacy-screens-web.png" alt="Legacy Patient Transaction History with its pop-up detail windows" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Not just one screen: we pulled information from multiple legacy pop-ups to improve the workflow.</div>
-      </div>
-    </section>
-
-    <!-- 02 RESEARCH -->
-    <section id="research">
-      <p class="section-label">02 — Research</p>
-      <h2>Finding friction <em>in the current workflow</em></h2>
-
-      <p>I conducted and synthesized research across five client sessions and three internal expert sessions, then compared those findings with existing customer feedback.</p>
-
-      <p><strong>Four patterns shaped the redesign.</strong></p>
-
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>The workflow consisted of multiple screens</h3></div>
-          <p>Billers had to navigate between several screens — like Charge Detail, Write-off Detail, and Edit Visit — to get the information they needed.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>There wasn't one right view</h3></div>
-          <p>Different roles needed different information from the same financial history. The legacy experience gave everyone the same fixed columns.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Review and action were separated</h3></div>
-          <p>Transaction History was primarily for understanding what had happened. Actions like payment entry and write-offs lived elsewhere, adding navigation to workflows that often involved both.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Billers work by visit, not by charge</h3></div>
-          <p>Billing experts followed the financial story of a visit — its charges, claims, payments, adjustments, and balance — rather than treating every transaction as an unrelated row.</p>
-        </div>
-      </div>
-
-      <div class="quote">
-        <p>“I don't work charges, I work visits.”</p>
+        <div class="screenshot-caption">The legacy experience spread financial history, details, and actions across multiple windows.</div>
       </div>
 
       <div class="screenshot-block">
         <img src="th-research-web.png" alt="Remote research session on the legacy screens alongside the insights database" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Research and existing feedback were synthesized into recurring workflow patterns rather than treated as individual feature requests.</div>
+        <div class="screenshot-caption">Research findings and existing customer feedback helped identify recurring workflow problems.</div>
       </div>
     </section>
 
-    <!-- 03 DESIGN -->
-    <section id="design">
-      <p class="section-label">03 — Design</p>
-      <h2>The redesigned <em>Transaction History card</em></h2>
+    <section id="visits">
+      <p class="section-label">03 — Organizing by Visit</p>
+      <h2>Organizing the history around visits</h2>
 
-      <p>The new card keeps financial history at the center while bringing more of the work users do around it into the same experience.</p>
+      <p>One of the biggest decisions was how to organize the financial information.</p>
 
-      <h3 class="sub">Views users can customize</h3>
-      <p>Users can reorder, hide, show, and pin columns instead of working around a fixed layout. Preferred Views preserve the configuration that matters to each user's workflow.</p>
+      <p>The legacy experience emphasized individual transactions. But users frequently needed to understand the relationship between charges, payments, adjustments, and the visit they belonged to.</p>
+
+      <p>The redesigned card introduces a visit-level hierarchy. Users can review a visit and expand it to see the underlying financial activity without losing the broader account history.</p>
+
+      <p>This gives billing staff a way to work at the level that makes sense for the task while still accessing individual transaction details.</p>
+
+      <div class="screenshot-block">
+        <img src="th-expanded-visit.png" alt="Expanded visit row showing its related financial transactions beneath it" style="width:100%;display:block;" />
+        <div class="screenshot-caption">Visit-level rows expand to show the related financial transactions.</div>
+      </div>
+    </section>
+
+    <section id="workspace">
+      <p class="section-label">04 — Configurable Columns</p>
+      <h2>Letting people configure their workspace</h2>
+
+      <p>Different billing roles need different information.</p>
+
+      <p>A user reviewing charges may care about different columns than someone investigating payments or working through account balances. The legacy layout offered limited flexibility, leaving people to work around a fixed set of columns.</p>
+
+      <p>The new card uses a configurable grid.</p>
+
+      <p>Users can reorder, hide, show, and pin columns, then save their configuration as a Preferred View.</p>
+
+      <p>Rather than trying to create one perfect layout for every billing workflow, we gave users more control over the information they need to see.</p>
+
       <div class="screenshot-block">
         <img src="th-columns-v2.png" alt="New Transactions card with the column customization panel open" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Column customization and Preferred Views.</div>
-      </div>
-
-      <h3 class="sub">Each visit’s transactions grouped together</h3>
-      <p>Visit-level rows expand into their underlying financial activity, while details and actions open alongside the history instead of replacing it.</p>
-      <div class="screenshot-block">
-        <img src="th-expanded-flyout.png" alt="Expanded visit row with its financial activity and the charge detail flyout open alongside the history" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Expanded visit with details and actions in a flyout.</div>
-      </div>
-
-      <div class="streams" style="margin-top:48px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Act in context</h3></div>
-          <p>Payment entry, write-offs, collections, and other actions are accessible from the history workflow.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Flexible setup</h3></div>
-          <p>Show and hide data, move columns, customized to the workflow.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Remember the setup</h3></div>
-          <p>Saved views preserve columns, filters, and sorting for different workflows.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Start with useful data</h3></div>
-          <p>The legacy “show all → reload” routine becomes the default rather than something users repeat every time they open the card.</p>
-        </div>
+        <div class="screenshot-caption">Column configuration and Preferred Views let users adapt the history to their work.</div>
       </div>
     </section>
 
-    <!-- 04 TRACKING -->
-    <section id="tracking">
-      <p class="section-label">04 — Tracking Adoption</p>
-      <h2>How we’ll track adoption <em>after launch</em></h2>
+    <section id="context">
+      <p class="section-label">05 — Details in Context</p>
+      <h2>Keeping details and actions in context</h2>
 
-      <p>Transaction History hasn’t launched yet, so there are no results to show. The plan for tracking it follows what worked on <a class="inline-link" href="patient-demographic-card.html">Patient Demographics</a>: watch who switches back to the legacy screen, read their feedback, and fix the friction behind it.</p>
+      <p>The other important change was reducing how often users had to leave the history to investigate something.</p>
 
-      <h3 class="sub">“Back to Legacy” as the main signal</h3>
-      <p>Users will be able to switch back to the legacy screen. How many people use that switch, and how often, shows whether the new card is working for them. On Patient Demographics, falling use of the same kind of switch was the clearest sign that each fix was landing.</p>
+      <p>In the legacy experience, opening details could mean navigating through separate pop-ups and then returning to the original screen.</p>
 
-      <h3 class="sub">Listening and responding to feedback</h3>
-      <p>When people switch back, we’ll look at what they were trying to do and what feedback they’ve left, find the friction behind it, and fix it in iterations, the same way we did on Patient Demographics.</p>
+      <p>In the redesign, details and available actions open in a flyout alongside the transaction history.</p>
 
-      <h3 class="sub">Supporting signals</h3>
-      <p>I also worked with Product to define three supporting signals: less time spent on the page, more saved Preferred Views, and more use of the new mass actions.</p>
+      <p>That means users can investigate a charge or review related information while keeping the surrounding financial activity visible.</p>
+
+      <div class="screenshot-block">
+        <img src="th-expanded-flyout.png" alt="Expanded visit row with its financial activity and the charge detail flyout open alongside the history" style="width:100%;display:block;" />
+        <div class="screenshot-caption">Transaction details appear alongside the history rather than replacing it.</div>
+      </div>
+
+      <p>This doesn’t mean every financial workflow is contained in the new card. Some actions still depend on other parts of the platform.</p>
+
+      <p>But it gives us a better foundation for bringing related work together as those workflows are modernized.</p>
+    </section>
+
+    <section id="measuring">
+      <p class="section-label">06 — Measuring the Redesign</p>
+      <h2>Planning how to measure the redesign</h2>
+
+      <p>The new experience was designed to address problems we’d heard in research, but that doesn’t tell us whether it will actually improve the workflow.</p>
+
+      <p>Before beta, I worked with Product to identify the signals we’d need to evaluate.</p>
+
+      <p>We wanted to understand whether people could complete their work with fewer trips back to the legacy experience, whether they used the new in-context details, and whether they found enough value in the configurable grid to save Preferred Views.</p>
+
+      <p>For payment-related workflows, we also wanted to understand whether the changes helped people complete their work more efficiently.</p>
+
+      <p>Pendo data gave us a baseline for understanding existing usage, including which roles used the screen and how they interacted with it.</p>
+
+      <div class="screenshot-block">
+        <img src="th-beta-dashboard-web.png" alt="Usage dashboard showing visitors by role, time on the screen, and the most-used actions" style="width:100%;display:block;" />
+        <div class="screenshot-caption">Existing usage data provides a baseline for evaluating the new experience during beta.</div>
+      </div>
+
+      <p>The plan is to combine behavioral data with direct customer feedback rather than relying on usage metrics alone.</p>
+    </section>
+
+    <section id="status">
+      <p class="section-label">07 — Where Things Stand</p>
+      <h2>Where things stand</h2>
+
+      <p>The redesigned Patient Transaction History is moving through the beta process.</p>
+
+      <p>The work brings visit-level financial history, configurable views, and more transaction details into a single experience built on the newer card framework.</p>
+
+      <p>There are still workflows to improve, and beta research will help us understand which decisions are working and where users continue to encounter friction.</p>
+
+      <p>The original requirement was to replace outdated technology. Research gave us a reason to do more than reproduce the old interface.</p>
+
+      <p>Now we have a redesign that reflects how billing staff described their work, along with a plan to find out whether it actually makes that work easier.</p>
     </section>
 
     <!-- UP NEXT -->

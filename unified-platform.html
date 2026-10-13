@@ -7,16 +7,16 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta name="description" content="Bringing Practice Management and EHR together for smaller practices, without rebuilding the underlying platform.">
   <meta property="og:title" content="Unified Practice Platform — Ivie Borovatz">
-  <meta property="og:description" content="Unifying Practice Management and EHR into one platform for smaller practices.">
+  <meta property="og:description" content="Bringing Practice Management and EHR together for smaller practices, without rebuilding the underlying platform.">
   <meta property="og:image" content="https://www.ivieborovatz.com/unified-platform-hero-purple.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #00c4b4;
@@ -49,7 +49,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.6;
   }
@@ -106,7 +106,7 @@
     font-weight: 600;
   }
   .hero h1 {
-    font-family: 'DM Serif Display', Georgia, serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(30px, 4vw, 56px);
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -676,6 +676,7 @@
   .glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:6px}
   .glance dd{margin:0;font-size:15px;line-height:1.6;color:var(--text-muted)}
   @media (max-width:700px){.glance{grid-template-columns:1fr}}
+  .screenshot-block + p { margin-top: 36px !important; }
 </style>
 </head>
 <body>
@@ -717,18 +718,14 @@
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
     <p class="hero-meta">Healthcare Software · Platform Strategy</p>
-    <h1>Unifying practice management and EHR <em>into one platform</em></h1>
-    <p class="hero-sub">Leading the MVP redesign of a unified practice management + EHR experience — built for small practices that the original platform had outgrown.</p>
+    <h1>Bringing Practice Management and EHR together</h1>
+    <p class="hero-sub">AdvancedMD had spent years adding capabilities to its Practice Management (PM) and Electronic Health Record (EHR) products. For smaller practices, all that functionality could make the software harder to learn and navigate.</p>
     <div class="hero-chips">
       <span class="chip">UX Architecture</span>
       <span class="chip">Platform Design</span>
-      <span class="chip">AI / RAG</span>
       <span class="chip">Service Mapping</span>
-      <span class="chip">Design System</span>
-      <span class="chip">Angular Material M3</span>
-      <span class="chip">AI Prototyping</span>
-      <span class="chip">Figma</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
+      <span class="chip">UI Modernization</span>
+      <span class="chip">AdvancedMD · 2025–2026</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -741,12 +738,12 @@
   <!-- nav -->
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
-    <a href="#problem">The Problem</a>
+    <a href="#approach">Approach</a>
     <a href="#research">Research</a>
     <div class="nav-section">Work</div>
-    <a href="#architecture">Architecture</a>
+    <a href="#design">Design</a>
     <a href="#platform">Platform</a>
-    <a href="#foundation">Foundation</a>
+    <a href="#foundation">Design System</a>
     <div class="nav-section">Results</div>
     <a href="#status">Status</a>
   </nav>
@@ -755,67 +752,42 @@
   <main class="content">
 
     <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>UX architect and lead designer for the MVP: workflow research, information architecture, interaction design, and the design foundation underneath it.</dd></div>
+      <div><dt>My role</dt><dd>Helped lead the UX architecture: workflow research, navigation, interaction patterns, and the component foundation underneath it.</dd></div>
       <div><dt>Worked with</dt><dd>Product and engineering partners, with client practices through discovery sessions.</dd></div>
-      <div><dt>Constraints</dt><dd>Built on the existing codebase, not a ground-up rewrite. Legacy screens stay in place until their UI refresh.</dd></div>
-      <div><dt>Status</dt><dd>The base shell and new top navigation are live. Unified workflows and patient context are in development.</dd></div>
+      <div><dt>Constraints</dt><dd>Built on the existing codebase, not a ground-up rewrite. Older screens keep their current interfaces until they’re modernized.</dd></div>
+      <div><dt>Status</dt><dd>The base shell and top navigation have shipped. Unified workflows, patient context, and role-based starting points are still being built.</dd></div>
     </dl>
 
-    <!-- 01 PROBLEM -->
-    <section id="problem">
-      <p class="section-label">01 — The Problem</p>
-      <h2>The platform had become<br><em>too complex for small practices</em></h2>
+    <p>The two sides of the platform were closely related, but they didn’t always behave like one product. Staff moved between clinical and administrative workflows, often having to know which application owned the information or task they needed.</p>
 
-      <p>The platform had spent years getting more capable. For small practices, it had also gotten more complicated.</p>
+    <p>I helped lead the UX architecture for a new experience intended to make AdvancedMD easier for smaller practices to use without rebuilding the underlying platform.</p>
 
-      <div class="callout">
-        <p><strong>A significant share of small practices were leaving — many before they were fully up and running.</strong></p>
-      </div>
+    <!-- 01 APPROACH -->
+    <section id="approach">
+      <p class="section-label">01 — Approach</p>
+      <h2>Why we needed a different approach</h2>
 
-      <p>Practice management and clinical work lived in different parts of the platform. Users had to understand where information lived, which side owned a task, and when they needed to move somewhere else to continue the workflow.</p>
+      <p>Small-practice retention was a concern, including practices that left before they were fully up and running.</p>
 
-      <p>An earlier simplification approach focused largely on limiting features. This project gave us an opportunity to ask a different question:</p>
+      <p>An earlier approach to simplification focused largely on limiting which features were available. But reducing the number of features wouldn’t necessarily address the complexity of using the ones that remained.</p>
 
-      <div class="callout">
-        <p><strong>What if we organized the experience around how a practice works instead of how the existing product was organized?</strong></p>
-      </div>
+      <p>We needed to understand how people worked across the platform before deciding how to reorganize it.</p>
+
+      <p>Rather than starting with a new navigation menu, I started with the workflows.</p>
     </section>
 
     <!-- 02 RESEARCH -->
     <section id="research">
       <p class="section-label">02 — Research</p>
-      <h2>The barrier between the applications<br><em>was creating work.</em></h2>
+      <h2>Understanding how practices actually work</h2>
 
-      <p>I started by mapping how different roles actually moved through their day, then tested those workflows against client discovery, behavioral data, customer requests, and the structure of the existing product.</p>
+      <p>I mapped how different roles moved through their day, from scheduling and clinical documentation to charge entry, claims, payment posting, and reporting.</p>
 
-      <p><strong>I started from how each role works, then designed the navigation around it.</strong></p>
+      <p>I compared what we heard in client discovery with existing customer requests, product documentation, and Pendo usage data where it helped explain behavior.</p>
 
-      <div class="role-pair">
-      <div class="role-card">
-        <h4>01 · Map the day</h4>
-        <div class="role-items">
-          <div class="role-item"><div class="role-dot"></div><div>We mapped the work of providers, front desk, billing, and administrative roles — including where information was needed, where decisions happened, and where the product interrupted the workflow.</div></div>
-          <div class="role-item"><div class="role-dot"></div><div>For front-desk users, the scheduler functioned as a command center. Eligibility, patient balances, and other information were useful in the context of the appointment rather than as separate destinations.</div></div>
-          <div class="role-item"><div class="role-dot"></div><div>For billers, behavioral data showed a recurring sequence across transactions, patient and insurance information, coding, claims, ERA, payment entry, and end-of-day work. The architecture needed to support that sequence rather than impose a different one.</div></div>
-        </div>
-      </div>
+      <p>The research showed that users didn’t necessarily experience PM and EHR as separate products. They experienced the interruptions created when work crossed between them.</p>
 
-      <div class="role-card">
-        <h4>02 · Validate the patterns</h4>
-        <div class="role-items">
-          <div class="role-item"><div class="role-dot"></div><div>I compared workflow findings with a broader body of customer feedback and product data to distinguish isolated requests from structural problems.</div></div>
-          <div class="role-item"><div class="role-dot"></div><div>Checkout existed in both PM and EHR, but information didn't reliably flow between them. Appointment confirmations could require leaving the EHR scheduler for a PM workflow. PM and EHR even supported different numbers of simultaneously open patient records.</div></div>
-          <div class="role-item"><div class="role-dot"></div><div><strong>The boundary between the products was creating work.</strong></div></div>
-        </div>
-      </div>
-      </div>
-
-      <div class="role-card" style="margin-top:16px;">
-        <h4>03 · Translate workflow into architecture</h4>
-        <div class="role-items">
-          <div class="role-item"><div class="role-dot"></div><div>The research became a set of architectural decisions about what belonged in navigation, what should remain attached to the patient, and what information should surface inside the workflow instead of requiring another destination.</div></div>
-        </div>
-      </div>
+      <p>A task might start in the scheduler, require information from the patient record, and continue in billing. The software’s boundaries didn’t always match the way the practice worked.</p>
 
       <div class="screenshot-block" style="margin-top:32px;">
         <div class="svc-map" role="img" aria-label="SMB workflow service map: ten workflow steps, seven critical gaps (orange) and three moderate gaps (green)">
@@ -837,157 +809,108 @@
             <span><i class="sw mod"></i>Moderate gap</span>
           </div>
         </div>
-        <div class="screenshot-caption">Mapping the practice workflow connected what users were doing, where they got stuck, and what the product could do differently.</div>
+        <div class="screenshot-caption">Mapping the work across ten areas of practice operations, including where users encountered friction.</div>
       </div>
+
+      <p>I also looked more closely at how different roles used the platform.</p>
+
+      <p>Front-desk staff often treated the scheduler as their starting point. Billers moved through a sequence of transaction review, coding, claims, and payments. Providers needed clinical information and patient context close to their daily schedule.</p>
+
+      <p>Those differences mattered when deciding what should appear in navigation, what belonged in a dashboard, and what should be available within the current task.</p>
 
       <div class="screenshot-block">
         <a href="unified-platform-biller-workflows.png" target="_blank" title="Open full size"><img src="unified-platform-biller-workflows.png" alt="Biller workflows by segment from Pendo data, alongside the biller's morning, midday, and end-of-day workflow map" style="width:100%;display:block;" /></a>
-        <div class="screenshot-caption">Role-level workflows helped distinguish what belonged in global navigation from what should appear in the context of the work.</div>
+        <div class="screenshot-caption">Role-based workflow research helped inform navigation and where information should appear.</div>
       </div>
     </section>
 
-    <!-- 03 ARCHITECTURE -->
-    <section id="architecture">
-      <p class="section-label">03 — Architecture</p>
-      <h2>One app that keeps <em>the patient in context</em></h2>
+    <!-- 03 DESIGN -->
+    <section id="design">
+      <p class="section-label">03 — Design</p>
+      <h2>Designing around the work</h2>
 
-      <p><strong>The goal was that users wouldn't need to know which product owned a task.</strong> Putting PM and EHR screens side by side wouldn't have done that.</p>
+      <p>The goal wasn’t to place existing PM and EHR screens inside a new frame and call it unified.</p>
 
-      <p>The dashboard brings forward work based on the user's role. Once a patient is opened, that patient context stays available as the user moves between clinical, scheduling, messaging, and financial work.</p>
+      <p>We wanted people to move through related tasks without constantly thinking about which part of the product they were using.</p>
 
-      <p>That led to a few structural rules:</p>
+      <p>That led to several decisions about the experience.</p>
 
-      <div class="streams" style="margin-top:28px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Navigation follows work</h3></div>
-          <p>Primary destinations reflect the workflows different roles actually move through.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Patient information stays with the patient</h3></div>
-          <p>Users shouldn't have to repeatedly search for the same person as they move between related tasks.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Information appears where it's useful</h3></div>
-          <p>Eligibility belongs with appointment workflows. Balances can surface where staff are interacting with patients. Not every capability needs another navigation destination.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Different roles can start differently</h3></div>
-          <p>A provider, front-desk user, and biller don't begin their day with the same priorities, so the experience shouldn't assume they do.</p>
-        </div>
-      </div>
+      <p>Navigation should follow the way people work rather than the historical organization of the software. A front-desk user and a biller may need different starting points, but they shouldn’t have to learn separate products.</p>
+
+      <p>Patient information should remain available as people move between related tasks, rather than requiring them to repeatedly search for the same patient.</p>
+
+      <p>And information such as eligibility, balances, and messages should appear where it’s useful, instead of forcing users to visit another part of the platform to find it.</p>
 
       <div class="screenshot-block" style="margin-top:40px !important;">
-          <img src="amd-dashboard-panel.jpg" alt="Patient side panel" style="width:100%;display:block;" />
-          <div class="screenshot-caption">Patient side panel — patient information stays available while the user works.</div>
-        </div>
-        <div class="screenshot-block">
-          <img src="amd-claims.jpg" alt="Claims" style="width:100%;display:block;" />
-          <div class="screenshot-caption">Claims — billing work without leaving the experience.</div>
-        </div>
+        <img src="amd-dashboard-panel.jpg" alt="Dashboard with the patient side panel open" style="width:100%;display:block;" />
+        <div class="screenshot-caption">The dashboard brings forward relevant work, while the patient panel keeps information available during related tasks.</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="amd-claims.jpg" alt="Claims screen in the new experience" style="width:100%;display:block;" />
+        <div class="screenshot-caption">Clinical, administrative, and financial workflows share the same experience.</div>
+      </div>
+
+      <p>These decisions formed the experience architecture and gave the teams a common direction as individual workflows moved into development.</p>
     </section>
 
     <!-- 04 PLATFORM -->
     <section id="platform">
       <p class="section-label">04 — Platform</p>
-      <h2>A new experience <em>on the existing platform</em></h2>
+      <h2>Working with the platform we already had</h2>
 
-      <p>A ground-up rebuild of the underlying systems wasn't a practical path for a platform this deep.</p>
+      <p>AdvancedMD is a large, established product. Rebuilding its underlying systems wasn’t a practical option, and creating a separate simplified product would have introduced another experience to maintain.</p>
 
-      <div class="callout">
-        <p><strong>We started with the screens users work in and kept the proven backend underneath them.</strong></p>
-      </div>
+      <p>The new experience was designed to run on the same codebase as the existing platform.</p>
 
-      <p>This wasn't designed as a separate product or a ground-up rewrite.</p>
+      <p>A new shell, navigation, and client-level configuration make it possible to introduce the experience incrementally while continuing to use existing capabilities underneath it.</p>
 
-      <p>It runs on the same codebase as the existing platform, allowing the experience to modernize incrementally while continuing to use existing capabilities underneath it. Client-level feature controls and routing allow a simplified mode to be enabled and tested without creating a separate branch or disrupting the existing legacy experience.</p>
+      <p>That also means features developed elsewhere in AdvancedMD can become available within the new experience without maintaining a separate version of the product.</p>
 
-      <p>That means capabilities built elsewhere in the platform can surface inside the new experience rather than being rebuilt specifically for it.</p>
-
-      <p>The tradeoff is honest: some screens will still look dated while they wait for their UI refresh. But because the new experience and the main product share a design language, every screen we modernize benefits both.</p>
-
-      <div class="callout">
-        <p>The base shell and new top navigation have already shipped as pieces of the new infrastructure.</p>
-      </div>
+      <p>There are tradeoffs. Some existing screens will retain their older interfaces until they’re modernized. But the architecture gives us a way to improve the experience in stages instead of waiting for a complete rewrite.</p>
     </section>
 
-    <!-- 05 FOUNDATION -->
+    <!-- 05 DESIGN SYSTEM -->
     <section id="foundation">
-      <p class="section-label">05 — Foundation</p>
-      <h2>Modernize without creating<br><em>another thing to maintain.</em></h2>
+      <p class="section-label">05 — Design System</p>
+      <h2>Modernizing the design system along the way</h2>
 
-      <p>The experience wasn't the only thing that needed modernization.</p>
+      <p>The platform’s component library had become another obstacle.</p>
 
-      <p>The component library had been customized so heavily that it had become technical debt and blocked framework upgrades. There were several options: invest heavily in upgrading the customized system, replace it with another proprietary library, or move back toward standard Angular Material 3.</p>
+      <p>Years of customization to Angular Material had made upgrades increasingly difficult, eventually blocking progress beyond Angular 18.</p>
 
-      <p>We chose the third direction.</p>
+      <p>We considered continuing to upgrade the customized library, replacing it with another component system, or moving back toward standard Angular Material 3.</p>
 
-      <div class="callout">
-        <p><strong>We use standard components by default and customize only when the product requires it.</strong></p>
-      </div>
+      <p>We chose the third direction, keeping customization for components the product genuinely needs.</p>
 
-      <p>I helped define how and why components should be used, supported the shared Figma library, and created design resources that give Design and Engineering the same definitions and intent — including enough structured guidance to support AI-assisted development.</p>
+      <p>My work focused on defining how components should be used, documenting interaction patterns, and supporting shared resources for Design and Engineering. That included the Figma library and structured component guidance that could also be used in AI-assisted development.</p>
 
-      <p>This project became the first major place to put that direction into practice.</p>
-
-      <p><strong>Moving back to the standard also gave us a stronger foundation to build on.</strong></p>
-
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>An accessible foundation</h3></div>
-          <p>Material 3 components come with keyboard support, focus states, and screen-reader semantics. We documented what teams still had to add — labels, focus management, contrast checks — and tested against WCAG AA.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Dark mode, built in</h3></div>
-          <p>Theming comes from design tokens, so the same screens support light and dark modes without designing and maintaining a second UI.</p>
-        </div>
-      </div>
+      <p>The goal was to stop recreating the same design decisions across teams while avoiding another heavily customized system we’d struggle to maintain later.</p>
 
       <div class="screenshot-block" style="margin-top:40px;">
         <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
         <img src="unified-platform-m3-modes-nolabel.png" alt="Profile Settings in dark mode and light mode" style="width:100%;display:block;" />
-        <div class="screenshot-caption">The same Profile Settings screen in dark and light mode, both from one set of Material 3 components.</div>
+        <div class="screenshot-caption">The same screen in both themes, built from a shared set of Material 3 components.</div>
       </div>
+
+      <p>The new experience became one of the first major places to put that direction into practice.</p>
     </section>
 
     <!-- 06 STATUS -->
     <section id="status">
       <p class="section-label">06 — Status</p>
-      <h2>Where the project <em>stands now</em></h2>
+      <h2>Where things stand</h2>
 
-      <p>The unified experience is in active development, built on the architecture and foundation I defined. The base shell and new top navigation are live as the first pieces of the new infrastructure, and we continue to build from there.</p>
+      <p>The new experience is still being developed.</p>
 
-      <div class="outcomes-grid" style="margin-top:32px;">
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Workflow-based architecture</h4>
-          <p>Navigation and scope follow how practices actually work, not the existing PM and EHR menus.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Patient context that travels</h4>
-          <p>Patient information stays with the user across clinical, scheduling, and billing tasks.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Runs on the existing platform</h4>
-          <p>The new experience runs on the existing codebase, so every modernized screen benefits both.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>A UI that keeps upgrading</h4>
-          <p>Built on standard Material 3 — the same foundation I’m leading across the product.</p>
-        </div>
-      </div>
+      <p>The base shell and top navigation have shipped as the first pieces of the new infrastructure. The broader unified workflows, patient context, and role-based starting points are still being built.</p>
 
-      <table class="status-table">
-        <tr><td>Live</td><td>Base shell · top navigation</td></tr>
-        <tr><td>In development</td><td>Unified workflows · patient context · role-based starting points</td></tr>
-        <tr><td>Foundation</td><td>Workflow architecture · interaction patterns · Material 3 system</td></tr>
-      </table>
+      <p>The work so far has established the workflow architecture, navigation direction, interaction patterns, and component foundation for the new experience.</p>
 
-      <div class="callout" style="margin-top:40px;">
-        <p>Success will be measured by whether it makes running a small practice easier.</p>
-      </div>
+      <p>We haven’t yet validated whether the new experience improves small-practice retention or makes the overall workflow easier. Those are the outcomes the broader release will need to demonstrate.</p>
+
+      <p>For me, the important part of this project has been finding a way to improve a complicated, established product without pretending we could start over.</p>
+
+      <p>We can keep the capabilities practices depend on while gradually changing how people experience them. And each piece we modernize can contribute to the larger platform rather than becoming another isolated redesign.</p>
     </section>
 
     <!-- UP NEXT -->

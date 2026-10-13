@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Building Trust in AI — Ivie Borovatz</title>
+<title>Designing AI — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Designing the small, visible moves that help wary healthcare billing teams trust AI.">
-  <meta property="og:title" content="Building Trust in AI — Ivie Borovatz">
-  <meta property="og:description" content="Designing the small, visible moves that help wary healthcare billing teams trust AI.">
+  <meta name="description" content="Shared interaction patterns across seven AI features in clinical, billing, and collections workflows.">
+  <meta property="og:title" content="Designing AI — Ivie Borovatz">
+  <meta property="og:description" content="Shared interaction patterns across seven AI features in clinical, billing, and collections workflows.">
   <meta property="og:image" content="https://www.ivieborovatz.com/ai-trust-hero.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #00c4b4;
@@ -50,7 +50,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.6;
   }
@@ -107,7 +107,7 @@
     font-weight: 600;
   }
   .hero h1 {
-    font-family: 'DM Serif Display', Georgia, serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(30px, 4vw, 56px);
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -775,6 +775,50 @@
   .st.exc{color:#a8461a}.st.ok{color:#146c43}.st.dim{color:#44474f;font-weight:500}
   .st small.conf{color:#2f4f8f;font-weight:600}
   @media (max-width:700px){.sum-states{grid-template-columns:1fr}.post-row{grid-template-columns:1.4fr 1fr auto}}
+  /* numbered callouts on the shared-pattern mockups */
+  .pin{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#00796e;color:#fff;font-size:11px;font-weight:600;font-style:normal;margin-right:6px;flex-shrink:0;vertical-align:middle}
+  .pin.in{margin:0 0 0 6px}
+  .sum-note .thumbs{display:inline-flex;align-items:center}
+  /* feedback loop */
+  .loop{list-style:none;counter-reset:lp;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;position:relative}
+  .loop li{counter-increment:lp;padding:18px;border-radius:16px;border:1px solid var(--border);background:var(--surface2);display:flex;flex-direction:column;gap:6px;position:relative}
+  .loop li::before{content:counter(lp);font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:var(--accent);line-height:1}
+  .loop li:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:18px;color:var(--accent);font-size:14px;background:var(--bg);line-height:1;padding:2px 0}
+  .loop li:last-child::after{content:'↺ back to step 1';font-size:12px;color:var(--accent);margin-top:4px}
+  .loop b{font-size:15px;color:var(--text)}
+  .loop span{font-size:14px;line-height:1.55;color:var(--text-muted)}
+  @media (max-width:1180px){.loop li:not(:last-child)::after{display:none}}
+  .feat-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
+  .feat-table th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:600;padding:0 16px 12px 0;border-bottom:1px solid var(--border)}
+  .feat-table td{padding:14px 16px 14px 0;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-muted);line-height:1.55}
+  .feat-table td:first-child{color:var(--text);font-weight:600;width:22%}
+  .feat-table td:nth-child(3){white-space:nowrap;font-size:14px}
+  .st-chip{display:table;margin:6px 0 0;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 9px;border-radius:999px;border:1px solid var(--border);color:var(--text-muted);vertical-align:2px;white-space:nowrap}
+  .st-chip.live{border-color:var(--accent);color:var(--accent)}
+  @media (max-width:700px){.feat-table thead{display:none}.feat-table,.feat-table tbody,.feat-table tr,.feat-table td{display:block;width:auto!important}.feat-table tr{padding:12px 0;border-bottom:1px solid var(--border)}.feat-table td{border:0;padding:2px 0}.feat-table td:nth-child(3)::before{content:'My part: ';color:var(--text-dim)}}
+  /* summary cards stack before they get cramped */
+  .sum-states{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))!important}
+  .sum-head{flex-wrap:wrap}
+  .sum-note > span:first-child{flex:1;min-width:0}
+  @media (max-width:420px){.sum-states{grid-template-columns:1fr!important}}
+  /* thumbs-down follow-up mock */
+  .fb-wrap{display:flex;justify-content:center}
+  .fb-card{background:#fff;color:#1c1c2e;border-radius:20px;padding:20px;width:100%;max-width:440px;border:1px solid rgba(0,0,0,.08);font-size:14px}
+  .fb-src-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#44474f;margin:0 0 8px}
+  .fb-src{display:flex;justify-content:space-between;align-items:center;border:1px solid #c4c6d0;border-radius:12px;padding:12px 14px;color:#44474f}
+  .fb-src b{display:block;color:#1c1c2e;font-weight:600}
+  .fb-src small{font-size:13px}
+  .fb-icons{display:flex;gap:18px;align-items:center;margin:14px 4px;color:#44474f;font-size:18px}
+  .fb-panel{background:#ecedf3;border-radius:16px;padding:16px}
+  .fb-title{font-size:15px;margin:0 0 12px;color:#1c1c2e}
+  .fb-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .fb-chip{border:1px solid #74777f;border-radius:999px;padding:6px 14px;font-size:13px;color:#1c1c2e}
+  .fb-actions{display:flex;justify-content:flex-end;gap:24px;font-weight:600;font-size:14px;color:#2f5fa0}
+  .fb-actions .send{color:#44474f}
+  #intro{margin-top:0!important;padding-top:0!important}
+  .feat-table + p{margin-top:24px}
+  .feat-table th:nth-child(3){white-space:nowrap}
+  .feat-table td:nth-child(3) .st-chip{margin-top:6px}
 </style>
 </head>
 <body>
@@ -787,7 +831,7 @@
     <span class="bc-sep">/</span>
     <a href="index.html#work" class="bc-link">Case Studies</a>
     <span class="bc-sep">/</span>
-    <span class="current">Building Trust in AI</span>
+    <span class="current">Designing AI</span>
   </div>
   <div class="back-nav-right">
     <a href="index.html#work" class="back-nav-link">Work</a>
@@ -815,139 +859,92 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · AI Experience</p>
-    <h1>Designing AI features <em>billing teams can trust</em></h1>
-    <p class="hero-sub">Billing teams are wary of AI touching their money, and they should be. I designed the small, visible moves that let them see what the AI decided, check it, and stay in control.</p>
-    <div class="hero-chips">
-      <span class="chip">AI Experience</span>
-      <span class="chip">Trust &amp; Transparency</span>
-      <span class="chip">Billing Workflows</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
-    </div>
+    <p class="hero-meta">AI Experience · UX Architecture · Design Governance · 2025–2026</p>
+    <h1>Designing AI for AdvancedMD</h1>
+    <p class="hero-sub">AdvancedMD had seven AI features in development across clinical, billing, and collections workflows. Different teams were solving different problems, but many of the interaction decisions were the same.</p>
   </div>
   <div class="hero-visual">
-    <div class="hero-visual-bg" style="background-image: url('ai-trust-hero.jpg'); background-position: center;"></div>
+    <div class="hero-visual-bg" style="background-image: url('ai-trust-thumb.gif'); background-position: center;"></div>
   </div>
 </section>
 
 <!-- body -->
 <div class="page">
   <nav id="case-nav">
-    <div class="nav-section">Overview</div>
-    <a href="#problem">The Problem</a>
-    <a href="#plans">What We Planned</a>
-    <div class="nav-section">Work</div>
-    <a href="#solution">How We Solved It</a>
-    <div class="nav-section">Results</div>
-    <a href="#feedback">Feedback</a>
+    <a href="#context">A little context</a>
+    <a href="#projects">The projects</a>
+    <a href="#summaries">Starting with summaries</a>
+    <a href="#doing">When AI does the work</a>
+    <a href="#feedback">Making feedback useful</a>
+    <a href="#status">Where things stand</a>
+    <a href="#looking-back">Looking back</a>
   </nav>
 
   <main class="content">
 
-    <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Designed the AI collections summary and the AI payment posting experience end to end, and supported the technical product manager’s research.</dd></div>
-      <div><dt>Worked with</dt><dd>A technical product manager and two product teams that had each started designing the same AI summary.</dd></div>
-      <div><dt>Constraints</dt><dd>Billers are accountable for every dollar posted. The AI can’t be a black box, and it can’t leave a mess when it fails.</dd></div>
-      <div><dt>Status</dt><dd>The AI summary is live in collections and comes to Transaction History with its beta. AI payment posting is in design.</dd></div>
-    </dl>
-
-    <!-- 01 PROBLEM -->
-    <section id="problem">
-      <p class="section-label">01 — The Problem</p>
-      <h2>Billing teams don’t trust <em>AI with their work</em></h2>
-
-      <p>Insurance payment posting and collections follow-up are some of the most repetitive work in a medical practice. They’re also some of the most consequential. A wrong posting means a wrong patient balance, a confused patient on the phone, and someone on the billing team cleaning it up.</p>
-
-      <p>So the people doing this work are careful, and they’re skeptical of anything that promises to “just handle it.” An AI that posts payments or summarizes a visit’s history is asking them to hand over something they’re responsible for.</p>
-
-      <div class="callout"><p>Before they’d let AI do this work, the people accountable for it needed to see what it decided and why.</p></div>
+    <section id="intro">
+      <p>Two teams had already started designing their own AI summaries. It was a small example of a bigger problem: without shared patterns, every feature would introduce another way for users to understand, review, and interact with AI.</p>
+      <p>I worked across the UX team to establish common interaction patterns while designing the practice management features myself.</p>
     </section>
 
-    <!-- 02 PLANS -->
-    <section id="plans">
-      <p class="section-label">02 — What We Planned</p>
-      <h2>The AI features <em>we planned to introduce</em></h2>
-
-      <p>Two AI features were coming to billing work:</p>
-      <p><strong>AI collections summary.</strong> On request, it summarizes the collections activity on a visit, with the last action taken and the next one to take.</p>
-      <p><strong>AI payment posting.</strong> It reads insurance payment files (ERAs) and matches each payment to its claim. We researched the most common reasons payments fail to post automatically and how billers fix each one by hand, and the agent is built to handle those first: reversals, small mismatches between what was billed and what was paid, and secondary payments. Each practice chooses whether it only recommends how to post or posts automatically. Anything it can’t resolve goes to a queue with its reasoning, and billers can override anything it posted.</p>
+    <section id="context">
+      <h2>A little context</h2>
+      <p>Healthcare software isn’t particularly forgiving of mistakes. Billers need to account for every dollar, and clinicians need to know exactly what ends up in a patient’s chart.</p>
+      <p>Our AI work ranged from relatively simple summaries to agents capable of taking action on financial records. Some features were there to help people understand information faster. Others could actually do the work.</p>
+      <p>That meant we couldn’t treat every AI interaction the same way. A summary needs to be easy to review. A suggested chart update needs an explicit decision. An automated payment needs a status, a record of what happened, and a way to handle exceptions.</p>
+      <p>The challenge was to make those behaviors familiar across the product without forcing every feature into an identical interface.</p>
     </section>
 
-    <!-- 03 SOLUTION -->
-    <section id="solution">
-      <p class="section-label">03 — How We Solved It</p>
-      <h2>How the design <em>builds trust</em></h2>
+    <section id="projects">
+      <h2>The projects</h2>
+      <p>My work covered seven features at different stages of development.</p>
+      <table class="feat-table">
+        <thead><tr><th>Feature</th><th>What it does</th><th>My involvement</th></tr></thead>
+        <tr><td>Collections summary</td><td>Summarizes collections activity, including previous and next actions</td><td>Designed<span class="st-chip live">Live</span></td></tr>
+        <tr><td>Transaction History summary</td><td>Reuses the summary pattern in the redesigned transaction experience</td><td>Designed<span class="st-chip">Beta</span></td></tr>
+        <tr><td>Pre-visit summary</td><td>Prepares clinicians with relevant information before an appointment</td><td>Mentored</td></tr>
+        <tr><td>Clinical assistant</td><td>Suggests chart updates from visit transcripts</td><td>Mentored<span class="st-chip live">Live</span></td></tr>
+        <tr><td>AI assistant</td><td>Answers practice management questions using cited Knowledge Base articles</td><td>Mentored</td></tr>
+        <tr><td>Payment posting</td><td>Matches insurance payments to claims and supports recommended or automatic posting</td><td>Designed<span class="st-chip">In design</span></td></tr>
+        <tr><td>Billing agents</td><td>Run scheduled checks for denials, underpayments, and filing deadlines</td><td>Designed</td></tr>
+      </table>
+      <p>I designed the collections, payment-posting, and billing-agent experiences. I also mentored the designers who built the clinical features and the AI assistant.</p>
+      <p>Working across those projects gave me a view of decisions that individual feature teams wouldn’t necessarily encounter.</p>
+    </section>
 
-      <h3 class="sub">One summary design across modules</h3>
-      <p>Two product teams had each started designing an AI summary for different screens. I pulled them together so the summary looks and behaves the same everywhere: the same placement, labels, states, and feedback.</p>
-
-      <p>That matters more for AI than for most features. If the AI explains itself one way in collections and another way somewhere else, users have to rebuild their trust each time. With one pattern, they learn it once.</p>
-
-      <h3 class="sub">Seven principles for trustworthy AI features</h3>
-
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>People choose how much the AI does</h3></div>
-          <p>The practice decides, per payer, whether the AI only recommends or posts automatically. The on/off switch says in plain words what will happen: “Matching ERAs post automatically.”</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Every line shows its status</h3></div>
-          <p>Auto-posted with a confidence score, posting, pending, or an exception with the reason. Nothing happens off-screen.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Suggestions look like suggestions</h3></div>
-          <p>When the AI isn’t sure, it says so, “AI suggestion — review before acting,” and shows the candidate visits so a biller can choose.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Anything the AI posts can be overridden</h3></div>
-          <p>A biller can override any AI posting, and overrides and rule changes are logged. Control never moves out of reach.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Fail without side effects</h3></div>
-          <p>If the AI service doesn’t respond, the work is left exactly as it was: “The claim line is unchanged — you can retry or work it manually.”</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">6</div><h3>Say so when there isn’t enough to go on</h3></div>
-          <p>If there isn’t enough new collections activity, the summary doesn’t stretch to fill the space. It says “Not enough new collections activity to summarize yet.” It’s the same rule I gave <a href="research-database.html" style="color:var(--accent)">our research model</a>: leave the gap instead of guessing.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">7</div><h3>Ask for feedback where the output is</h3></div>
-          <p>Every summary is labeled as AI-generated, asks the user to review it, shows when it was generated, and has thumbs up and down right beside it.</p>
-        </div>
-      </div>
-
-      <h3 class="sub">The four states of the AI collections summary</h3>
-
-      <p>The collections summary has four states, and each one tells the user exactly where they stand. Summaries only run when someone asks for one.</p>
-
+    <section id="summaries">
+      <h2>Starting with summaries</h2>
+      <p>The collections and pre-visit summaries were an obvious place to establish a shared pattern.</p>
+      <p>They serve different users and contain completely different information, but the basic interaction is the same. Someone needs a useful summary, needs to know when it was generated, and needs a way to tell us when something isn’t right.</p>
+      <p>We standardized the AI identification, review guidance, update controls, timestamps, and feedback behavior. A negative rating opens a short set of reasons, giving the product team something more useful than a thumbs-down count.</p>
       <figure class="mock-fig">
         <div class="sum-states">
           <div class="sum-card">
             <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
-            <p class="sum-text">Insurance paid most claims on this visit. One needed a code correction and rebill before payment.</p>
+            <div class="sum-note"><span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
+            <p class="sum-text" style="margin-top:12px">Insurance paid most claims on this visit. One needed a code correction and rebill before payment.</p>
             <div class="sum-kv"><span>Last action</span><span>Payment follow-up</span><span>Next action</span><span>Confirm payments are fully applied</span></div>
             <p class="sum-time">Summary generated: Nov 17, 11:38 AM</p>
-            <div class="sum-note"><span>Generated with AI assistance. Please review for accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
           </div>
           <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn primary">Generate</span></div>
-            <p class="sum-empty">No summary yet. Generate one from the collections activity on this visit.</p>
-          </div>
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI collections summary</span><span class="mbtn">Update</span></div>
-            <p class="sum-empty">Not enough new collections activity to summarize yet.</p>
-          </div>
-          <div class="sum-card">
-            <div class="sum-head"><span class="sum-title"><span class="warn" aria-hidden="true">⚠</span>AI collections summary</span><span class="mbtn">Retry</span></div>
-            <div class="sum-err"><strong>AI summary unavailable</strong><span>Try again, or contact support.</span></div>
+            <div class="sum-head"><span class="sum-title"><span class="spark" aria-hidden="true">✦</span>AI pre-visit summary</span><span class="mbtn">Update</span></div>
+            <div class="sum-note"><span>Generated with AI assistance. Please review for clinical accuracy and completeness.</span><span class="thumbs" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2f5fb3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></span></div>
+            <p class="sum-text" style="margin-top:12px"><strong>Chief complaint:</strong> Recurring headaches, follow-up visit.</p>
+            <div class="sum-kv"><span>Last visit</span><span>Nov 4</span><span>Review</span><span>Vitals, current medications, recent results</span></div>
+            <p class="sum-time">Summary generated: Nov 17, 8:02 AM</p>
           </div>
         </div>
-        <figcaption class="screenshot-caption">Generated, empty, not enough activity, and unavailable. Redrawn and simplified, with sample data.</figcaption>
+        <figcaption class="screenshot-caption">Two different workflows using the same summary controls. Redrawn with sample data.</figcaption>
       </figure>
+      <p>We also made updates deliberate rather than automatic. The user can see when the information was generated and request a new summary when needed.</p>
+      <p>It’s a small interaction decision, but an important one when someone may be making a clinical or financial decision based on the information.</p>
+    </section>
 
-      <h3 class="sub">AI status on every payment line</h3>
-      <p>In the payment posting design, every line carries its own AI status. Billers can see at a glance what posted, what’s in progress, and what needs them, along with the reason.</p>
-
+    <section id="doing">
+      <h2>What happens when AI starts doing the work?</h2>
+      <p>Payment posting introduced a different set of problems.</p>
+      <p>A summary can be reviewed and ignored. An automatically posted insurance payment changes the account. The interface needs to make that distinction clear.</p>
+      <p>We designed posting controls that let practices choose, by payer, whether the AI should recommend matches or post them automatically. Each payment line shows its current status, including exceptions and work still in progress.</p>
       <figure class="mock-fig">
         <div class="post-mock">
           <div class="post-bar"><span><b>89%</b> AI auto-posted</span><span class="toggle" aria-hidden="true"><i></i></span><span class="post-tip">AI auto-posting is on. Matching ERAs post automatically.</span></div>
@@ -956,31 +953,49 @@
           <div class="post-row"><span class="st">◌ Posting…</span><span>Visit 3</span><span>$32.60</span></div>
           <div class="post-row"><span class="st dim">• Pending</span><span>Visit 4</span><span>$96.20</span></div>
         </div>
-        <figcaption class="screenshot-caption">Per-line AI status in the payment posting design. Redrawn and simplified, with sample data.</figcaption>
+        <figcaption class="screenshot-caption">Automatic posting, exceptions, and pending work are visible at the individual payment level. Redrawn with sample data.</figcaption>
       </figure>
+      <p>The same thinking carried into the billing agents. We distinguished agents that only report information from those that can make changes, and designed run histories so staff can review what happened.</p>
+      <p>Clinical suggestions required another variation. Rather than applying a group of changes to a chart, clinicians can accept or reject individual suggestions.</p>
+      <p>These aren’t identical interactions, and they shouldn’t be. What they share is a clear distinction between what the AI suggests, what it does, and what the person can control.</p>
     </section>
 
-    <!-- 04 FEEDBACK -->
     <section id="feedback">
-      <p class="section-label">04 — Feedback</p>
-      <h2>How we’re gathering feedback <em>and listening</em></h2>
+      <h2>Making feedback useful</h2>
+      <p>I wanted feedback to work consistently, regardless of where someone encountered AI.</p>
+      <p>Summaries and assistant responses use the same positive and negative feedback controls. When someone reports a problem, we ask whether the response was inaccurate, outdated, incomplete, off-topic, or cited the wrong source.</p>
+      <figure class="mock-fig">
+        <div class="fb-wrap">
+          <div class="fb-card" role="img" aria-label="AI assistant answer with a thumbs down and a follow-up asking what went wrong">
+            <p class="fb-src-label">Sources</p>
+            <div class="fb-src"><span><b>Knowledge Base article</b><small>Practice Management → Related topic</small></span><span aria-hidden="true">↗</span></div>
+            <div class="fb-icons" aria-hidden="true"><span>⧉</span><span>↻</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg><svg style="transform:rotate(180deg)" width="18" height="18" viewBox="0 0 24 24" fill="#2f5fa0" stroke="#2f5fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H3V10z"/><path d="M7 10l4-8a3 3 0 0 1 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg></div>
+            <div class="fb-panel">
+              <p class="fb-title">What went wrong?</p>
+              <div class="fb-chips"><span class="fb-chip">Inaccurate</span><span class="fb-chip">Out of date</span><span class="fb-chip">Not enough detail</span><span class="fb-chip">Wrong source cited</span><span class="fb-chip">Off-topic</span><span class="fb-chip">Other</span></div>
+              <div class="fb-actions"><span>Cancel</span><span class="send">Send Feedback</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="screenshot-caption">Shared feedback controls and source references.</figcaption>
+      </figure>
+      <p>For features that take action, the more useful signals may be different: accepted suggestions, rejected changes, overrides, posting exceptions, and agent histories.</p>
+      <p>The point wasn’t to collect feedback for its own sake. It was to give Product a consistent way to see where AI was helping and where people still needed to correct it.</p>
+    </section>
 
-      <p>Feedback is built in where the AI’s output appears. Every summary is labeled as AI-generated, asks the user to review it, and has thumbs up and down right beside it. I also supported the technical product manager’s research.</p>
+    <section id="status">
+      <h2>Where things stand</h2>
+      <p>The collections summary is live, and the same pattern is being carried into Transaction History. The clinical assistant is also live, while payment posting and billing agents are at earlier stages of development.</p>
+      <p>The product team’s early assessment of the collections summary estimates a 75% reduction in manual note-review time per claim. That’s an encouraging result for the feature, although it isn’t a measure of the shared UX patterns themselves.</p>
+      <p>For the broader AI experience, there’s still more to learn. I’m particularly interested in how often people override AI actions, what kinds of feedback they submit, and whether practices become comfortable moving from recommendations to automatic posting.</p>
+    </section>
 
-      <p>The product team’s early assessment of the collections summary: a 75% reduction in manual note review time per claim, and more consistent collections follow-ups that no longer depend on which biller or staff member works the account.</p>
-
-      <p>Three signals will show whether trust keeps growing: the thumbs feedback on every summary, how often billers override what the AI posted, and whether practices move from “recommend only” to automatic posting over time.</p>
-
-      <h3 class="sub">Where each feature stands</h3>
-      <table class="status-table">
-        <tr><td>Live</td><td>AI summary in collections</td></tr>
-        <tr><td>Next</td><td>The same summary in Transaction History, with its beta</td></tr>
-        <tr><td>In design</td><td>AI payment posting: per-line status, recommend-only or automatic posting, overrides</td></tr>
-      </table>
-
-      <h3 class="sub">What I learned: design for both experiences</h3>
-      <p>These AI features are additions to the platform. When a practice doesn’t have them turned on, they simply don’t appear. So every new screen has to work both with the AI and without it, and that will stay true as trust in AI builds.</p>
-      <p>It also showed me that bringing in AI doesn’t have to wait for a full redesign. Adding it to the screens people already use can quietly make their jobs easier.</p>
+    <section id="looking-back">
+      <h2>Looking back</h2>
+      <p>One of the interesting things about this work was how quickly reasonable, independent design decisions could turn into product-wide inconsistency.</p>
+      <p>Nobody was deliberately creating a fragmented experience. Each team was focused on getting its own feature right.</p>
+      <p>My contribution was working across those projects, recognizing where decisions should be shared, and helping the team establish patterns we could reuse as AI became part of more workflows.</p>
+      <p>And as AI moves beyond summarizing information into actually doing things, I expect those patterns will need to keep evolving.</p>
     </section>
 
     <!-- UP NEXT -->
