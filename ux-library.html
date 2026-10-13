@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Modernization — Material 3 Governance — Ivie Borovatz</title>
+<title>Modernizing our UI without starting over — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="Moving from a customized component library back to standard Material 3.">
-  <meta property="og:title" content="UI Modernization — Material 3 Governance — Ivie Borovatz">
-  <meta property="og:description" content="Moving from a customized component library back to standard Material 3.">
+  <meta name="description" content="How we moved a heavily customized Angular Material library back to standard Material 3, and the UX standards that made it work.">
+  <meta property="og:title" content="Modernizing our UI without starting over — Ivie Borovatz">
+  <meta property="og:description" content="How we moved a heavily customized Angular Material library back to standard Material 3, and the UX standards that made it work.">
   <meta property="og:image" content="https://www.ivieborovatz.com/m3-components-hero.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -654,6 +654,7 @@
   h2 { margin-bottom: 22px !important; }
   .screenshot-block { margin-top: 28px !important; margin-bottom: 0 !important; }
   .screenshot-block + .screenshot-block { margin-top: 40px !important; }
+  .screenshot-block + p { margin-top: 36px !important; }
   .up-next { margin-top: 56px !important; }
 
   /* ── before / after table ── */
@@ -767,15 +768,15 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · Design Infrastructure</p>
-    <h1>When tech debt<br><em>becomes a blocker.</em></h1>
-    <p class="hero-sub">We’d been warning for years that our customized component library would stop us from upgrading. Then it did. This is how we moved to unaltered Material 3 without losing consistency along the way.</p>
+    <p class="hero-meta">Healthcare Software · Design Systems</p>
+    <h1>Modernizing our UI without starting over</h1>
+    <p class="hero-sub">For years, we’d been warning that our heavily customized Angular Material library was going to become a problem. Every customization made the next framework upgrade harder, and we didn’t have the dedicated resources to maintain the library indefinitely.</p>
     <div class="hero-chips">
       <span class="chip">Design Systems</span>
-      <span class="chip">Governance</span>
-      <span class="chip">Angular Material 3</span>
+      <span class="chip">UX Architecture</span>
       <span class="chip">Accessibility</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
+      <span class="chip">Angular Material 3</span>
+      <span class="chip">AdvancedMD · 2025–2026</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -787,166 +788,93 @@
 <div class="page">
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
-    <a href="#problem">The Problem</a>
-    <a href="#role">The Transition</a>
+    <a href="#background">How we got here</a>
+    <a href="#transition">Making the transition</a>
     <div class="nav-section">Work</div>
-    <a href="#before-after">Before → After</a>
-    <a href="#decisions">Key Decisions</a>
-    <a href="#standards">Standards Library</a>
+    <a href="#interface">What changed</a>
+    <a href="#decisions">What should be standard</a>
+    <a href="#standards">Standards library</a>
+    <a href="#accessibility">Accessibility</a>
     <div class="nav-section">Results</div>
-    <a href="#outcomes">Outcomes</a>
+    <a href="#status">Where things stand</a>
   </nav>
 
   <main class="content">
 
-    <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Led the governance layer: usage rules, Figma module upgrades, accessibility specifications for engineering, and the standards documentation.</dd></div>
-      <div><dt>Worked with</dt><dd>Our lead developer, an offshore engineering team, and 12+ development teams adopting the upgrade, including six I partnered with directly.</dd></div>
-      <div><dt>Constraints</dt><dd>Customization had blocked upgrades past Angular 18. Every component had to upgrade one-for-one without breaking the UI.</dd></div>
-      <div><dt>Shipped</dt><dd>Standard Material 3 components, upgraded Figma modules, a living standards site, and a Claude Design library. Rolling out as teams move to Angular 20 and beyond.</dd></div>
-    </dl>
-
-    <!-- 01 PROBLEM -->
-    <section id="problem">
-      <p class="section-label">01 — The Problem</p>
-      <h2>Customizations blocked <em>the Angular upgrade</em></h2>
-
-      <p>The platform had been using a heavily customized version of Angular Material. We’d been telling leadership for years that the customization would eventually block us from upgrading — and that we needed resources to maintain the library.</p>
-
-      <p>It did. We identified breaking changes that kept the product from upgrading past Angular 18 without breaking core UI behavior.</p>
-
-      <div class="callout">
-        <p><strong>This had become a technical limit.</strong> It affected what the product could ship and how fast teams could move.</p>
-      </div>
-
-      <p>We gave leadership three options:</p>
-
-      <div class="streams three" style="margin-top:24px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Reskin the whole library</h3></div>
-          <p>Invest heavily in upgrading and re-customizing every component.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Buy a new library</h3></div>
-          <p>Purchase and implement a different Angular component library.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Transition to unaltered M3</h3></div>
-          <p>Create an elegant transition plan back to standard Material 3. <strong>This is the option leadership chose.</strong></p>
-        </div>
-      </div>
+    <section id="intro">
+      <p>Eventually, we hit the breaking point. Changes in Angular meant we couldn’t move beyond version 18 without breaking core UI behavior.</p>
+      <p>What started as a design-system maintenance concern had become a technical blocker.</p>
+      <p>I worked with Engineering and leadership to establish a path back to standard Angular Material 3, then led the UX standards and component guidance needed to make that transition work across the product.</p>
     </section>
 
-    <!-- 02 TRANSITION -->
-    <section id="role">
-      <p class="section-label">02 — The Transition</p>
-      <h2>Upgrading the library <em>and documenting its use</em></h2>
+    <section id="background">
+      <h2>How we got here</h2>
+      <p>AdvancedMD had spent years modifying Angular Material to meet individual product and design requirements. Some customizations were necessary. Others had accumulated as teams made decisions independently.</p>
+      <p>Over time, our component library drifted further from the framework it was built on.</p>
+      <p>We’d raised concerns about the maintenance burden before, but once the breaking changes prevented further upgrades, the problem became difficult to ignore.</p>
+      <p>We presented leadership with three options: invest heavily in upgrading and re-customizing the existing library, purchase and implement a different component system, or move back toward standard Angular Material 3.</p>
+      <p>Leadership chose the third option.</p>
+      <p>The decision wasn’t to eliminate customization entirely. It was to stop treating customization as the default.</p>
+    </section>
 
-      <p>We worked with an offshore team for two months to upgrade the library from customized Material 2 to standard Material 3, one component at a time. Each component had to be stripped of its customizations so that when a product team turned on the upgrade, it would run cleanly — one-for-one — and update the UI without breaking anything.</p>
-
-      <p>Standard components still leave room for interpretation, so I defined the rules for how each one is used: for example, when a text field needs multiple icons, the exact order and placement, so users aren’t surprised and can rely on how it behaves. Those rules kept dev teams — and designers — from drifting apart as the upgrades rolled out.</p>
-
-      <p>I mapped out the first upgrades, designed the new experience, and reviewed and tested each component as the team completed it.</p>
-
-      <div class="callout">
-        <p><strong>My role:</strong> I led the governance layer — usage decisions, component guidance, Figma module upgrades, and accessibility specifications for engineering. I also built a Claude Design library so the UX team could prototype with the same components.</p>
-      </div>
+    <section id="transition">
+      <h2>Making the transition</h2>
+      <p>We worked with an offshore development team over two months to move from our customized Material 2 components toward standard Material 3.</p>
+      <p>The migration happened component by component. The goal was to remove unnecessary overrides and allow product teams to adopt the updated components without breaking existing behavior.</p>
+      <p>My part of the work was defining how those components should be used, mapping the first upgrades, designing examples in real product contexts, and reviewing and testing the components as Engineering completed them.</p>
+      <p>Standard Material provides a component library, but it doesn’t make every product decision for you.</p>
+      <p>For example, we still needed consistent rules for field layouts, icon placement, density, feedback messages, and when to use different component variants. Without that guidance, teams could implement the same standard components in completely different ways.</p>
+      <p>I documented those decisions so designers and developers had a common reference.</p>
 
       <div class="cd-gallery">
-        <figure><img src="cd-patient-search.png" alt="Patient search component with enabled, focused, and recent-searches states" loading="lazy"><figcaption><strong>Patient search</strong> — enabled, focused, and recent-search states.</figcaption></figure>
-        <figure><img src="cd-button-states.png" alt="Filled button shown in enabled, hover, focus, pressed, and disabled states" loading="lazy"><figcaption><strong>Buttons</strong> — every M3 variant, with each interaction state.</figcaption></figure>
-        <figure><img src="cd-expansion-panels.png" alt="Expansion panels showing patient demographics, insurance details, and visit notes" loading="lazy"><figcaption><strong>Expansion panels</strong> — accordion and multi-mode, with realistic sample data.</figcaption></figure>
+        <figure><img src="cd-patient-search.png" alt="Patient search component with enabled, focused, and recent-searches states" loading="lazy"><figcaption>Patient search</figcaption></figure>
+        <figure><img src="cd-button-states.png" alt="Filled button shown in enabled, hover, focus, pressed, and disabled states" loading="lazy"><figcaption>Buttons</figcaption></figure>
+        <figure><img src="cd-expansion-panels.png" alt="Expansion panels showing patient demographics, insurance details, and visit notes" loading="lazy"><figcaption>Expansion panels</figcaption></figure>
       </div>
-      <p class="sd-cap">From the Claude Design library: production-matched components with sample data, so designers prototype with what engineering actually ships.</p>
+      <p class="sd-cap">Component examples include interaction states and realistic product data, so designers can prototype with patterns that match Engineering’s implementation.</p>
+
+      <p>I also supported the updated Figma modules and built a Claude Design library using the same component patterns.</p>
+      <p>The goal was to keep design exploration close to what we could actually build, rather than creating another gap between design files and production.</p>
     </section>
 
-    <!-- 03 BEFORE / AFTER -->
-    <section id="before-after">
-      <p class="section-label">03 — Before → After</p>
-      <h2>Before and after <em>the move to Material 3</em></h2>
-
-      <table class="ba-table">
-        <thead><tr><th></th><th>Before</th><th class="after">After</th></tr></thead>
-        <tbody>
-          <tr><td>Component library</td><td class="before">Heavily overridden, brand-flavored Material — diverged significantly from standard M3.</td><td class="after">Standard Material 3, with custom components only where genuinely needed and deliberately justified.</td></tr>
-          <tr><td>Angular compatibility</td><td class="before">Blocked at Angular 18 due to accumulated customization debt.</td><td class="after">Migration path to current Angular versions unblocked.</td></tr>
-          <tr><td>Dark mode</td><td class="before">Custom dark stylesheet required per component.</td><td class="after">Inherited from M3 — one switch, consistent behavior.</td></tr>
-          <tr><td>Accessibility</td><td class="before">Custom implementation required per component.</td><td class="after">Standard M3 supplies accessible semantics and keyboard support; we documented, built, and tested what each component still needed.</td></tr>
-          <tr><td>Figma ↔ Eng handoff</td><td class="before">Design files reflected our custom components, not standard M3. The gap between design and production was large.</td><td class="after">Figma modules upgraded to M3. Developers working in the same component language as designers.</td></tr>
-          <tr><td>New feature decisions</td><td class="before">“What should this look like?” answered ad hoc.</td><td class="after">Governance layer: color decisions, density choices, outlined vs. filled rationale, and documented accessibility requirements engineering builds in by default.</td></tr>
-        </tbody>
-      </table>
+    <section id="interface">
+      <h2>What changed in the interface</h2>
+      <p>The difference is easiest to see in the product itself.</p>
+      <p>Our older components carried years of visual overrides. Dialogs, form fields, and other controls often behaved or appeared differently from standard Angular Material.</p>
+      <p>Moving toward Material 3 gave us a more consistent baseline for structure, interaction states, theming, and accessibility.</p>
 
       <div class="screenshot-block" style="margin-top:48px !important;">
         <div class="mode-labels" style="grid-template-columns: 54.7% 1fr;"><span>Before · Customized</span><span>After · Standard M3</span></div>
         <img src="m3-before-after-ai-summary-v2.png" alt="AI Action Note Summary dialog before and after the Material 3 upgrade" style="width:100%;display:block;" />
-        <div class="screenshot-caption">AI Action Note Summary — the heavy custom header gives way to standard M3 dialog structure, clearer hierarchy, and consistent actions.</div>
+        <div class="screenshot-caption">The customized dialog replaced with a standard Material 3 structure and more consistent actions.</div>
       </div>
 
       <div class="screenshot-block">
         <div class="mode-labels" style="grid-template-columns: 53.8% 1fr;"><span>Before · Customized</span><span>After · Standard M3</span></div>
         <img src="m3-before-after-phone.png" alt="Phone Numbers dialog before and after the Material 3 upgrade" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Phone Numbers — outlined M3 fields replace underline-only inputs, with visible labels and a clear focus state.</div>
+        <div class="screenshot-caption">Outlined fields, visible labels, and clearer focus states replace the older underline-style inputs.</div>
       </div>
+
+      <p>One practical benefit was dark mode.</p>
+      <p>Previously, custom styling had to be maintained for individual components. With standard Material 3 theming, light and dark modes could use the same underlying component system.</p>
 
       <div class="screenshot-block" >
         <div class="mode-labels"><span>Dark mode</span><span>Light mode</span></div>
         <img src="unified-platform-m3-modes-nolabel.png" alt="The same Profile Settings screen in dark and light mode" style="width:100%;display:block;" />
-        <div class="screenshot-caption">Dark mode comes from the standard M3 baseline, and so does the accessibility foundation that our documented additions build on.</div>
+        <div class="screenshot-caption">The same screen in both themes, using the shared Material 3 foundation.</div>
       </div>
+
+      <p>These examples show the visual change, but the more important difference is what happens the next time the framework needs to be upgraded.</p>
+      <p>By reducing our dependence on custom overrides, we have a more maintainable path forward.</p>
     </section>
 
-    <!-- 04 DECISIONS -->
     <section id="decisions">
-      <p class="section-label">04 — Key Decisions</p>
-      <h2>Customize only <em>when the product needs it</em></h2>
-
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Custom components only when needed</h3></div>
-          <p>We still customize, but each customization is deliberate and documented, so the next decision can build on the last.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Settled outlined vs. filled with rationale, not preference</h3></div>
-          <p>The team had strong opinions on both sides. I resolved it by documenting the M3-intended use cases for each and applying that framework consistently.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Upgraded Figma modules to M3</h3></div>
-          <p>Designers working in our custom Figma components while engineers worked toward standard M3 was creating rework on both sides. Upgrading the modules closed the gap.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Accessibility callouts that became a default</h3></div>
-          <p>Rather than assuming M3 inheritance covered everything, I identified the places where developers would need to add code to make components WCAG 2 compliant. Our lead developer used that documentation to build a skill that helps developers do this by default — and adds Pendo tagging by default too.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Showing M3 on real product screens</h3></div>
-          <p>Instead of writing a spec document, I showed what M3 modules looked like applied to real product screens.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 05 STANDARDS -->
-    <section id="standards">
-      <p class="section-label">05 — The Standards Library</p>
-      <h2>A shared standards library <em>for design and engineering</em></h2>
-
-      <p>Governance only works if people can find it and trust it. Our lead developer and I recorded in-depth working sessions on every topic — feedback patterns, form fields, accessibility, writing, icons. I researched each one, blended our decisions with outside standards like Material 3 and WCAG, and wrote the final documentation.</p>
-
-      <p>The result is a living documentation site shared by design and engineering: numbered UX standards written as decision records, component pages with “use for / don’t use for” rules, accessibility requirements with the code to meet them, writing standards, and a product icon library. The examples below are rebuilt and simplified from it, with names and brand details removed.</p>
-
-      <div class="sd-frame">
-        <div class="sd-bar"><i></i><i></i><i></i><span>Component · Dialog</span></div>
-        <div class="sd-body">
-          <h5>When to use a modal dialog</h5>
-          <div class="sd-2">
-            <div class="sd-card do"><div class="t">Use for</div><ul><li>Critical system and save errors</li><li>Decisions that need explicit confirmation before the system can proceed</li><li>Notices that must be acknowledged</li></ul></div>
-            <div class="sd-card dont"><div class="t">Don’t use for</div><ul><li>Non-blocking feedback — use a snackbar</li><li>Field-level validation — use field decorators</li><li>Page or form-level errors — use an inline message</li></ul></div>
-          </div>
-          <div class="sd-warn">⚠ Don’t add an X close button to the top-right of a dialog. Use explicit action buttons for dismissal.</div>
-        </div>
-      </div>
-      <p class="sd-cap">Every component page opens with the same “use for / don’t use for” rules, so teams stop re-deciding the basics.</p>
+      <h2>Deciding what should be standard</h2>
+      <p>Returning to Material 3 didn’t mean accepting every default without question.</p>
+      <p>We still needed to make decisions about how components should work in AdvancedMD.</p>
+      <p>One example was outlined versus filled text fields. Rather than choosing based on personal preference, I documented the intended use cases and established guidance teams could apply consistently.</p>
+      <p>The same applied to feedback patterns. A validation error, a successful save, and a critical system failure shouldn’t all interrupt the user in the same way.</p>
+      <p>We defined when to use field-level messages, snackbars, inline errors, and dialogs, along with the expected behavior of each.</p>
 
       <div class="sd-frame">
         <div class="sd-bar"><i></i><i></i><i></i><span>UX Standard · Choosing feedback</span></div>
@@ -964,7 +892,43 @@
           </table>
         </div>
       </div>
-      <p class="sd-cap">Standards are written as decision records, so the next team knows what was decided and why.</p>
+      <p class="sd-cap">Feedback patterns documented by message type, component, and expected behavior.</p>
+
+      <p>This became an important part of the work: documenting not just which component to use, but why.</p>
+      <p>If a team encounters the same decision six months later, they should be able to understand the reasoning without starting the discussion again.</p>
+    </section>
+
+    <section id="standards">
+      <h2>Building a shared standards library</h2>
+      <p>Our lead developer and I held in-depth working sessions covering components, interaction patterns, accessibility, UX writing, icons, and other recurring design decisions.</p>
+      <p>I researched each topic, combined our product-specific decisions with established guidance from Material 3 and WCAG, and wrote the documentation.</p>
+      <p>The result is a living UX standards library shared by Design and Engineering.</p>
+      <p>It includes component usage rules, interaction guidance, accessibility requirements, writing standards, and a product icon library.</p>
+
+      <div class="sd-frame">
+        <div class="sd-bar"><i></i><i></i><i></i><span>Component · Dialog</span></div>
+        <div class="sd-body">
+          <h5>When to use a modal dialog</h5>
+          <div class="sd-2">
+            <div class="sd-card do"><div class="t">Use for</div><ul><li>Critical system and save errors</li><li>Decisions that need explicit confirmation before the system can proceed</li><li>Notices that must be acknowledged</li></ul></div>
+            <div class="sd-card dont"><div class="t">Don’t use for</div><ul><li>Non-blocking feedback — use a snackbar</li><li>Field-level validation — use field decorators</li><li>Page or form-level errors — use an inline message</li></ul></div>
+          </div>
+          <div class="sd-warn">⚠ Don’t add an X close button to the top-right of a dialog. Use explicit action buttons for dismissal.</div>
+        </div>
+      </div>
+      <p class="sd-cap">Each component includes guidance on when to use it, when not to use it, and how it should behave.</p>
+
+      <p>For example, our dialog documentation explains which situations genuinely require an interruption and which are better handled with less disruptive feedback.</p>
+      <p>The standards also cover details that are easy to overlook, such as form-field spacing, icon placement, error-message wording, and focus behavior.</p>
+      <p>These aren’t particularly glamorous decisions. But when six development teams are building within the same product, small inconsistencies accumulate quickly.</p>
+      <p>Having a shared reference makes those decisions easier to apply and maintain.</p>
+    </section>
+
+    <section id="accessibility">
+      <h2>Accessibility beyond the defaults</h2>
+      <p>Material 3 provides an accessibility foundation, but using an accessible component library doesn’t automatically make the finished application accessible.</p>
+      <p>We still needed to account for how components were implemented, labeled, combined, and used within our workflows.</p>
+      <p>I documented the accessibility requirements Engineering needed to add, including accessible names for icon-only buttons, visible focus states, screen-reader announcements, and focus management in a single-page application.</p>
 
       <div class="sd-frame">
         <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Component patterns</span></div>
@@ -980,7 +944,10 @@
 &lt;/button&gt;</div>
         </div>
       </div>
-      <p class="sd-cap">The “must add” column is where most audit failures come from. Our lead developer turned this documentation into a coding skill so it happens by default.</p>
+      <p class="sd-cap">Separating what the component provides from what our implementation still needs.</p>
+
+      <p>I also audited our color tokens against WCAG AA contrast requirements. Some existing colors were appropriate for decorative elements but didn’t meet the requirements for body text or interactive states.</p>
+      <p>Rather than treating those findings as isolated fixes, I documented the rules so they could inform future component decisions.</p>
 
       <div class="sd-frame">
         <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Color token audit</span></div>
@@ -999,72 +966,21 @@
           </table>
         </div>
       </div>
-      <p class="sd-cap">Auditing our own palette turned up tokens that failed AA — and turned each one into a rule. Values simplified for illustration.</p>
+      <p class="sd-cap">Color tokens evaluated for contrast, with usage restrictions or replacements documented.</p>
 
-      <div class="sd-frame">
-        <div class="sd-bar"><i></i><i></i><i></i><span>Accessibility · Interaction guide</span></div>
-        <div class="sd-body sd-scroll">
-          <h5>Focus management in a single-page app (WCAG 2.4.3 Focus Order · 4.1.3 Status Messages)</h5>
-          <table class="sd-table">
-            <thead><tr><th>Trigger</th><th>Move focus to</th><th>Announce</th></tr></thead>
-            <tbody>
-              <tr><td>Route change (new page)</td><td>The page’s &lt;h1&gt;</td><td>New page title (polite)</td></tr>
-              <tr><td>Dialog opens</td><td>First focusable element</td><td>— dialog role announces itself</td></tr>
-              <tr><td>Dialog closes</td><td>The element that opened it</td><td>—</td></tr>
-              <tr><td>Form submit fails</td><td>First field with an error</td><td>Error count (assertive)</td></tr>
-              <tr><td>Search results load</td><td>Stay in the search field</td><td>Result count (polite)</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <p class="sd-cap">In a single-page app, screen readers don’t hear page changes on their own. These rules make every route change predictable.</p>
-
-      <div class="sd-frame">
-        <div class="sd-bar"><i></i><i></i><i></i><span>Icons · Product library</span></div>
-        <div class="sd-body">
-          <div class="sd-chips"><span class="on">Filled</span><span>Outlined</span><span>Duotone</span></div>
-          <div class="sd-icons"><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>Appointment</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Eligibility verified</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm1 16h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>Eligibility failed</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 17a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm.5-9H11v4l3.5 2.1.75-1.23-2.75-1.62V9z"/></svg>Eligibility pending</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Document</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM10 4h4v2h-4V4zm6 11h-3v3h-2v-3H8v-2h3v-3h2v3h3v2z"/></svg>Care team</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Family</div><div class="sd-ic"><svg viewBox="0 0 24 24" fill="#00796e" aria-hidden="true"><path d="M7 2v2h1v6.4L3.6 18.2A2.5 2.5 0 0 0 5.8 22h12.4a2.5 2.5 0 0 0 2.2-3.8L16 10.4V4h1V2H7zm3 2h4v7l2.2 4H7.8L10 11V4z"/></svg>Lab result</div></div>
-        </div>
-      </div>
-      <p class="sd-cap">A product icon set built for healthcare workflows — including eligibility states — in filled, outlined, and duotone styles. Representative icons shown.</p>
-
-      <div class="callout">
-        <p><strong>Also documented:</strong> form-field layout and density rules (no space reserved for errors that rarely appear), UX writing standards for voice, tense, and error messages, and a WCAG AA reference.</p>
-      </div>
+      <p>Our lead developer then used the accessibility documentation to create a coding skill that helps developers apply those requirements by default, alongside Pendo tagging.</p>
+      <p>That was an especially useful outcome of the documentation work. The guidance wasn’t just available for someone to read; it could become part of how components were implemented.</p>
     </section>
-    <!-- 06 OUTCOMES -->
-    <section id="outcomes">
-      <p class="section-label">06 — Outcomes</p>
-      <h2>What the move <em>delivered</em></h2>
 
-      <div class="outcomes-grid" style="margin-top:32px;">
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Angular upgrade path unblocked</h4>
-          <p>The product is no longer held at Angular 18 by customization debt.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Dark mode by default, accessibility by design</h4>
-          <p>Dark mode is inherited from M3; accessibility comes from the M3 foundation plus documented, tested additions.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Shared component resources</h4>
-          <p>Figma and Claude component resources established for design and engineering.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Living governance reference</h4>
-          <p>Documentation available as a living reference for ongoing component decisions.</p>
-        </div>
-      </div>
-
-      <h3 class="sub">Adoption</h3>
-      <p>Rollout has dedicated UX and engineering support, and because every team has to move to Angular 20 and beyond, the standards are being adopted as part of that upgrade. Teams across the product have told us the library documentation is what they’d needed for years.</p>
-
-      <h3 class="sub">What I’m improving next</h3>
-      <p>Our AI-assisted upgrade works, but teams found it token-heavy. I’m reviewing the upgrade process to find where the skill can be leaner.</p>
+    <section id="status">
+      <h2>Where things stand</h2>
+      <p>The migration has established a path beyond the Angular 18 limitations created by our customized library.</p>
+      <p>We now have a standard Material 3 direction, updated component resources in Figma and Claude, and a shared standards library that Design and Engineering can continue using as the product evolves.</p>
+      <p>The transition is ongoing, but the approach is different from the one that created the problem in the first place.</p>
+      <p>We’re using standard components wherever they meet the need, documenting the exceptions, and making design decisions reusable across teams.</p>
+      <p>What I like most about this work is that it addresses two problems at once.</p>
+      <p>Engineering needed a component system it could keep upgrading. Design needed a way to maintain consistency without reviewing and reinventing every decision.</p>
+      <p>The standards library connects those needs, giving both teams a foundation they can continue building on.</p>
     </section>
 
     <!-- UP NEXT -->
