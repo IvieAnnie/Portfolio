@@ -737,6 +737,11 @@
   .glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:6px}
   .glance dd{margin:0;font-size:15px;line-height:1.6;color:var(--text-muted)}
   @media (max-width:700px){.glance{grid-template-columns:1fr}}
+  /* standalone figures built from the journey map */
+  .map-figure { margin: 32px 0; }
+  .map-figure .journey { margin-top: 0; }
+  .journey-billing .journey-detail { margin-top: 0; padding-top: 0; border-top: 0; }
+  .intro { margin-bottom: 48px; }
 </style>
 </head>
 <body>
@@ -777,14 +782,12 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · Research Infrastructure</p>
-    <h1>The research existed.<br><em>Nobody could find it.</em></h1>
-    <p class="hero-sub">Years of discovery sessions, behavioral data, and product knowledge lived across the organization — but finding any of it meant knowing where to look and who to ask. This is how I made that knowledge usable.</p>
+    <h1>Making research easier to find and use</h1>
+    <p class="hero-sub">AdvancedMD had years of useful research scattered across the organization. Discovery interviews, customer feedback, workflow documentation, and product knowledge existed, but finding the right information often meant knowing who to ask.</p>
     <div class="hero-chips">
-      <span class="chip">Research Operations</span>
-      <span class="chip">Knowledge Architecture</span>
-      <span class="chip">Service Mapping</span>
-      <span class="chip">AI / RAG</span>
+      <span class="chip">Research Architecture</span>
+      <span class="chip">UX Operations</span>
+      <span class="chip">AI-Assisted Research</span>
       <span class="chip">Healthcare SaaS · 2025–2026</span>
     </div>
   </div>
@@ -799,94 +802,90 @@
     <div class="nav-section">Overview</div>
     <a href="#problem">The Problem</a>
     <div class="nav-section">Work</div>
-    <a href="#before-after">Before → After</a>
-    <a href="#decisions">Key Decisions</a>
+    <a href="#organizing">Organizing</a>
+    <a href="#useful">Making It Useful</a>
+    <a href="#service-maps">Service Maps</a>
+    <a href="#beyond-features">Beyond Features</a>
+    <a href="#current">Keeping It Current</a>
     <div class="nav-section">Results</div>
-    <a href="#outcomes">Outcomes</a>
+    <a href="#outcomes">What Changed</a>
   </nav>
 
   <main class="content">
 
-    <dl class="glance" aria-label="Project summary">
-      <div><dt>My role</dt><dd>Designed and built the knowledge architecture: structure, taxonomy, service maps, and RAG optimization.</dd></div>
-      <div><dt>Sources</dt><dd>Discovery sessions across nine client practices, Pendo behavioral data, Aha! customer feedback, and role and workflow documentation.</dd></div>
-      <div><dt>Constraints</dt><dd>Research was stored for the people who created it, spread across the organization, with no way to see what was missing.</dd></div>
-      <div><dt>Shipped</dt><dd>A queryable research library, cross-product service maps, and a register of known gaps.</dd></div>
-    </dl>
+    <div class="intro">
+      <p>I built a research knowledge library that brings that information together and makes it searchable across product areas, roles, and workflows.</p>
+
+      <p>The goal was simple: make it easier to use what we’d already learned before going out and researching the same thing again.</p>
+    </div>
 
     <!-- 01 PROBLEM -->
     <section id="problem">
       <p class="section-label">01 — The Problem</p>
-      <h2>Teams couldn’t find<br><em>existing research</em></h2>
+      <h2>The problem wasn’t a lack of research</h2>
 
-      <p>The organization had accumulated a lot of UX research: discovery sessions, Pendo behavioral data, Aha! feedback, role definitions, and workflow documentation.</p>
+      <p>We had plenty of it. What we didn’t have was an easy way to find and reuse it.</p>
 
-      <p>That research was stored in ways that made it hard to retrieve, so teams starting new research often couldn’t find what had already been learned.</p>
+      <p>If someone wanted to know what customers had said about payment plans, they might have to track down a product owner, find an old interview transcript, or ask around for a summary.</p>
 
-      <div class="callout">
-        <p><strong>Teams repeated research that already existed, and no one could see where the gaps were.</strong></p>
-      </div>
+      <p>Even when research was available, it was often organized around the project or person who created it. That made sense when the research was conducted, but it wasn’t particularly useful to someone working on a related problem two years later.</p>
 
-      <p><strong>My role:</strong> I designed and built the research knowledge architecture — structure, taxonomy, service maps, and RAG optimization — so teams could retrieve existing knowledge, identify gaps, and understand workflows across the ecosystem.</p>
+      <p>I wanted anyone working on the product to be able to find relevant evidence without needing to know where it originated.</p>
     </section>
 
-    <!-- 02 BEFORE / AFTER -->
-    <section id="before-after">
-      <p class="section-label">02 — Before → After</p>
-      <h2>Before and after<br><em>the research library</em></h2>
+    <!-- 02 ORGANIZING -->
+    <section id="organizing">
+      <p class="section-label">02 — Organizing</p>
+      <h2>Organizing what we already knew</h2>
 
-      <table class="ba-table">
-        <thead><tr><th></th><th>Before</th><th class="after">After</th></tr></thead>
-        <tbody>
-          <tr><td>Research retrieval</td><td class="before">Finding past research meant knowing the right person to ask or where to search manually.</td><td class="after">Structured for AI-assisted retrieval — query the library and surface relevant sessions, personas, workflows, and findings.</td></tr>
-          <tr><td>Behavioral data</td><td class="before">Pendo data existed, but it wasn’t connected to qualitative research.</td><td class="after">Behavioral data is tagged and linked to the related discovery sessions and workflow documentation.</td></tr>
-          <tr><td>Cross-product understanding</td><td class="before">Understanding how a workflow spanned PM and EHR depended on knowing who to ask.</td><td class="after">Service maps document workflows across PM, EHR, billing, and scheduling, with known gaps flagged.</td></tr>
-          <tr><td>Research gaps</td><td class="before">Unknown until a project needed something that didn’t exist.</td><td class="after">Surfaced up front — the library shows what’s documented and what’s missing before a project starts.</td></tr>
-          <tr><td>New research planning</td><td class="before">Started from scratch, or from memory.</td><td class="after">Starts from the existing knowledge base, so new sessions extend what’s known instead of re-covering it.</td></tr>
-        </tbody>
-      </table>
+      <p>I brought together discovery transcripts, research findings, Pendo Voice of the Customer feedback, Aha! ideas, and product documentation.</p>
 
-      <div class="screenshot-block" style="margin-top:48px !important;">
-        <a href="th-research-web.png" target="_blank" title="Open full size"><img src="th-research-web.png" alt="A research session alongside the insights database linking feedback to product areas" style="width:100%;display:block;" /></a>
-        <div class="screenshot-caption">Insights from sessions and customer feedback are tagged to product areas, so the next team can find them.</div>
+      <p>But putting everything in one place wasn’t enough. A folder full of transcripts is still a folder full of transcripts.</p>
+
+      <p>The more important work was deciding how the information should be organized.</p>
+
+      <p>I structured the library around product areas, user roles, and workflows rather than individual research projects. Findings from different sources could then be retrieved together, even when they came from different teams or were collected years apart.</p>
+
+      <p>I used Claude to help synthesize and retrieve information across the library, with the original source material available to check the findings.</p>
+
+      <div class="screenshot-block">
+        <a href="th-research-web.png" target="_blank" title="Open full size"><img src="th-research-web.png" alt="A discovery session alongside the insights database linking feedback to product areas" style="width:100%;display:block;" /></a>
+        <div class="screenshot-caption">Research findings and customer feedback organized by product area and workflow.</div>
       </div>
     </section>
 
-    <!-- 03 DECISIONS -->
-    <section id="decisions">
-      <p class="section-label">03 — Key Decisions</p>
-      <h2>Built for people<br><em>who weren’t in the original sessions</em></h2>
+    <!-- 03 USEFUL -->
+    <section id="useful">
+      <p class="section-label">03 — Making It Useful</p>
+      <h2>Making the information useful</h2>
 
-      <div class="streams" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Organized for finding research</h3></div>
-          <p>The library is organized so someone who wasn’t in the original sessions can find what they need.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Connected the what and the why</h3></div>
-          <p>The library links Pendo usage data to the discovery sessions that explain it.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>Service maps as connective tissue</h3></div>
-          <p>Individual artifacts are useful on their own. Service maps show where PM, EHR, billing, and scheduling workflows intersect, so cross-product decisions are informed instead of assumed.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Using Claude to synthesize research</h3></div>
-          <p>I used Claude to analyze and synthesize large bodies of existing research, then validated every finding against the source material.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Gaps called out</h3></div>
-          <p>The library calls out undocumented areas explicitly, so teams can see what still needs research.</p>
-        </div>
-      </div>
+      <p>The library lets us ask questions across the research we’ve already collected.</p>
 
-      <h3 class="sub">Refining the skill</h3>
-      <p>Early on, I built a skill to turn client discovery sessions into friction maps. The model kept blurring the columns. It mixed up friction with goals, customer outcomes with business impact, and feature ideas with KPIs, and it was too wordy. It took several rounds of discovery sessions and corrections to lock in a precise definition for each column. Once those were set, it distilled the sessions correctly.</p>
-      <p>I want it to extrapolate only the obvious. If the friction is that a task takes the front desk too long, the impact is time saved and the KPI is reduced time on task. Beyond that, the skill tells it not to infer, because once it fills a cell you can’t tell what it heard from what it guessed. The model doesn’t like leaving a cell empty, but an empty cell is useful: it shows us exactly what we still need to learn.</p>
+      <p>Instead of searching through individual transcripts, someone can ask what we’ve learned about a particular workflow and retrieve relevant findings, customer feedback, and related documentation.</p>
 
-      <h3 class="sub">The patient journey service map</h3>
-      <p>The master map follows a patient from acquisition to reporting. Each stage pulls together pain points, KPIs, and desired states from discovery sessions across nine client practices — and the stages without research are called out, not hidden.</p>
+      <p>This is particularly helpful when preparing for new research. We can see what customers have already told us, where findings overlap, and which questions still need answers.</p>
 
+      <p>Pendo Voice of the Customer feedback adds another source of customer-reported problems and requests to those findings.</p>
+
+      <p>I use Pendo behavioral analytics more selectively. During beta research, for example, I’ll compare previous and current behavior to understand how a redesigned experience is being used. I also use analytics when investigating a specific product area where usage data can help answer the research question.</p>
+
+      <p>Not every study needs behavioral analytics, and not every customer comment needs to be turned into a metric.</p>
+
+      <p>The point is to bring together the evidence that’s useful for the question we’re trying to answer.</p>
+    </section>
+
+    <!-- 04 SERVICE MAPS -->
+    <section id="service-maps">
+      <p class="section-label">04 — Service Maps</p>
+      <h2>Connecting research across the product</h2>
+
+      <p>The other important part of this work was building service maps.</p>
+
+      <p>AdvancedMD covers a large portion of a medical practice’s daily operations. Scheduling, check-in, clinical care, billing, payments, and collections are connected, even though they’re often researched and designed as separate product areas.</p>
+
+      <p>I mapped the patient journey into 14 stages, drawing on research from nine client practices to document pain points, desired outcomes, and opportunities across the platform.</p>
+
+      <figure class="map-figure">
       <div class="journey">
         <div class="journey-head">
           <span><b>14</b> stages</span><span><b>12</b> mapped</span><span><b>2</b> gaps flagged</span><span><b>9</b> client practices</span>
@@ -912,7 +911,30 @@
           <span><i class="jd mod"></i>Moderate pain point</span>
           <span><i class="jl-gap"></i>No research yet</span>
         </div>
+      </div>
+      <figcaption class="screenshot-caption">The patient journey from acquisition through reporting, including stages where research is still missing.</figcaption>
+      </figure>
 
+      <p>The map gives us a way to look at the whole experience instead of just the feature we’re currently working on.</p>
+
+      <p>It also makes missing research visible. Two stages didn’t have enough supporting evidence, so I marked them as gaps rather than filling them with assumptions.</p>
+
+      <p>Those gaps help us decide where to focus future discovery.</p>
+    </section>
+
+    <!-- 05 BEYOND FEATURES -->
+    <section id="beyond-features">
+      <p class="section-label">05 — Beyond Features</p>
+      <h2>Looking beyond individual features</h2>
+
+      <p>Billing is a good example of why the broader view matters.</p>
+
+      <p>A problem might begin during charge entry, continue through claim scrubbing, and eventually create additional work in collections. Each team sees part of the problem, but the practice experiences the entire workflow.</p>
+
+      <p>The service map connects those findings so we can understand where the work breaks down and what customers actually need.</p>
+
+      <figure class="map-figure">
+      <div class="journey journey-billing">
         <div class="journey-detail">
           <div class="jdl-label">Stage 09 — Billing · Claim edits &amp; scrubbing</div>
           <div class="jdl-cols">
@@ -933,76 +955,42 @@
           </div>
         </div>
       </div>
+      <figcaption class="screenshot-caption">Billing research connects specific problems in the claims workflow to customer needs and potential improvements.</figcaption>
+      </figure>
 
-      <h3 class="sub">Inside the library</h3>
-      <p>Every artifact lives in one of six connected collections, structured so a question can pull from several at once.</p>
-      <div class="lib-grid">
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Discovery sessions</div>
-          <p>Interview transcripts and synthesized findings, organized by role and workflow.</p>
-          <div class="lib-tags"><span>Transcripts</span><span>Syntheses</span></div>
-        </div>
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Behavioral data</div>
-          <p>Pendo usage by page, role, and segment — linked back to the sessions that explain it.</p>
-          <div class="lib-tags"><span>Pendo exports</span><span>Usage summaries</span></div>
-        </div>
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Customer feedback</div>
-          <p>Aha! ideas and recurring feedback themes, tagged to product areas.</p>
-          <div class="lib-tags"><span>Aha! ideas</span><span>Themes</span></div>
-        </div>
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Roles &amp; personas</div>
-          <p>Role definitions and responsibilities across PM and EHR.</p>
-          <div class="lib-tags"><span>Role definitions</span><span>Personas</span></div>
-        </div>
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Service maps</div>
-          <p>Cross-product workflows with pain points, desired states, and KPIs.</p>
-          <div class="lib-tags"><span>PM</span><span>EHR</span><span>Billing</span><span>Scheduling</span></div>
-        </div>
-        <div class="lib-card">
-          <div class="lib-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <div class="lib-title">Gap register</div>
-          <p>What isn’t documented yet — flagged before a project starts.</p>
-          <div class="lib-tags"><span>Known gaps</span><span>Open questions</span></div>
-        </div>
-      </div>
+      <p>This has also been useful when exploring changes that cross Practice Management and EHR boundaries. Rather than relying on what one team knows about its part of the product, we can look at research collected across the larger workflow.</p>
     </section>
 
-    <!-- 04 OUTCOMES -->
-    <section id="outcomes">
-      <p class="section-label">04 — Outcomes</p>
-      <h2>What the library<br><em>delivered</em></h2>
+    <!-- 06 KEEPING IT CURRENT -->
+    <section id="current">
+      <p class="section-label">06 — Keeping It Current</p>
+      <h2>Keeping it current</h2>
 
-      <div class="outcomes-grid" style="margin-top:32px;">
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>A queryable library</h4>
-          <p>Research structured and searchable across product domains.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Cross-product service maps</h4>
-          <p>Completed for core workflows across PM, EHR, billing, and scheduling.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Behavior linked to context</h4>
-          <p>The discovery session backlog is connected to Pendo behavioral data.</p>
-        </div>
-        <div class="outcome">
-          <div class="outcome-num">→</div>
-          <h4>Gaps made visible</h4>
-          <p>Missing product knowledge documented for the first time, as a deliberate artifact.</p>
-        </div>
-      </div>
+      <p>The library isn’t a one-time project.</p>
+
+      <p>As new discovery sessions happen and customer feedback comes in, I add that information to the existing knowledge base. Depending on the pace of research, updates happen weekly or monthly.</p>
+
+      <p>That way, new findings become part of the organization’s shared knowledge instead of another document someone has to remember exists.</p>
+
+      <p>The library now provides a common place to retrieve research across product areas, compare findings from different sources, and identify questions that still need investigation.</p>
+
+      <p>It doesn’t replace research or the judgment required to interpret it. It helps us make better use of the research we’ve already done.</p>
+    </section>
+
+    <!-- 07 WHAT CHANGED -->
+    <section id="outcomes">
+      <p class="section-label">07 — What Changed</p>
+      <h2>What changed</h2>
+
+      <p>We now have a shared, searchable research library rather than relying on individual people to remember where information lives.</p>
+
+      <p>Research from different teams and studies can be considered together. Customer feedback adds context to discovery findings. Service maps connect those findings across the broader product experience, including areas where our knowledge is incomplete.</p>
+
+      <p>The biggest change is how we can approach the next problem.</p>
+
+      <p>Instead of starting from scratch, we can start with what we already know, check the evidence, and spend our research time answering the questions that remain.</p>
+
+      <p>I’d build this again. Once the structure is established, maintaining it is relatively straightforward. And research becomes a lot more valuable when people can keep using it long after the original study is finished.</p>
     </section>
 
     <!-- UP NEXT -->
