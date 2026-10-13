@@ -730,6 +730,20 @@
   .hero.hero-solo { grid-template-columns: 1fr; }
   .outcome-num { font-family: 'Cambay', 'Roboto', sans-serif; font-weight: 400; font-size: clamp(36px, 4vw, 48px); }
   .outcome p { font-size: 16px; }
+  .flow-fig { margin: 40px 0 8px; }
+  .flow-fig svg { width: 100%; height: auto; display: block; }
+  .flow-fig figcaption { font-size: 13px; color: var(--text-dim); margin-top: 12px; line-height: 1.45; }
+  .fl-node rect { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+  .fl-node.fl-added rect, .fl-key { fill: var(--accent-dim); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .fl-node.fl-end rect { fill: var(--accent); }
+  .fl-node text { font-family: 'Roboto', sans-serif; font-size: 17px; font-weight: 500; fill: var(--text); text-anchor: middle; }
+  .fl-node text.fl-sub { font-size: 14px; font-weight: 400; fill: var(--text-muted); }
+  .fl-node text.fl-sm { font-size: 15px; font-weight: 500; }
+  .fl-node.fl-end text { fill: #0a0a0a; }
+  .fl-lines line, .fl-lines path { fill: none; stroke: var(--text-dim); stroke-width: 1.5; marker-end: url(#flowArrow); }
+  .fl-lines .fl-dash { stroke-dasharray: 5 4; marker-end: none; }
+  .fl-head { fill: var(--text-dim); }
+  .fl-legend text { font-family: 'Roboto', sans-serif; font-size: 14px; fill: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -823,7 +837,33 @@
       <p>Smaller practices were generally comfortable with the default messages. Larger practices wanted more control. They needed English and Spanish options, the ability to record their own greetings, and ways to customize messages for different situations, including after-hours communication.</p>
       <p>We hadn’t planned for that level of customization. Based on the research, we expanded the configuration options while keeping the default setup simple.</p>
       <p>Practices could get started without configuring everything themselves, then make changes after activation.</p>
-      <!-- IMAGE NEEDED: IVR flow exploration and configuration screens -->
+      <figure class="flow-fig">
+        <svg viewBox="0 0 720 620" role="img" aria-labelledby="flowTitle flowDesc">
+          <title id="flowTitle">Simplified automated attendant flow</title>
+          <desc id="flowDesc">A patient calls the practice and hears a greeting, then chooses English or Spanish. They can continue by text, which asks what they need and sends the conversation to the front-desk inbox, or talk to someone at the front desk. Recorded greetings, after-hours messages, and the language choice were added after testing with practices.</desc>
+          <defs><marker id="flowArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fl-head"/></marker></defs>
+          <g class="fl-lines">
+            <line x1="250" y1="56" x2="250" y2="94"/>
+            <line x1="250" y1="166" x2="250" y2="204"/>
+            <line x1="410" y1="130" x2="458" y2="130" class="fl-dash"/>
+            <line x1="250" y1="260" x2="250" y2="298"/>
+            <path d="M190 354 V384 H130 V412"/>
+            <path d="M310 354 V384 H520 V412"/>
+            <line x1="130" y1="500" x2="130" y2="538"/>
+          </g>
+          <g class="fl-node"><rect x="90" y="0" width="320" height="56" rx="12"/><text x="250" y="34">A patient calls the practice</text></g>
+          <g class="fl-node"><rect x="90" y="96" width="320" height="70" rx="12"/><text x="250" y="126">Greeting</text><text x="250" y="150" class="fl-sub">Standard message by default</text></g>
+          <g class="fl-node fl-added"><rect x="460" y="96" width="250" height="70" rx="12"/><text x="585" y="126" class="fl-sm">Practice’s own recording</text><text x="585" y="150" class="fl-sm">After-hours message</text></g>
+          <g class="fl-node fl-added"><rect x="90" y="206" width="320" height="54" rx="12"/><text x="250" y="239">English or Spanish</text></g>
+          <g class="fl-node"><rect x="90" y="300" width="320" height="54" rx="12"/><text x="250" y="333">Continue by text, or talk to someone</text></g>
+          <g class="fl-node"><rect x="10" y="414" width="240" height="86" rx="12"/><text x="130" y="444">Text</text><text x="130" y="468" class="fl-sub">Asks what they need, like</text><text x="130" y="486" class="fl-sub">scheduling an appointment</text></g>
+          <g class="fl-node"><rect x="400" y="414" width="240" height="86" rx="12"/><text x="520" y="452">Talk</text><text x="520" y="476" class="fl-sub">Connects to the front desk</text></g>
+          <g class="fl-node fl-end"><rect x="10" y="540" width="240" height="70" rx="12"/><text x="130" y="570" class="fl-sm">Conversation arrives in</text><text x="130" y="592" class="fl-sm">the front-desk inbox</text></g>
+          <g class="fl-legend"><rect x="420" y="560" width="22" height="14" rx="4" class="fl-key"/><text x="452" y="572">Added after testing</text><text x="452" y="594">with practices</text></g>
+        </svg>
+        <figcaption>A simplified recreation of the automated attendant flow. The dashed steps came out of testing with practices.</figcaption>
+      </figure>
+      <!-- IMAGE NEEDED: configuration screens -->
     </section>
 
     <section id="phone-number">
