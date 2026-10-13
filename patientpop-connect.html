@@ -830,25 +830,21 @@
 
     <section id="adoption">
       <h2>A messaging product people weren’t using</h2>
-      <p>PatientPop helped small medical practices attract new patients through their online presence. The company had launched a text messaging service, but adoption was low. It was an additional paid feature, and even practices that subscribed weren’t using it very much.</p>
-      <p>Leadership wanted to increase subscriptions and get more practices using messaging regularly.</p>
-      <p>We started by researching why adoption was low. We found problems with the existing messaging experience, including message syncing, threading, and making it clear when messages arrived. We documented those issues for Engineering to fix.</p>
-      <p>Practices also told us that their patients preferred calling. We started looking for ways to introduce patients to texting before they ever needed to contact the front desk.</p>
+      <p>PatientPop helped small medical practices attract new patients online. Its text messaging service was a paid add-on with low adoption, and even practices that subscribed rarely used it. Leadership wanted more subscriptions and more regular use.</p>
+      <p>Our research found usability problems with message syncing, threading, and showing when new messages arrived. We documented those for Engineering to fix. Practices also told us their patients preferred to call, so we looked for ways to introduce patients to texting before they needed to contact the front desk.</p>
     </section>
 
     <section id="conversations">
       <h2>Giving patients more ways to start a conversation</h2>
-      <p>Most PatientPop customers were small practices, often with just one person at the front desk. That person might be checking in a patient, answering questions, and doing paperwork while the phone kept ringing.</p>
-      <p>Missing a call could mean missing a prospective patient.</p>
-      <p>We explored Twilio’s capabilities to see what we could add without significantly increasing costs for PatientPop or its customers.</p>
-      <p>Two solutions came out of that work.</p>
-      <p>Web-to-text let visitors start a text conversation directly from a practice’s website.</p>
+      <p>Most PatientPop customers were small practices, often with one person at the front desk checking in patients, answering questions, and doing paperwork while the phone rang. A missed call could mean a missed new patient.</p>
+      <p>We looked at what Twilio could add without significantly raising costs for PatientPop or its customers. Two solutions came out of that work.</p>
+      <p>Web-to-text let visitors start a text conversation from a practice’s website.</p>
       <div class="cd-gallery">
         <figure><img src="pp-w2t-bubble.jpg" alt="Practice website with a Message us here prompt in the corner" loading="lazy"><figcaption>A prompt on the practice’s website</figcaption></figure>
         <figure><img src="pp-w2t-form.jpg" alt="Web-to-text form with location, name, phone, email, and message filled in" loading="lazy"><figcaption>A short form instead of a phone call</figcaption></figure>
         <figure><img src="pp-w2t-reply.jpg" alt="Text message from the practice confirming it received the visitor's message" loading="lazy"><figcaption>The practice replies by text</figcaption></figure>
       </div>
-      <p>An automated attendant gave callers the option to continue by text. It could collect initial information, such as whether someone wanted to schedule an appointment, and route the conversation to the front desk. Patients could still speak to someone when needed.</p>
+      <p>An automated attendant let callers continue by text. It collected initial information, like whether they wanted to schedule an appointment, and routed the conversation to the front desk. Callers could still talk to someone.</p>
       <div class="pp-phones">
         <figure><img src="pp-call-1.jpg" alt="Phone call screen with a menu to book, reschedule, or ask a general question" loading="lazy"><figcaption>The caller hears the menu</figcaption></figure>
         <figure><img src="pp-call-2.jpg" alt="Phone call screen offering to continue rescheduling over text" loading="lazy"><figcaption>They’re offered text instead</figcaption></figure>
@@ -859,12 +855,10 @@
     </section>
 
     <section id="configuration">
-      <h2>Research changed the configuration</h2>
-      <p>I worked with Product and Engineering to design different automated attendant flows using Twilio. We tested alternatives with practices, and I conducted customer sessions to understand what worked and what needed to change.</p>
-      <p>Initially, we expected to provide a fairly standard setup.</p>
-      <p>Smaller practices were generally comfortable with the default messages. Larger practices wanted more control. They needed English and Spanish options, the ability to record their own greetings, and ways to customize messages for different situations, including after-hours communication.</p>
-      <p>We hadn’t planned for that level of customization. Based on the research, we expanded the configuration options while keeping the default setup simple.</p>
-      <p>Practices could get started without configuring everything themselves, then make changes after activation.</p>
+      <h2>Different practices needed different options</h2>
+      <p>I worked with Product and Engineering to design automated attendant flows in Twilio. We tested alternatives with practices, and I ran customer sessions to learn what worked and what needed to change.</p>
+      <p>We expected a fairly standard setup to work. Smaller practices were comfortable with the default messages, but larger practices needed English and Spanish options, their own recorded greetings, and custom messages for situations like after hours.</p>
+      <p>We expanded the configuration options while keeping the default setup simple. Practices could get started without configuring everything, then make changes after activation.</p>
       <figure class="flow-fig">
         <svg viewBox="0 0 720 670" role="img" aria-labelledby="flowTitle flowDesc">
           <title id="flowTitle">Simplified automated attendant flow</title>
@@ -901,13 +895,10 @@
 
     <section id="phone-number">
       <h2>Making the phone number change understandable</h2>
-      <p>One of the biggest problems we found during onboarding testing was the phone number change.</p>
-      <p>Connect required a Twilio number for the automated attendant. A practice’s existing office number stayed the same, but the tracking or vanity number displayed through PatientPop could change.</p>
-      <p>Some practices had already started using that number in their own materials, and some patients recognized it. They weren’t expecting it to change.</p>
-      <p>We tested an early onboarding experience with practices before building the full self-service setup. The feedback showed that we needed to explain the number change earlier and more clearly.</p>
-      <p>We created an onboarding video that explained what would change and how it would affect the practice. I helped write the script and tested it with users, changing it based on what they understood and what resonated with them. When we tested the video, practices understood the implications, although some still had concerns.</p>
-      <p>We also provided guidance for communicating the change to patients and offered some practices the option of keeping both numbers. We explored allowing practices to activate Connect without immediately enabling the automated attendant.</p>
-      <p>We wanted practices considering the upgrade to understand how their phone numbers would change and what that meant for their patients before making a decision.</p>
+      <p>The phone number change was one of the biggest problems we found in onboarding testing.</p>
+      <p>Connect needed a Twilio number for the automated attendant. The practice’s office number stayed the same, but the tracking or vanity number shown through PatientPop could change. Some practices already used that number in their own materials, and some patients recognized it.</p>
+      <p>Testing an early version of onboarding, before we built the full self-service setup, showed we needed to explain the change earlier and more clearly. We created an onboarding video about what would change and how it would affect the practice. I helped write the script and tested it with users, changing it based on what they understood and what resonated with them. When we tested the video, practices understood the implications, although some still had concerns.</p>
+      <p>We also added guidance for telling patients about the change, offered some practices the option of keeping both numbers, and explored letting practices activate Connect without turning on the automated attendant right away.</p>
       <div class="pp-grid2">
         <figure><img src="pp-setup-start.jpg" alt="Communication Setup start page: Never miss out on a patient lead, with a video link" loading="lazy"><figcaption>The start page, with the onboarding video</figcaption></figure>
         <figure><img src="pp-setup-step1.jpg" alt="Step 1: Get more website leads by enabling messaging" loading="lazy"><figcaption>Step 1: Turn on messaging</figcaption></figure>
@@ -919,10 +910,8 @@
 
     <section id="inbox">
       <h2>Bringing everything into one inbox</h2>
-      <p>Connect also needed to work with the messaging tools practices already used.</p>
-      <p>The existing text messaging product supported appointment reminders and other automated patient messages. We brought web-to-text and automated attendant conversations into the same messaging experience, identifying where each conversation originated.</p>
-      <p>This allowed front-desk staff to manage incoming conversations alongside their existing patient communications rather than switching between separate tools.</p>
-      <p>I designed how the features came together across onboarding, configuration, and the messaging inbox. Practices could turn on the Connect package, then customize or disable individual features as needed.</p>
+      <p>Web-to-text and automated attendant conversations joined the existing patient messaging, including automated appointment reminders, in one inbox. Each conversation showed where it came from, so front-desk staff didn’t have to switch between tools.</p>
+      <p>I designed how the features came together across onboarding, configuration, and the inbox. Practices could turn on the Connect package, then customize or turn off individual features.</p>
       <div class="pp-grid2">
         <figure><img src="pp-inbox-leads.jpg" alt="Inbox conversation showing new patient, returning patient, and other leads labeled as coming from Web-to-Text" loading="lazy"><figcaption>Each conversation shows where it came from and what kind of lead it is.</figcaption></figure>
         <figure><img src="pp-w2t-settings.jpg" alt="Web-to-Text settings with a widget on/off switch and a customizable automated reply" loading="lazy"><figcaption>Practices can turn each feature off or change its automated reply.</figcaption></figure>
@@ -942,8 +931,7 @@
         </div>
       </div>
       <p style="margin-top:40px;">We also documented two practices that adopted the automated attendant. One saw a substantial increase in new leads arriving by text after implementation.</p>
-      <p>These results came from the broader messaging initiative, including fixes to the existing product and the new Connect features.</p>
-      <p>My work spanned research, call-flow design, self-service onboarding, configuration, and the unified messaging experience. Working across two product initiatives, I helped bring the features together into a single offering that practices could set up and manage.</p>
+      <p>These numbers reflect the broader messaging initiative, which included fixes to the existing product as well as the new Connect features.</p>
     </section>
 
     <!-- UP NEXT -->
