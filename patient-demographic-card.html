@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patient Demographics — Ivie Borovatz</title>
+<title>Improving Patient Demographics after launch — Ivie Borovatz</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="description" content="How customer feedback changed the direction of a major redesign — without starting over.">
+  <meta name="description" content="Leading research and targeted changes to a Patient Demographics redesign after launch.">
   <meta property="og:title" content="Patient Demographics — Ivie Borovatz">
-  <meta property="og:description" content="How customer feedback changed the direction of a major redesign — without starting over.">
+  <meta property="og:description" content="Leading research and targeted changes to a Patient Demographics redesign after launch.">
   <meta property="og:image" content="https://www.ivieborovatz.com/demographics-hero-orange.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -696,6 +696,12 @@
   body.light-mode .mnav-panel a:hover { color: #00796e; }
   @media (max-width: 760px) { .mnav-btn { display: inline-flex; } }
   @media (min-width: 761px) { .mnav-panel { display: none !important; } }
+  .yoy { margin-top: 32px; }
+  .yoy-lead { font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .yoy-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .yoy-grid li { padding: 14px 0; border-top: 1px solid var(--border); font-size: 15px; color: var(--text-muted); line-height: 1.5; }
+  .yoy-grid strong { display: block; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; color: var(--text); margin-bottom: 2px; }
+  @media (max-width: 600px) { .yoy-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -736,15 +742,12 @@
 <section class="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline aria-hidden="true"><source src="hero-bg.mp4" type="video/mp4"></video>
   <div class="hero-text">
-    <p class="hero-meta">Healthcare Software · Practice Management</p>
-    <h1>We shipped it.<br>Users hated it.<br><em>Then we listened.</em></h1>
-    <p class="hero-sub">How customer feedback changed the direction of a major Patient Demographics redesign — without starting over.</p>
+    <h1>Improving Patient Demographics after launch</h1>
     <div class="hero-chips">
-      <span class="chip">UX Architect</span>
-      <span class="chip">User Research</span>
+      <span class="chip">UX Research</span>
+      <span class="chip">Product Design</span>
       <span class="chip">Iteration</span>
-      <span class="chip">Figma</span>
-      <span class="chip">Healthcare SaaS · 2025–2026</span>
+      <span class="chip">AdvancedMD, 2025–2026</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -756,151 +759,148 @@
 <div class="page">
   <nav id="case-nav">
     <div class="nav-section">Overview</div>
-    <a href="#starting-point">The Starting Point</a>
-    <a href="#missed">The Problem</a>
+    <a href="#starting-point">Taking Over the Redesign</a>
+    <a href="#missed">What We Missed in Beta</a>
     <div class="nav-section">Work</div>
-    <a href="#response">The Response</a>
-    <a href="#turning-point">The Turning Point</a>
-    <a href="#correction">The Correction</a>
+    <a href="#research">Going Back to the Users</a>
+    <a href="#interactions">Fixing the Interactions</a>
+    <a href="#names">The Name Format</a>
     <div class="nav-section">Results</div>
-    <a href="#results">The Results</a>
-    <a href="#lesson">The Lesson</a>
+    <a href="#results">After the Changes</a>
+    <a href="#forward">What I'd Take Forward</a>
   </nav>
 
   <main class="content">
 
-    <!-- 01 STARTING POINT -->
     <section id="starting-point">
-      <p class="section-label">01 — The Starting Point</p>
-      <h2>I inherited a direction <em>already in motion.</em></h2>
+      <p class="section-label">01 — Taking Over the Redesign</p>
 
-      <p>Patient Demographics is where a practice keeps who the patient is, how to reach them, and who pays for their care. Front desk staff check it at every visit. Billing and coding staff work in it for hours at a time, because every claim depends on getting it right.</p>
+      <p>When I took over the Patient Demographics redesign, the direction had already been approved and the project was moving toward development and release.</p>
 
-      <p>I took over the Patient Demographics redesign already in progress. The redesign replaced a dense legacy demographics screen with a modular card framework intended to make patient information easier to organize.</p>
+      <p>The existing screen was a dense, traditional form. The redesign introduced a modular card framework with collapsible sections, intended to make patient information easier to organize and establish a reusable pattern for the rest of the patient chart.</p>
+
+      <p>Early beta feedback was encouraging. But after the redesign reached general availability, we started hearing from users who were struggling with it.</p>
+
+      <p>The problem wasn’t necessarily the card framework. It was that we hadn’t adequately tested how the new experience worked for the people who spent the most time in it.</p>
+    </section>
+
+    <section id="missed">
+      <p class="section-label">02 — What We Missed in Beta</p>
+      <h2>What we missed in beta</h2>
+
+      <p>The original beta cohort leaned toward smaller practices and intake-focused workflows.</p>
+
+      <p>Billing and coding staff used Patient Demographics differently. They worked in the screen for long stretches, needed to scan information quickly, and relied on familiar layouts and keyboard interactions to move through their work.</p>
+
+      <p>The new design had improved the organization of information, but it also introduced more whitespace, additional interactions, and changes to conventions those users depended on.</p>
 
       <div class="screenshot-block">
         <div class="mode-labels" style="grid-template-columns: 43.6% 1fr;"><span>Approved design</span><span>Legacy screen</span></div>
         <img src="demographics-approved-vs-legacy-web.png" alt="Approved card-based Patient demographics design beside the legacy Patient Information screen" style="width:100%;display:block;" />
-        <div class="screenshot-caption">The approved design organized patient information into modular, collapsible cards.</div>
-      </div>
-    </section>
-
-    <!-- 02 THE PROBLEM -->
-    <section id="missed">
-      <p class="section-label">02 — The Problem</p>
-      <h2>The redesign didn't work <em>for billing and coding users</em></h2>
-
-      <p>Early beta sessions were encouraging. But most of our beta participants were practice admins, not the employees who work in the screen every day. We hadn't adequately tested the design with the billing and coding users who spend the most time in Patient Demographics.</p>
-
-      <p>When the redesign reached GA, we provided a “Back to Classic” switch that took users to the legacy screen, and they used it a lot. Complaints about the changes escalated, and clients kept submitting ideas to revert to legacy.</p>
-
-      <p>Going back wasn't a real option. The legacy screen was built on AngularJS, which no longer receives security updates, so it had to be retired. We were watching customer signals to know when we could start the countdown.</p>
-
-      <p>So the job became clear: find the friction in their feedback and remove it, so people would stop switching back and adopt the new card.</p>
-
-      <p><strong>The feedback pointed to seven friction points.</strong></p>
-
-      <div class="streams three" style="margin-top:32px;">
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">1</div><h3>Too much hunting</h3></div>
-          <p>Information that had been visible at a glance now required expanding and scrolling.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">2</div><h3>Not enough density</h3></div>
-          <p>The cleaner presentation made it harder for experienced users to scan large amounts of patient information quickly.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">3</div><h3>A pop-up for every selection</h3></div>
-          <p>Nearly every selection opened a pop-up that pulled users out of the form, and each one took three clicks: open it, click into its search, then select.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">4</div><h3>Layouts that didn't stick</h3></div>
-          <p>Cards didn't remember how each user left them, so people reopened the same sections every time.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">5</div><h3>Leaving the patient to check the schedule</h3></div>
-          <p>Seeing the patient's next appointment meant navigating away from their information.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">6</div><h3>Slow patient lookup</h3></div>
-          <p>Staff identify patients by chart number, but patient search didn't support it.</p>
-        </div>
-        <div class="stream">
-          <div class="stream-header"><div class="stream-num">7</div><h3>Names that didn't match</h3></div>
-          <p>Names showed in a different format and order from the rest of the product, mixing title case with ALL CAPS.</p>
-        </div>
+        <div class="screenshot-caption">The approved redesign replaced the dense legacy form with modular, collapsible cards.</div>
       </div>
 
-      <p style="margin-top:40px;">The approved design I inherited showed names in title case and First Last order, but the legacy system had captured names in ALL CAPS for years, and names can't be reliably converted to title case (McArthur and MacDonald break). I brought the pattern to our product owner, and we presented the client votes and workflow cost to the executive team. Leadership agreed to restore Last, First order and ALL CAPS names, and that fix shipped first, in September 2025.</p>
+      <p>Once the redesign reached a broader audience, the complaints made those gaps difficult to ignore.</p>
+
+      <p>Rather than revert to the old screen or make changes based on individual requests, I went back to research.</p>
     </section>
 
-    <!-- 03 RESPONSE -->
-    <section id="response">
-      <p class="section-label">03 — The Response</p>
-      <h2>Research with <em>billing, coding, and operations users</em></h2>
+    <section id="research">
+      <p class="section-label">03 — Going Back to the Users</p>
+      <h2>Going back to the users</h2>
 
-      <p>I went directly to the users whose workflows hadn't been adequately represented in beta.</p>
+      <p>I conducted nine structured sessions with billing, coding, and operations users.</p>
 
-      <p>I conducted nine structured sessions with billing, coding, and operations users, working through their actual workflows and testing possible changes as we went.</p>
+      <p>We worked through their actual tasks, looked at where the new layout slowed them down, and tried possible changes during the sessions.</p>
 
       <div class="screenshot-block">
         <a href="demographics-research-web.png" target="_blank" title="Open full size"><img src="demographics-research-web.png" alt="Remote session with a billing user on the demographics card alongside the feedback database" style="width:100%;display:block;" /></a>
-      </div>
-    </section>
-
-    <!-- 04 TURNING POINT -->
-    <section id="turning-point">
-      <p class="section-label">04 — The Turning Point</p>
-      <h2>Finding the layout fix <em>during a research session</em></h2>
-
-      <p>During one session, I started manipulating the cards with the user to understand what was making the information difficult to read.</p>
-
-      <p>When we reached a simpler single-column presentation, she found the information much easier to scan.</p>
-
-      <div class="callout">
-        <p>That gave me a direction: <strong>preserve the stronger grouping and readability, but use the available width to bring more information back into view.</strong></p>
+        <div class="screenshot-caption">Research with billing, coding, and operations users helped separate recurring workflow problems from individual preferences.</div>
       </div>
 
-      <p>I took the idea to our lead developer. The change was feasible without rebuilding the card, so we pushed for an iteration that introduced clearer labels and a two-column layout.</p>
+      <p>One session changed the direction of the redesign.</p>
+
+      <p>I was manipulating the card layout with a user to understand what made the information difficult to scan. When we tried a simpler single-column arrangement, she found the content much easier to read.</p>
+
+      <p>That gave me a useful direction to explore.</p>
+
+      <p>I discussed the layout with our lead developer and confirmed that we could make changes without rebuilding the underlying card framework.</p>
+
+      <p>The resulting design used two columns, with clearer labels and a more deliberate information hierarchy. It preserved the organization of the new cards while bringing back some of the density experienced users needed.</p>
 
       <div class="screenshot-block">
         <img src="demographics-final-design-web.png" alt="Final two-column Patient card in view and edit states" style="width:100%;display:block;" />
-        <div class="screenshot-caption">The two-column layout preserved the clearer information hierarchy while restoring the density experienced users needed.</div>
+        <div class="screenshot-caption">The revised layout makes information easier to scan while retaining the modular card structure.</div>
       </div>
     </section>
 
-    <!-- 05 CORRECTION -->
-    <section id="correction">
-      <p class="section-label">05 — The Correction</p>
-      <h2>The changes we shipped <em>in response</em></h2>
+    <section id="interactions">
+      <p class="section-label">04 — Fixing the Interactions</p>
+      <h2>Fixing the interactions around the layout</h2>
 
-      <p>We didn't throw away the card architecture. We focused the iteration on the problems research had exposed, and I designed every change in the package we shipped in response.</p>
+      <p>The layout was the most visible complaint, but it wasn’t the only thing slowing people down.</p>
 
-      <ul class="package-list">
-        <li><span><strong>Two-column layout:</strong> density without the legacy form.</span></li>
-        <li><span><strong>Original name convention restored.</strong></span></li>
-        <li><span><strong>Appointment mini card:</strong> the next visit, visible without leaving the patient.</span></li>
-        <li><span><strong>Chart number in patient search:</strong> faster lookup the way staff already identify patients.</span></li>
-        <li><span><strong>Sticky settings:</strong> cards remember how each user left them.</span></li>
-        <li><span><strong>Inline editing instead of pop-ups:</strong> reducing clicks and keeping users in the form.</span></li>
-      </ul>
+      <p>I designed a broader set of changes based on the research and customer feedback.</p>
 
-      <p style="margin-top:40px;">Each card section is designed around the task it supports, not a generic form.</p>
+      <p>We restored familiar patient-name conventions, made card settings persist between visits, added the chart number to patient search, and brought upcoming appointment information into the patient context.</p>
+
+      <p>We also replaced many of the secondary pop-up interactions with type-ahead fields so users could keep entering information without repeatedly opening another window.</p>
+
+      <p>The important part was treating each section as a workflow rather than simply applying the same form pattern everywhere.</p>
+
+      <p>We kept the underlying card architecture, but changed how people interacted with it.</p>
     </section>
 
+    <section id="names">
+      <p class="section-label">05 — The Name Format</p>
+      <h2>A smaller issue with bigger consequences</h2>
 
-    <!-- 06 RESULTS -->
+      <p>One problem wasn’t about the layout at all.</p>
+
+      <p>The redesign had introduced title-case names displayed in First Last order. It looked cleaner, but the underlying patient database contained years of names entered in uppercase.</p>
+
+      <p>Converting those records to title case wasn’t reliable. Names such as McArthur and MacDonald could be displayed incorrectly, and users were seeing inconsistent name formatting across the product.</p>
+
+      <p>The change also disrupted a familiar convention used throughout the legacy system.</p>
+
+      <p>As customer feedback accumulated, I identified the pattern and worked with our product owner to bring the evidence to leadership.</p>
+
+      <p>We recommended restoring the original Last, First convention and supporting the existing uppercase data.</p>
+
+      <p>Leadership agreed, and the change shipped in September 2025.</p>
+
+      <p>It was a useful reminder that a visual improvement can create a usability problem when it doesn’t account for the data and conventions people already rely on.</p>
+    </section>
+
     <section id="results">
-      <p class="section-label">06 — The Results</p>
-      <h2>What changed <em>after the fixes shipped</em></h2>
+      <p class="section-label">06 — After the Changes</p>
+      <h2>What happened after the changes</h2>
 
-      <p>Layout and usability complaints, the loudest feedback at launch, fell to near zero. No ideas about the card have come in since March 2026. Support cases spiked twice as clients moved off the legacy screen, then settled below where they were before the transition.</p>
+      <p>We tracked customer feedback, support cases, usage behavior, and how often users switched back to the legacy screen.</p>
 
-      <p>Comparing the same month a year apart, each user made about 61% fewer dead clicks and about 18% fewer clicks overall, and spent about three fewer minutes a day on patient information. That's an estimated 12+ hours a year back for each person. Finding a patient now takes about half the clicks it used to.</p>
+      <p>The results were encouraging.</p>
+
+      <div class="yoy">
+        <p class="yoy-lead">Comparing the same month year over year:</p>
+        <ul class="yoy-grid">
+          <li><strong>61% fewer</strong> dead clicks per user</li>
+          <li><strong>18% fewer</strong> clicks overall per user</li>
+          <li><strong>About three fewer minutes</strong> per user per day on patient information</li>
+          <li><strong>About half as many clicks</strong> to find a patient</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:32px;">That time difference works out to an estimated 12 or more hours per user annually.</p>
+
+      <p>Layout and usability complaints, which had dominated the feedback at launch, fell to nearly zero. No new ideas about the card had been submitted since March 2026.</p>
+
+      <p>Support cases increased during two periods when customers were transitioning away from the legacy experience, then settled below their pre-transition level.</p>
+
+      <p>We also watched the number of users choosing to return to the classic screen.</p>
 
       <div class="bt-chart" role="figure" aria-labelledby="btTitle">
         <div class="bt-chart-title" id="btTitle">"Back to Classic" use, as % of peak</div>
-        <div class="bt-chart-sub">Weekly users switching back to the legacy screen, from peak through the legacy sunset.</div>
+        <div class="bt-chart-sub">Weekly users switching to the legacy screen, shown as a percentage of peak usage.</div>
         <svg class="bt-svg" viewBox="0 0 800 300" role="img" aria-label="Back to Classic use fell from its peak to 89% at the name format fix, 53% at the two-column layout, 13% at the legacy sunset, and then to zero.">
           <line x1="56" x2="784" y1="276.0" y2="276.0" class="bt-grid"/><text x="46" y="282.0" class="bt-axis" text-anchor="end">0%</text><line x1="56" x2="784" y1="146.0" y2="146.0" class="bt-grid"/><text x="46" y="152.0" class="bt-axis" text-anchor="end">50%</text><line x1="56" x2="784" y1="16.0" y2="16.0" class="bt-grid"/><text x="46" y="22.0" class="bt-axis" text-anchor="end">100%</text>
           <path d="M56.0,276.0 L56.0,16.0 L75.2,21.7 L94.3,20.2 L113.5,20.3 L132.6,36.8 L151.8,28.0 L170.9,27.8 L190.1,27.0 L209.3,30.9 L228.4,32.9 L247.6,36.4 L266.7,37.2 L285.9,39.9 L305.1,51.8 L324.2,40.9 L343.4,43.4 L362.5,42.6 L381.7,48.2 L400.8,47.1 L420.0,58.9 L439.2,80.7 L458.3,94.8 L477.5,104.9 L496.6,113.3 L515.8,119.4 L534.9,145.9 L554.1,129.5 L573.3,131.1 L592.4,132.9 L611.6,161.1 L630.7,157.7 L649.9,137.9 L669.1,142.7 L688.2,143.1 L707.4,150.3 L726.5,163.5 L745.7,193.3 L764.8,241.2 L784.0,276.0 L784.0,276.0 Z" class="bt-area"/>
@@ -908,22 +908,28 @@
           <line x1="343.4" x2="343.4" y1="16" y2="276.0" class="bt-marker"/><circle cx="343.4" cy="43.4" r="6" class="bt-dot"/><text x="343.4" y="29.4" class="bt-num" text-anchor="middle">1</text><line x1="649.9" x2="649.9" y1="16" y2="276.0" class="bt-marker"/><circle cx="649.9" cy="137.9" r="6" class="bt-dot"/><text x="649.9" y="123.9" class="bt-num" text-anchor="middle">2</text><line x1="764.8" x2="764.8" y1="16" y2="276.0" class="bt-marker"/><circle cx="764.8" cy="241.2" r="6" class="bt-dot"/><text x="764.8" y="227.2" class="bt-num" text-anchor="middle">3</text>
         </svg>
         <div class="bt-stats"><div class="bt-stat"><div class="bt-stat-num">1</div><div><div class="bt-stat-val">89%</div><div class="bt-stat-label">Name Format Fix</div></div></div><div class="bt-stat"><div class="bt-stat-num">2</div><div><div class="bt-stat-val">53%</div><div class="bt-stat-label">Two-Column Layout</div></div></div><div class="bt-stat"><div class="bt-stat-num">3</div><div><div class="bt-stat-val">13%</div><div class="bt-stat-label">Legacy Sunset</div></div></div></div>
-        <div class="bt-note">Weekly unique users of the "Back to Classic" switch, shown as a percentage of the peak week.</div>
       </div>
 
-      <p style="margin-top:32px;">These results reflect the package together with retiring the legacy screen, so no single change gets the credit.</p>
+      <p style="margin-top:32px;">At the name-format fix, usage was at 89% of its peak. It fell to 53% around the two-column release and 13% by the legacy sunset, eventually reaching zero.</p>
+
+      <p>The decline reflects the changes made across the experience as well as the retirement of the legacy screen. It wouldn’t be accurate to attribute the entire change to any one design decision.</p>
+
+      <p>But taken together with the research, customer feedback, and usage data, the results show a meaningful improvement from the original launch.</p>
     </section>
 
-    <!-- 07 LESSON -->
-    <section id="lesson">
-      <p class="section-label">07 — The Lesson</p>
-      <h2>What I learned <em>from this project</em></h2>
+    <section id="forward">
+      <p class="section-label">07 — What I’d Take Forward</p>
+      <h2>What I’d take forward</h2>
 
-      <p>The main lesson was that our beta hadn't included the people with the most demanding workflows.</p>
+      <p>The original redesign wasn’t a wasted effort. It established a card framework that the product could continue using, including for <a href="transaction-history-card.html" class="inline-link">Patient Transaction History</a>.</p>
 
-      <p>The research also gave us the evidence to change part of the original design.</p>
+      <p>What we missed was the opportunity to test it with the people whose workflows placed the greatest demands on the interface.</p>
 
-      <p>The Patient Demographics card was the foundation, but supporting it meant building a whole new card framework around it, designed for future projects too, <a href="transaction-history-card.html" class="inline-link">like Patient Transaction History</a>.</p>
+      <p>Once we included those users, the problems became clearer. And because we understood the underlying architecture, we could make targeted changes instead of starting over.</p>
+
+      <p>This project reinforced something I think about whenever we’re redesigning an established product: improving the interface isn’t just about making it cleaner. It’s about understanding which parts of the existing experience people depend on, even when those parts aren’t particularly attractive.</p>
+
+      <p>The best outcome wasn’t simply that we kept the new design. It was that we made it work better for the people using it every day.</p>
     </section>
 
     <!-- UP NEXT -->
