@@ -11,7 +11,8 @@
   <meta property="og:title" content="Making text messaging work for more practices — Ivie Borovatz">
   <meta property="og:description" content="How research on a low-adoption texting product led to web-to-text, an automated attendant, and one inbox for small medical practices.">
     <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://www.ivieborovatz.com/patientpop-thumb.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -742,8 +743,18 @@
   .fl-node.fl-end text { fill: #0a0a0a; }
   .fl-lines line, .fl-lines path { fill: none; stroke: var(--text-dim); stroke-width: 1.5; marker-end: url(#flowArrow); }
   .fl-lines .fl-dash { stroke-dasharray: 5 4; marker-end: none; }
+  .fl-lines .fl-dash-arrow { stroke-dasharray: 5 4; }
   .fl-head { fill: var(--text-dim); }
   .fl-legend text { font-family: 'Roboto', sans-serif; font-size: 14px; fill: var(--text-muted); }
+  .pp-phones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0 8px}
+  @media (max-width:760px){.pp-phones{grid-template-columns:repeat(2,1fr)}}
+  .pp-phones figure{margin:0}
+  .pp-phones img{width:100%;display:block}
+  .pp-phones figcaption,.pp-shot figcaption{font-size:13px;color:var(--text-dim);margin-top:8px;line-height:1.45}
+  .pp-shot{margin:32px 0 8px}
+  .pp-shot img,.pp-shot video{width:100%;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.18);background:#fff}
+  body.light-mode .pp-shot img,body.light-mode .pp-shot video{box-shadow:0 6px 18px rgba(0,0,0,.08)}
+  .pp-shot + p, .cd-gallery + p, .pp-phones + p { margin-top: 32px; }
 </style>
 </head>
 <body>
@@ -825,9 +836,19 @@
       <p>We explored Twilio’s capabilities to see what we could add without significantly increasing costs for PatientPop or its customers.</p>
       <p>Two solutions came out of that work.</p>
       <p>Web-to-text let visitors start a text conversation directly from a practice’s website.</p>
+      <div class="cd-gallery">
+        <figure><img src="pp-w2t-bubble.jpg" alt="Practice website with a Message us here prompt in the corner" loading="lazy"><figcaption>A prompt on the practice’s website</figcaption></figure>
+        <figure><img src="pp-w2t-form.jpg" alt="Web-to-text form with location, name, phone, email, and message filled in" loading="lazy"><figcaption>A short form instead of a phone call</figcaption></figure>
+        <figure><img src="pp-w2t-reply.jpg" alt="Text message from the practice confirming it received the visitor's message" loading="lazy"><figcaption>The practice replies by text</figcaption></figure>
+      </div>
       <p>An automated attendant gave callers the option to continue by text. It could collect initial information, such as whether someone wanted to schedule an appointment, and route the conversation to the front desk. Patients could still speak to someone when needed.</p>
+      <div class="pp-phones">
+        <figure><img src="pp-call-1.jpg" alt="Phone call screen with a menu to book, reschedule, or ask a general question" loading="lazy"><figcaption>The caller hears the menu</figcaption></figure>
+        <figure><img src="pp-call-2.jpg" alt="Phone call screen offering to continue rescheduling over text" loading="lazy"><figcaption>They’re offered text instead</figcaption></figure>
+        <figure><img src="pp-call-3.jpg" alt="Text notification from the practice arriving during the call" loading="lazy"><figcaption>A text arrives right away</figcaption></figure>
+        <figure><img src="pp-call-4.jpg" alt="Text conversation where the patient reschedules for Friday" loading="lazy"><figcaption>The front desk replies when it can</figcaption></figure>
+      </div>
       <p>These were separate initiatives with different product owners. I worked across both to bring them together into one offering: PatientPop Connect.</p>
-      <!-- IMAGE NEEDED: Web-to-text and automated attendant flow -->
     </section>
 
     <section id="configuration">
@@ -838,32 +859,35 @@
       <p>We hadn’t planned for that level of customization. Based on the research, we expanded the configuration options while keeping the default setup simple.</p>
       <p>Practices could get started without configuring everything themselves, then make changes after activation.</p>
       <figure class="flow-fig">
-        <svg viewBox="0 0 720 620" role="img" aria-labelledby="flowTitle flowDesc">
+        <svg viewBox="0 0 720 670" role="img" aria-labelledby="flowTitle flowDesc">
           <title id="flowTitle">Simplified automated attendant flow</title>
-          <desc id="flowDesc">A patient calls the practice and hears a greeting, then chooses English or Spanish. They can continue by text, which asks what they need and sends the conversation to the front-desk inbox, or talk to someone at the front desk. Recorded greetings, after-hours messages, and the language choice were added after testing with practices.</desc>
+          <desc id="flowDesc">A patient calls the practice and hears a greeting. During office hours, a phone menu offers new appointments, rescheduling, and general inquiries, then offers to continue by text. Pressing 1 sends a text asking for details, and the conversation arrives in the front-desk inbox. Staying on the line connects to the number set for that option. Spanish greetings, recorded greetings, and after-hours options were added after testing with practices.</desc>
           <defs><marker id="flowArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fl-head"/></marker></defs>
           <g class="fl-lines">
-            <line x1="250" y1="56" x2="250" y2="94"/>
-            <line x1="250" y1="166" x2="250" y2="204"/>
-            <line x1="410" y1="130" x2="458" y2="130" class="fl-dash"/>
-            <line x1="250" y1="260" x2="250" y2="298"/>
-            <path d="M190 354 V384 H130 V412"/>
-            <path d="M310 354 V384 H520 V412"/>
-            <line x1="130" y1="500" x2="130" y2="538"/>
+            <line x1="250" y1="54" x2="250" y2="92"/>
+            <line x1="430" y1="129" x2="468" y2="129" class="fl-dash"/>
+            <line x1="250" y1="164" x2="250" y2="204"/>
+            <path d="M250 184 H590 V204" class="fl-dash-arrow"/>
+            <line x1="250" y1="302" x2="250" y2="340"/>
+            <path d="M190 396 V420 H130 V448"/>
+            <path d="M310 396 V420 H520 V448"/>
+            <line x1="130" y1="546" x2="130" y2="584"/>
           </g>
-          <g class="fl-node"><rect x="90" y="0" width="320" height="56" rx="12"/><text x="250" y="34">A patient calls the practice</text></g>
-          <g class="fl-node"><rect x="90" y="96" width="320" height="70" rx="12"/><text x="250" y="126">Greeting</text><text x="250" y="150" class="fl-sub">Standard message by default</text></g>
-          <g class="fl-node fl-added"><rect x="460" y="96" width="250" height="70" rx="12"/><text x="585" y="126" class="fl-sm">Practice’s own recording</text><text x="585" y="150" class="fl-sm">After-hours message</text></g>
-          <g class="fl-node fl-added"><rect x="90" y="206" width="320" height="54" rx="12"/><text x="250" y="239">English or Spanish</text></g>
-          <g class="fl-node"><rect x="90" y="300" width="320" height="54" rx="12"/><text x="250" y="333">Continue by text, or talk to someone</text></g>
-          <g class="fl-node"><rect x="10" y="414" width="240" height="86" rx="12"/><text x="130" y="444">Text</text><text x="130" y="468" class="fl-sub">Asks what they need, like</text><text x="130" y="486" class="fl-sub">scheduling an appointment</text></g>
-          <g class="fl-node"><rect x="400" y="414" width="240" height="86" rx="12"/><text x="520" y="452">Talk</text><text x="520" y="476" class="fl-sub">Connects to the front desk</text></g>
-          <g class="fl-node fl-end"><rect x="10" y="540" width="240" height="70" rx="12"/><text x="130" y="570" class="fl-sm">Conversation arrives in</text><text x="130" y="592" class="fl-sm">the front-desk inbox</text></g>
-          <g class="fl-legend"><rect x="420" y="560" width="22" height="14" rx="4" class="fl-key"/><text x="452" y="572">Added after testing</text><text x="452" y="594">with practices</text></g>
+          <g class="fl-node"><rect x="70" y="0" width="360" height="54" rx="12"/><text x="250" y="33">A patient calls the practice</text></g>
+          <g class="fl-node"><rect x="70" y="94" width="360" height="70" rx="12"/><text x="250" y="124">Greeting</text><text x="250" y="148" class="fl-sub">Default message</text></g>
+          <g class="fl-node fl-added"><rect x="470" y="94" width="240" height="70" rx="12"/><text x="590" y="124" class="fl-sm">Spanish greeting</text><text x="590" y="148" class="fl-sm">Practice’s own recording</text></g>
+          <g class="fl-node"><rect x="70" y="206" width="360" height="96" rx="12"/><text x="250" y="236">Office hours menu</text><text x="250" y="262" class="fl-sub">1  New appointment   2  Reschedule</text><text x="250" y="284" class="fl-sub">3  General inquiries</text></g>
+          <g class="fl-node fl-added"><rect x="470" y="206" width="240" height="96" rx="12"/><text x="590" y="236">After hours</text><text x="590" y="262" class="fl-sub">Custom greeting and</text><text x="590" y="284" class="fl-sub">automatic text reply</text></g>
+          <g class="fl-node"><rect x="70" y="342" width="360" height="54" rx="12"/><text x="250" y="375">Offers to continue by text</text></g>
+          <g class="fl-node"><rect x="10" y="450" width="240" height="96" rx="12"/><text x="130" y="480">Press 1 to text</text><text x="130" y="506" class="fl-sub">The practice texts back</text><text x="130" y="528" class="fl-sub">asking for details</text></g>
+          <g class="fl-node"><rect x="400" y="450" width="240" height="96" rx="12"/><text x="520" y="480">Stay on the line</text><text x="520" y="506" class="fl-sub">Connects to the number</text><text x="520" y="528" class="fl-sub">set for that option</text></g>
+          <g class="fl-node fl-end"><rect x="10" y="586" width="240" height="70" rx="12"/><text x="130" y="616" class="fl-sm">Conversation arrives in</text><text x="130" y="638" class="fl-sm">the front-desk inbox</text></g>
+          <g class="fl-legend"><rect x="400" y="606" width="22" height="14" rx="4" class="fl-key"/><text x="432" y="618">Added after testing</text><text x="432" y="640">with practices</text></g>
         </svg>
         <figcaption>A simplified recreation of the automated attendant flow. The dashed steps came out of testing with practices.</figcaption>
       </figure>
-      <!-- IMAGE NEEDED: configuration screens -->
+      <figure class="pp-shot"><img src="pp-phone-menu-presets.jpg" alt="Call-to-Text settings comparing Recommended, All day, Limited, and Call Tracking phone menus" loading="lazy"><figcaption>Practices start from a recommended phone menu and can switch to a simpler one.</figcaption></figure>
+      <figure class="pp-shot"><img src="pp-phone-tree-settings.jpg" alt="Phone tree settings with English and Spanish greetings, and a voice message, call destination, and text message for each option" loading="lazy"><figcaption>Advanced settings for practices that want more control: greetings, voice and text messages, and a destination for each option.</figcaption></figure>
     </section>
 
     <section id="phone-number">
@@ -875,7 +899,7 @@
       <p>We created an onboarding video that explained what would change and how it would affect the practice. When we tested it, practices understood the implications, although some still had concerns.</p>
       <p>We also provided guidance for communicating the change to patients and offered some practices the option of keeping both numbers. We explored allowing practices to activate Connect without immediately enabling the automated attendant.</p>
       <p>We wanted practices considering the upgrade to understand how their phone numbers would change and what that meant for their patients before making a decision.</p>
-      <!-- IMAGE NEEDED: Self-service onboarding, phone number explanation, and onboarding video -->
+      <figure class="pp-shot"><video controls preload="none" playsinline poster="pp-connect-video-poster.jpg"><source src="pp-connect-video.mp4" type="video/mp4"></video><figcaption>The onboarding video practices watched before turning on Connect.</figcaption></figure>
     </section>
 
     <section id="inbox">
@@ -884,7 +908,8 @@
       <p>The existing text messaging product supported appointment reminders and other automated patient messages. We brought web-to-text and automated attendant conversations into the same messaging experience, identifying where each conversation originated.</p>
       <p>This allowed front-desk staff to manage incoming conversations alongside their existing patient communications rather than switching between separate tools.</p>
       <p>I designed how the features came together across onboarding, configuration, and the messaging inbox. Practices could turn on the Connect package, then customize or disable individual features as needed.</p>
-      <!-- IMAGE NEEDED: Unified messaging inbox with web-to-text, automated attendant, and existing patient messages -->
+      <figure class="pp-shot"><img src="pp-inbox-leads.jpg" alt="Inbox conversation showing new patient, returning patient, and other leads labeled as coming from Web-to-Text" loading="lazy"><figcaption>Each conversation shows where it came from and what kind of lead it is.</figcaption></figure>
+      <figure class="pp-shot"><img src="pp-w2t-settings.jpg" alt="Web-to-Text settings with a widget on/off switch and a customizable automated reply" loading="lazy"><figcaption>Practices can turn each feature off or change its automated reply.</figcaption></figure>
     </section>
 
     <section id="results">
