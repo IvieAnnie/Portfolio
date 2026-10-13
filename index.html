@@ -16,7 +16,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cambay:wght@400;700&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -694,6 +694,10 @@
       .hero-sub { font-size: 16px !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
       .hero-sub:not(:last-of-type) { margin-bottom: 12px !important; }
     }
+
+    /* highlight text matches the logo color */
+    .hero h1 em, .section-intro h2 em, .about-strip h2 em,
+    body.light-mode .hero h1 em, body.light-mode .section-intro h2 em, body.light-mode .about-strip h2 em { color: #38beca; }
 </style>
 </head>
 <body>
