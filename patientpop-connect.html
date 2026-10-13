@@ -736,11 +736,11 @@
   .flow-fig figcaption { font-size: 13px; color: var(--text-dim); margin-top: 12px; line-height: 1.45; }
   .fl-node rect { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
   .fl-node.fl-added rect, .fl-key { fill: var(--accent-dim); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 4; }
-  .fl-node.fl-end rect { fill: var(--accent); }
+  .fl-node.fl-end rect { fill: #00796e; stroke: #00796e; }
   .fl-node text { font-family: 'Roboto', sans-serif; font-size: 17px; font-weight: 500; fill: var(--text); text-anchor: middle; }
   .fl-node text.fl-sub { font-size: 14px; font-weight: 400; fill: var(--text-muted); }
   .fl-node text.fl-sm { font-size: 15px; font-weight: 500; }
-  .fl-node.fl-end text { fill: #0a0a0a; }
+  .fl-node.fl-end text { fill: #ffffff; }
   .fl-lines line, .fl-lines path { fill: none; stroke: var(--text-dim); stroke-width: 1.5; marker-end: url(#flowArrow); }
   .fl-lines .fl-dash { stroke-dasharray: 5 4; marker-end: none; }
   .fl-lines .fl-dash-arrow { stroke-dasharray: 5 4; }
@@ -883,7 +883,7 @@
           <g class="fl-node"><rect x="70" y="0" width="360" height="54" rx="12"/><text x="250" y="33">A patient calls the practice</text></g>
           <g class="fl-node"><rect x="70" y="94" width="360" height="70" rx="12"/><text x="250" y="124">Greeting</text><text x="250" y="148" class="fl-sub">Default message</text></g>
           <g class="fl-node fl-added"><rect x="470" y="94" width="240" height="70" rx="12"/><text x="590" y="124" class="fl-sm">Spanish greeting</text><text x="590" y="148" class="fl-sm">Practice’s own recording</text></g>
-          <g class="fl-node"><rect x="70" y="206" width="360" height="96" rx="12"/><text x="250" y="236">Office hours menu</text><text x="250" y="262" class="fl-sub">1  New appointment   2  Reschedule</text><text x="250" y="284" class="fl-sub">3  General inquiries</text></g>
+          <g class="fl-node"><rect x="70" y="206" width="360" height="96" rx="12"/><text x="250" y="236">Office hours menu</text><text x="250" y="262" class="fl-sub">1 New appointment · 2 Reschedule</text><text x="250" y="284" class="fl-sub">3 General inquiries</text></g>
           <g class="fl-node fl-added"><rect x="470" y="206" width="240" height="96" rx="12"/><text x="590" y="236">After hours</text><text x="590" y="262" class="fl-sub">Custom greeting and</text><text x="590" y="284" class="fl-sub">automatic text reply</text></g>
           <g class="fl-node"><rect x="70" y="342" width="360" height="54" rx="12"/><text x="250" y="375">Offers to continue by text</text></g>
           <g class="fl-node"><rect x="10" y="450" width="240" height="96" rx="12"/><text x="130" y="480">Press 1 to text</text><text x="130" y="506" class="fl-sub">The practice texts back</text><text x="130" y="528" class="fl-sub">asking for details</text></g>
