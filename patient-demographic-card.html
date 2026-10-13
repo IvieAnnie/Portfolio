@@ -70,7 +70,7 @@
     background: var(--surface2);
     border-radius: 30px;
     overflow: hidden;
-    height: 360px;
+    aspect-ratio: 4 / 3;
     position: relative;
     z-index: 1;
   }
@@ -527,7 +527,6 @@
 
   @media (max-width: 768px) {
     .hero { padding: 80px 24px 60px; grid-template-columns: 1fr; }
-    .hero-visual { height: 240px; }
     .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 0; }
     nav { display: none; }
     .problem-grid,
